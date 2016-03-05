@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-//TODO rename to SpawnEnemiesManager
-public class EnemyManager : MonoBehaviour
+public class SpawnEnemiesManager : MonoBehaviour
 {
-	public const string ENEMY_TAG = "Enemy";
-
 	public Camera mainCamera;
 	//public PlayerHealth playerHealth;       // Reference to the player's heatlh.
 	public GameObject enemy;                // The enemy prefab to be spawned.
@@ -15,7 +12,7 @@ public class EnemyManager : MonoBehaviour
 	void Start ()
 	{
 		spawnPointsCounter = 0;
-		spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+		spawnPoints = GameObject.FindGameObjectsWithTag(TagContainer.SPAWN_POINT_TAG);
 	}
 
 	// Spawn enemy when camera is close to one of the spawn points
@@ -37,7 +34,7 @@ public class EnemyManager : MonoBehaviour
 			// Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
 		GameObject clonedEnemy;
 		clonedEnemy = Instantiate (enemy, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
-		clonedEnemy.gameObject.tag = ENEMY_TAG;
+		clonedEnemy.gameObject.tag = TagContainer.ENEMY_TAG;
 		Destroy (spawnPoint);
 		spawnPointsCounter++;
 	}

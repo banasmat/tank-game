@@ -1,34 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyStateManager : MonoBehaviour {
+public class BulletStateManager : MonoBehaviour {
 
-	public enum State{Running, Hit, Dead};
+	public enum State{Flying, Hit, Dead};
 
 	private State state;
 
 	private bool stateChanged = false;
 
-	EnemyMovement enemyMovement;
-
-
 	//TODO those will probably change (animation) and probably should be moved from here
-	public Sprite enemyRunning;
-	public Sprite enemyHit;
+	public Sprite bulletFlying;
+	public Sprite bulletExplosion;
 
-	// Constructor (?)
-	public void Awake (){
-		enemyMovement = GetComponent<EnemyMovement> ();
-	}
 
 	public void Start(){
-		setState (State.Running);
+		setState (State.Flying);
 	}
 
+	//TODO delete?
 	public void setState(State newState){
 		state = newState;
-
-		//TODO when to set back to false???
 		stateChanged = true;
 	}
 
@@ -41,19 +33,25 @@ public class EnemyStateManager : MonoBehaviour {
 		if(true == stateChanged){
 			switch (state)
 			{
-			case State.Running:
-				GetComponent<SpriteRenderer> ().sprite = enemyRunning;
-				enemyMovement.enabled = true;
+			case State.Flying:
+				GetComponent<SpriteRenderer> ().sprite = bulletFlying;
 				break;
 			case State.Hit:
-				GetComponent<SpriteRenderer> ().sprite = enemyHit;
-				//TODO maybe can be done with some animation state tools?
-				// Start 'dying' process, disable movement (or maybe later set other movement)
+				SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer> ();
+				spriteRenderer.sprite = bulletExplosion;
+
+				//TODO this will be removed when animation is set
+				spriteRenderer.color = new Color (255, 0, 0, 1);
+				// Start 'explosion' process, disable movement (or maybe later set other movement)
 				StartCoroutine(DieAfterHit());
-				enemyMovement.enabled = false;
+
+				//TODO stop force
+				//TODO add explosion force
+
 				break;
 			case State.Dead:
 				Destroy (gameObject);
+				return;
 				break;
 			}
 			// After action reset stateChanged
@@ -65,8 +63,7 @@ public class EnemyStateManager : MonoBehaviour {
 	 * After three seconds set enemy state to dead
 	**/
 	IEnumerator DieAfterHit(){
-		yield return new WaitForSeconds (3);
+		yield return new WaitForSeconds (2);
 		setState(State.Dead);
 	}
-
 }
