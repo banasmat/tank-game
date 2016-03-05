@@ -46,11 +46,11 @@ public class BulletStateManager : MonoBehaviour {
 				spriteRenderer.color = new Color (255, 0, 0, 1);
 
 				// Stop bullet from moving
-				Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+				Rigidbody2D rigidbody = GetComponent<Rigidbody2D> ();
 				rigidbody.velocity = Vector3.zero;
 				rigidbody.mass = 0;
 
-				//TODO add explosion force
+				Explode ();
 
 				// Start 'explosion' process, disable movement (or maybe later set other movement)
 				StartCoroutine (DieAfterHit ());
@@ -72,16 +72,22 @@ public class BulletStateManager : MonoBehaviour {
 		setState(State.Dead);
 	}
 
-	//
+	//TODO move to some other object?
 	private void Explode(){
 
-		Rigidbody2D[] rigidBodies = GameObject.FindObjectsOfType<Rigidbody2D>();
+		//TODO not yet sure which to use
+		//Rigidbody2D[] rigidBodies = GameObject.FindObjectsOfType<Rigidbody2D>();
+		GameObject[] rigidBodies = GameObject.FindGameObjectsWithTag(TagContainer.ENEMY_TAG);
 
-		foreach (Rigidbody2D r in rigidBodies) {
-			if (Vector2.Distance(r.transform.position, transform.position) < 6 && r.tag != TagContainer.PLAYER_TAG) {
-				float px = r.transform.position.x - transform.position.x;
-				float py = r.transform.position.y - transform.position.y;
-				r.AddForce(new Vector2(px, py).normalized * explosionForce / Vector2.Distance(r.transform.position, transform.position));
+		foreach (GameObject r in rigidBodies) {
+
+			if (Vector2.Distance(r.transform.position, transform.position) < 2 && r.tag != TagContainer.PLAYER_TAG && r.tag != TagContainer.BULLET_TAG) {
+				float distanceX = r.transform.position.x - transform.position.x;
+				float distanceY = r.transform.position.y - transform.position.y;
+
+				//new Vector2(px, py).normalized * explosionForce / Vector2.Distance(r.transform.position
+				r.GetComponent<Rigidbody2D>().AddForce(
+					new Vector2(distanceX * explosionForce, distanceY * explosionForce), ForceMode2D.Impulse );
 			}
 		}
 	}

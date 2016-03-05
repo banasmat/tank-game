@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class FireScript : MonoBehaviour {
+public class FireBulletManager : MonoBehaviour {
 
 	//the object that will be spawned
 
@@ -29,6 +29,7 @@ public class FireScript : MonoBehaviour {
 		//spawning the bullet at position
 		Clone = (Instantiate(Bullet, transform.position+1*transform.forward,transform.rotation)) as GameObject;
 		//add force to the spawned objected
+//		Clone.gameObject.tag = TagContainer.BULLET_TAG;
 		Clone.GetComponent<Rigidbody2D>().AddForce(new Vector2(force, 0));
 	}
 
