@@ -5,6 +5,8 @@ public class BulletStateManager : MonoBehaviour {
 
 	public enum State{Flying, Hit, Dead};
 
+	public float explosionForce = 5f;
+
 	private State state;
 
 	private bool stateChanged = false;
@@ -42,16 +44,19 @@ public class BulletStateManager : MonoBehaviour {
 
 				//TODO this will be removed when animation is set
 				spriteRenderer.color = new Color (255, 0, 0, 1);
-				// Start 'explosion' process, disable movement (or maybe later set other movement)
-				StartCoroutine(DieAfterHit());
 
-				//TODO stop force
+				// Stop bullet from moving
+				Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+				rigidbody.velocity = Vector3.zero;
+				rigidbody.mass = 0;
+
 				//TODO add explosion force
 
+				// Start 'explosion' process, disable movement (or maybe later set other movement)
+				StartCoroutine (DieAfterHit ());
 				break;
 			case State.Dead:
 				Destroy (gameObject);
-				return;
 				break;
 			}
 			// After action reset stateChanged
@@ -65,5 +70,19 @@ public class BulletStateManager : MonoBehaviour {
 	IEnumerator DieAfterHit(){
 		yield return new WaitForSeconds (2);
 		setState(State.Dead);
+	}
+
+	//
+	private void Explode(){
+
+		Rigidbody2D[] rigidBodies = GameObject.FindObjectsOfType<Rigidbody2D>();
+
+		foreach (Rigidbody2D r in rigidBodies) {
+			if (Vector2.Distance(r.transform.position, transform.position) < 6 && r.tag != TagContainer.PLAYER_TAG) {
+				float px = r.transform.position.x - transform.position.x;
+				float py = r.transform.position.y - transform.position.y;
+				r.AddForce(new Vector2(px, py).normalized * explosionForce / Vector2.Distance(r.transform.position, transform.position));
+			}
+		}
 	}
 }
