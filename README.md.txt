@@ -5,7 +5,8 @@ MainTODO
 - Wrogowie mają biegnąć w kirunku tanka (done)
 - Zrobić strzelanie (done)
 - Zrobić detekcję kolizji po trafieniu nabojem (done)
-- Zrobić zmianę stanu i zniszczenie obiektu po trafieniu
+- Zrobić zmianę stanu i zniszczenie obiektu po trafieniu (done)
+- PRZEJRZEĆ ORGANIZACJĘ SKRYPTÓW W TOWER BRIDGE DEFENSE
 - Zrobić detekcję kolizji po zderzeniu z czołgiem
 - Zrobić health tanka
 - Dorobić grafiki/animacje

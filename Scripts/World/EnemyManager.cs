@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+//TODO rename to SpawnEnemiesManager
 public class EnemyManager : MonoBehaviour
 {
 	public const string ENEMY_TAG = "Enemy";
