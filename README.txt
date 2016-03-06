@@ -6,7 +6,7 @@ MainTODO
 - Zrobić strzelanie (done)
 - Zrobić detekcję kolizji po trafieniu nabojem (done)
 - Zrobić zmianę stanu i zniszczenie obiektu po trafieniu (done)
-- Kierunek strzelania
+- Kierunek strzelania (done) // Czy kierunek poziomy nie był bardziej grywalny?? Może warto dodać rodzaj broni strzelającej poziomo (np. karabin z wieżyczki)
 - PRZEJRZEĆ ORGANIZACJĘ SKRYPTÓW W np. TOWER BRIDGE DEFENSE - trzeba ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage)
 - Zrobić detekcję kolizji po zderzeniu z czołgiem
 - Zrobić health tanka
@@ -19,3 +19,9 @@ Narzędzia
 Teren
 1. Wyczaić szerokość 'klocka' - ustawić grid w Illustratorze
 2. Przenosić klocki do Unity, łączyć je w gridzie, obrysowywać edge colliderem
+
+Grywalność
+- Manipulacja prędkością?
+- Rodzaje broni strzelające: klasycznie, poziomo, punktowo, bomby, możdzierze, rozproszone...
+- Wrogowie spadający z nieba
+- Jazda do tyłu?

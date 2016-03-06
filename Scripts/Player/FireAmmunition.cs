@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//TODO rename to event listener?
-public class FireBulletManager : MonoBehaviour {
+public class FireAmmunition : MonoBehaviour {
 
 	//the object that will be spawned
 
