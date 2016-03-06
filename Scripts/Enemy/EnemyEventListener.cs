@@ -15,4 +15,9 @@ public class EnemyEventListener : MonoBehaviour {
 		//TODO change enemy state to change the animation, then destroy object
 		stateManager.setState(EnemyStateManager.State.Hit);
 	}
+
+	void hitByPlayer(){
+		//TODO change enemy state to change the animation, then destroy object
+		stateManager.setState(EnemyStateManager.State.Hit);
+	}
 }

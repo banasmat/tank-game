@@ -3,11 +3,14 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-    public float maxSpeed = 10f;
+    //TODO disable controls? just move? 
+	public float maxSpeed = 10f;
     //bool facingRight = true;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
+		//Wait with execution for the call from PlayerStateManager
+		enabled = false;
 	}
 	
 	// Update is called once per frame

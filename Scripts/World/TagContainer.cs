@@ -8,5 +8,6 @@ public class TagContainer : MonoBehaviour {
 	public const string BULLET_TAG = "Bullet";
 	public const string SPAWN_POINT_TAG = "SpawnPoint";
 	public const string GROUND_TAG = "Ground";
+	public const string PLAYER_HEALTH_BAR = "PlayerHealthBar";
 
 }
