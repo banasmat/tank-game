@@ -47,6 +47,7 @@ public class EnemyStateManager : MonoBehaviour {
 				break;
 			case State.Hit:
 				GetComponent<SpriteRenderer> ().sprite = enemyHit;
+				GetComponent<BoxCollider2D> ().enabled = false ;
 				//TODO maybe can be done with some animation state tools?
 				// Start 'dying' process, disable movement (or maybe later set other movement)
 				StartCoroutine(DieAfterHit());

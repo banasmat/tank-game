@@ -6,6 +6,7 @@ MainTODO
 - Zrobić strzelanie (done)
 - Zrobić detekcję kolizji po trafieniu nabojem (done)
 - Zrobić zmianę stanu i zniszczenie obiektu po trafieniu (done)
+- Kierunek strzelania
 - PRZEJRZEĆ ORGANIZACJĘ SKRYPTÓW W np. TOWER BRIDGE DEFENSE - trzeba ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage)
 - Zrobić detekcję kolizji po zderzeniu z czołgiem
 - Zrobić health tanka

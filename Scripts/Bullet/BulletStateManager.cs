@@ -16,6 +16,9 @@ public class BulletStateManager : MonoBehaviour {
 	public Sprite bulletExplosion;
 
 
+	public void Awake(){
+	}
+
 	public void Start(){
 		setState (State.Flying);
 	}
@@ -40,15 +43,19 @@ public class BulletStateManager : MonoBehaviour {
 				break;
 			case State.Hit:
 				SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer> ();
-				spriteRenderer.sprite = bulletExplosion;
+				Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
 
+				spriteRenderer.sprite = bulletExplosion;
 				//TODO this will be removed when animation is set
 				spriteRenderer.color = new Color (255, 0, 0, 1);
 
 				// Stop bullet from moving
-				Rigidbody2D rigidbody = GetComponent<Rigidbody2D> ();
-				rigidbody.velocity = Vector3.zero;
-				rigidbody.mass = 0;
+				rigidBody.gravityScale = 0;
+				rigidBody.velocity = Vector3.zero;
+				rigidBody.mass = 0;
+
+				// Disable collision
+				GetComponent<BoxCollider2D> ().enabled = false;
 
 				Explode ();
 

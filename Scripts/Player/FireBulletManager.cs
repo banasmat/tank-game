@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
+//TODO rename to event listener?
 public class FireBulletManager : MonoBehaviour {
 
 	//the object that will be spawned
 
 	public GameObject Bullet;
-	public int force;
+	public int bulletForce = 800;
 
 	// Use this for initialization
 	void Start () {
@@ -24,13 +25,15 @@ public class FireBulletManager : MonoBehaviour {
 
 	public void FireBullet(){
 		//Clone of the bullet
-		GameObject Clone;
+		GameObject bulletClone;
 
 		//spawning the bullet at position
-		Clone = (Instantiate(Bullet, transform.position+1*transform.forward,transform.rotation)) as GameObject;
-		//add force to the spawned objected
+		bulletClone = (Instantiate(Bullet, transform.position+1*transform.forward, transform.rotation)) as GameObject;
+
 //		Clone.gameObject.tag = TagContainer.BULLET_TAG;
-		Clone.GetComponent<Rigidbody2D>().AddForce(new Vector2(force, 0));
+
+		//add force to the spawned objected
+		bulletClone.GetComponent<Rigidbody2D>().AddForce(transform.right * bulletForce);
 	}
 
 
