@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerStateManager : MonoBehaviour {
 
-	public enum State{Moving, Hit, Dead};
+	public enum State{Static, Moving, Hit, Dead};
 
 	private State state;
 
@@ -11,21 +11,27 @@ public class PlayerStateManager : MonoBehaviour {
 
 	private bool stateChanged = false;
 
-	private PlayerMovement playerMovement;
 	private SpriteRenderer spriteRenderer;
+	private Rigidbody2D rigidBody;
+	private Animator animator;
+	private PlayerMovement playerMovement;
+	private PlayerHealth playerHealth;
+	private FireAmmunition fireAmmunition;
 
 	//TODO those will probably change (animation) and probably should be moved from here
-	public Sprite tankMoving;
-	public Sprite tankHit;
-	public Sprite tankDestroyed;
+	public Sprite tankStatic;
+
 
 	public void Awake(){
-		playerMovement = GetComponent<PlayerMovement> ();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
+		rigidBody = GetComponent<Rigidbody2D> ();
+		animator = GetComponent<Animator>();
+		playerMovement = GetComponent<PlayerMovement> ();
+		playerHealth = GetComponent<PlayerHealth> ();
 	}
 
 	public void Start(){
-		setState (State.Moving);
+		setState (State.Static);
 	}
 
 	//TODO delete?
@@ -43,19 +49,24 @@ public class PlayerStateManager : MonoBehaviour {
 		if(true == stateChanged){
 			switch (state)
 			{
+			case State.Static:
+				spriteRenderer.sprite = tankStatic;
+				animator.SetBool ("Moving", false);
+				break;
 			case State.Moving:
-				spriteRenderer.sprite = tankMoving;
+
+				animator.SetBool ("Moving", true);
+
+				spriteRenderer.sprite = null;
 				playerMovement.enabled = true;
 				break;
 			case State.Hit:
-				Rigidbody2D rigidBody = GetComponent<Rigidbody2D> ();
+				
+				animator.SetTrigger ("Hit");
 
-				spriteRenderer.sprite = tankHit;
-
-				PlayerHealth playerHealth = GetComponent<PlayerHealth> ();
 				//TODO amount should be taken from enemy
 				playerHealth.TakeDamage (20);
-
+				Debug.Log (playerHealth);
 				//TODO these actions probably collide
 				if (playerHealth.getHealth() > 0) {
 					StartCoroutine (RecoverAfterHit ());
@@ -65,7 +76,10 @@ public class PlayerStateManager : MonoBehaviour {
 
 				break;
 			case State.Dead:
-				spriteRenderer.sprite = tankDestroyed;
+				animator.SetBool ("Moving", false);
+				animator.SetBool ("Dead", true);
+				fireAmmunition.enabled = false;
+				//spriteRenderer.sprite = tankDestroyed;
 				break;
 			}
 			// After action reset stateChanged

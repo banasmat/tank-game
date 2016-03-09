@@ -10,8 +10,8 @@ MainTODO
 - Porządek w public/private variables
 - WaitForSeconds może lepiej zmienić na np. czekaj aż skończy się animacja
 - PRZEJRZEĆ ORGANIZACJĘ SKRYPTÓW W np. TOWER BRIDGE DEFENSE - trzeba ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage)
-- Zrobić detekcję kolizji po zderzeniu z czołgiem
-- Zrobić health tanka
+- Zrobić detekcję kolizji po zderzeniu z czołgiem (do poprawy)
+- Zrobić health tanka (do poprawy)
 - Dorobić grafiki/animacje
 
 Narzędzia
@@ -25,5 +25,6 @@ Teren
 Grywalność
 - Manipulacja prędkością?
 - Rodzaje broni strzelające: klasycznie, poziomo, punktowo, bomby, możdzierze, rozproszone...
+- Opóźnienie strzelania (przeładunek)
 - Wrogowie spadający z nieba
 - Jazda do tyłu?
