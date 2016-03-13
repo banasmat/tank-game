@@ -7,9 +7,10 @@ MainTODO
 - Zrobić detekcję kolizji po trafieniu nabojem (done)
 - Zrobić zmianę stanu i zniszczenie obiektu po trafieniu (done)
 - Kierunek strzelania (done) // Czy kierunek poziomy nie był bardziej grywalny?? Może warto dodać rodzaj broni strzelającej poziomo (np. karabin z wieżyczki)
-- Porządek w public/private variables
-- WaitForSeconds może lepiej zmienić na np. czekaj aż skończy się animacja
-- PRZEJRZEĆ ORGANIZACJĘ SKRYPTÓW W np. TOWER BRIDGE DEFENSE - trzeba ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage)
+- Porządek w public/private variables - użyć getterów i setterów c #
+- WaitForSeconds zmienić na np. czekaj aż skończy się animacja
+- PRZEJRZEĆ ORGANIZACJĘ SKRYPTÓW W np. TOWER BRIDGE DEFENSE - trzeba ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage) (done)
+- Zaimplementować event manager z êbooka
 - Zrobić detekcję kolizji po zderzeniu z czołgiem (do poprawy)
 - Zrobić health tanka (do poprawy)
 - Dorobić grafiki/animacje
