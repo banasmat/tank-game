@@ -10,10 +10,22 @@ MainTODO
 - Porządek w public/private variables - użyć getterów i setterów c #
 - WaitForSeconds zmienić na np. czekaj aż skończy się animacja
 - PRZEJRZEĆ ORGANIZACJĘ SKRYPTÓW W np. TOWER BRIDGE DEFENSE - trzeba ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage) (done)
-- Zaimplementować event manager z êbooka
+- Zaimplementować event manager z ebooka (podpiåç resztę eventów)
 - Zrobić detekcję kolizji po zderzeniu z czołgiem (do poprawy)
-- Zrobić health tanka (do poprawy)
+- Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone)
+- spawn enemies - na event onbecamevisible z ebooka?
 - Dorobić grafiki/animacje
+
+Grafika:
+- czołg z kółkami osobno
+- obracanie köłek
+- eksplozja
+- an9macja explozji - scale 1->2->0
+- enemy z nogami osobno
+- animacja biegu
+- tło niebo
+- tło gôry
+- parallax animacja tła
 
 Narzędzia
 1. Czekać na / sprawdzić czy już jest SmartSprite  - https://unity3d.com/unity/roadmap
