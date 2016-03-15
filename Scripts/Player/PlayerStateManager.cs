@@ -28,6 +28,7 @@ public class PlayerStateManager : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		playerMovement = GetComponent<PlayerMovement> ();
 		playerHealth = GetComponent<PlayerHealth> ();
+		fireAmmunition = GetComponent<FireAmmunition> ();
 	}
 
 	public void Start(){
@@ -65,10 +66,10 @@ public class PlayerStateManager : MonoBehaviour {
 				animator.SetTrigger ("Hit");
 
 				//TODO amount should be taken from enemy
-				playerHealth.TakeDamage (20);
+				playerHealth.Health -= 20;
 				Debug.Log (playerHealth);
 				//TODO these actions probably collide
-				if (playerHealth.getHealth() > 0) {
+				if (playerHealth.Health > 0) {
 					StartCoroutine (RecoverAfterHit ());
 				} else {
 					DieAfterHit();

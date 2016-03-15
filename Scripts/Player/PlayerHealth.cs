@@ -3,28 +3,15 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour {
 
-	private int health;
-
-	public GameObject healthBar;
-
-	// Use this for initialization
-	void Start () {
-		health = 100;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public int Health {
+		get{ return _health; }
+		set {
+			//Clamp health between 0-100
+			_health = Mathf.Clamp (value, 0, 100);
+			//Post notification - health has been changed
+			EventManager.Instance.PostNotification (new PlayerHealthEvent(_health));
+		}
 	}
 
-	public void TakeDamage (int amount)
-	{
-		// Decrement the player's health by amount.
-		health -= amount;
-		healthBar.SendMessage ("ReduceHealth", amount);
-	}
-
-	public int getHealth(){
-		return health;
-	}
+	private int _health = 100;
 }
