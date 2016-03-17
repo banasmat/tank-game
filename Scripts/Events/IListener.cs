@@ -6,6 +6,6 @@ using System.Collections;
 public interface IListener
 {
 	//Notification function invoked when events happen
-	void OnEvent (IEvent Event);
+	void OnEvent (GameEvent gameEvent);
 }
 //-----------------------------------------------------------

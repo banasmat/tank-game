@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-//TODO rename to EventListener?
-public class PlayerHealthBar : MonoBehaviour, IListener {
+//TODO rename to PlayerInfoBarEventListener?
+public class PlayerHealthBar : MonoBehaviour, IListener
+{
 
 	void Start ()
 	{
-		//Add myself as listener for health change events
 		EventManager.Instance.AddListener (EVENT_TYPE.HEALTH_CHANGE, this);
 	}
-		
-	public void OnEvent (IEvent Event)
+
+	public void OnEvent (GameEvent GameEvent)
 	{
-		switch (Event.GetEventType()) {
+		switch (GameEvent.eventType) {
 		case EVENT_TYPE.HEALTH_CHANGE:
-			SetHealthBar ((PlayerHealthEvent)Event);
+			SetHealthBar ((PlayerHealth)GameEvent.component);
 			break;
 		}
 	}
 
-	private void SetHealthBar(PlayerHealthEvent playerHealthEvent){
-		gameObject.GetComponent<Transform> ().localScale = new Vector3 ((float)playerHealthEvent.health / 100, .2f, 1);
+	private void SetHealthBar (PlayerHealth playerHealth)
+	{
+		gameObject.GetComponent<Transform> ().localScale = new Vector3 ((float)playerHealth.health / 100, .2f, 1);
 	}
 }

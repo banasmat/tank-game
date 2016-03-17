@@ -4,29 +4,27 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
 	private Rigidbody2D rigidBody2d;
-	private PlayerStateManager stateManager;
+	private Animator animator;
 
     //TODO disable controls? just move? 
 	public float maxSpeed = 10f;
     //bool facingRight = true;
 
 	// Use this for initialization
-	void Awake () {
+	public void Awake () {
 		rigidBody2d = GetComponent<Rigidbody2D>();
-		stateManager = GetComponent<PlayerStateManager> ();
+		animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	public void FixedUpdate () {
         float move = Input.GetAxis("Horizontal");
 
-		if (move > 0) {
-			stateManager.setState (PlayerStateManager.State.Moving);
-		} else {
-			stateManager.setState (PlayerStateManager.State.Static);
-		}
-			
-
         rigidBody2d.velocity = new Vector2(move * maxSpeed, rigidBody2d.velocity.y);
+	
+		animator.speed = rigidBody2d.velocity.x;
+
+		//TODO fix animation flow
+		animator.SetFloat(AnimationParamContainer.PLAYER_VELOCITY, rigidBody2d.velocity.x);
 	}
 }

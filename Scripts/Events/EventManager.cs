@@ -75,7 +75,7 @@ public class EventManager : MonoBehaviour
 	/// </summary>
 	/// <param name="Event_Type">Event to invoke</param>
 	/// <param name="IEvent">Event object</param>
-	public void PostNotification (IEvent Event)
+	public void PostNotification (GameEvent GameEvent)
 	{
 		//Notify all listeners of an event
 
@@ -83,13 +83,13 @@ public class EventManager : MonoBehaviour
 		List<IListener> ListenList = null;
 
 		//If no event exists, then exit
-		if (!Listeners.TryGetValue (Event.GetEventType(), out ListenList))
+		if (!Listeners.TryGetValue (GameEvent.eventType, out ListenList))
 			return;
 
 		//Entry exists. Now notify appropriate listeners
 		for (int i = 0; i < ListenList.Count; i++) {
 			if (!ListenList [i].Equals (null))
-				ListenList [i].OnEvent (Event);
+				ListenList [i].OnEvent (GameEvent);
 		}
 	}
 	//-----------------------------------------------------------

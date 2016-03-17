@@ -50,35 +50,8 @@ public class PlayerStateManager : MonoBehaviour {
 		if(true == stateChanged){
 			switch (state)
 			{
-			case State.Static:
-				spriteRenderer.sprite = tankStatic;
-				animator.SetBool ("Moving", false);
-				break;
-			case State.Moving:
-
-				animator.SetBool ("Moving", true);
-
-				spriteRenderer.sprite = null;
-				playerMovement.enabled = true;
-				break;
-			case State.Hit:
-				
-				animator.SetTrigger ("Hit");
-
-				//TODO amount should be taken from enemy
-				playerHealth.Health -= 20;
-				Debug.Log (playerHealth);
-				//TODO these actions probably collide
-				if (playerHealth.Health > 0) {
-					StartCoroutine (RecoverAfterHit ());
-				} else {
-					DieAfterHit();
-				}
-
-				break;
 			case State.Dead:
 				animator.SetBool ("Moving", false);
-				animator.SetBool ("Dead", true);
 				fireAmmunition.enabled = false;
 				//spriteRenderer.sprite = tankDestroyed;
 				break;

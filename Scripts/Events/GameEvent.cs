@@ -6,14 +6,18 @@ using System.Collections;
 //More events should be added to the list
 public enum EVENT_TYPE
 {
-	GAME_INIT,
-	GAME_END,
-	AMMO_EMPTY,
+	ENEMY_HITS_PLAYER,
 	HEALTH_CHANGE,
-	DEAD}
-;
+}
 
-public interface IEvent {
 
-	EVENT_TYPE GetEventType();
+public class GameEvent {
+
+	public EVENT_TYPE eventType;
+	public Component component;
+
+	public GameEvent(EVENT_TYPE _eventType, Component _component){
+		eventType = _eventType;
+		component = _component;
+	}
 }

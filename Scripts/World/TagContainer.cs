@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TagContainer : MonoBehaviour {
+public class TagContainer {
 
 	public const string PLAYER_TAG = "Player";
 	public const string ENEMY_TAG = "Enemy";

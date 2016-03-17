@@ -3,35 +3,36 @@ using System.Collections;
 
 public class PlayerEventListener : MonoBehaviour, IListener
 {
-	
-	private PlayerStateManager stateManager;
+	private PlayerHealth playerHealth;
+	private Animator animator;
 		
 	void Awake ()
 	{
-		stateManager = gameObject.GetComponent<PlayerStateManager> ();
+		playerHealth = gameObject.GetComponent<PlayerHealth> ();
+		animator = GetComponent<Animator>();
 	}
 
 	void Start ()
 	{
-		//Add myself as listener for health change events
-		EventManager.Instance.AddListener (EVENT_TYPE.HEALTH_CHANGE, this);
+		EventManager.Instance.AddListener (EVENT_TYPE.ENEMY_HITS_PLAYER, this);
 	}
 
-	void OnCollisionEnter2D (Collision2D coll)
-	{
-		// When bullet hits enemy
-		if (coll.gameObject.tag == TagContainer.ENEMY_TAG) {
-			coll.gameObject.SendMessage ("hitByPlayer");
-			stateManager.setState (PlayerStateManager.State.Hit);
-		}
-	}
 
-	public void OnEvent (IEvent Event)
+	public void OnEvent (GameEvent gameEvent)
 	{
-		switch (Event.GetEventType()) {
-		case EVENT_TYPE.HEALTH_CHANGE:
-			//OnHealthChange (Sender, (int)Param);
+		switch (gameEvent.eventType) {
+		case EVENT_TYPE.ENEMY_HITS_PLAYER:
+			hitByEnemy ((EnemyStrength)gameEvent.component);
 			break;
 		}
+	}
+
+	private void hitByEnemy (EnemyStrength enemyStrength){
+		playerHealth.health -= enemyStrength.strength;
+
+		Debug.Log (enemyStrength.strength);
+
+		//TODO move it to playerHealth script?
+		animator.SetTrigger (AnimationParamContainer.PLAYER_HIT);
 	}
 }
