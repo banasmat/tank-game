@@ -9,18 +9,22 @@ MainTODO
 - Kierunek strzelania (done) // Czy kierunek poziomy nie był bardziej grywalny?? Może warto dodać rodzaj broni strzelającej poziomo (np. karabin z wieżyczki)
 - Porządek w public/private variables - użyć getterów i setterów c #
 - WaitForSeconds zmienić na np. czekaj aż skończy się animacja
-- PRZEJRZEĆ ORGANIZACJĘ SKRYPTÓW W np. TOWER BRIDGE DEFENSE - trzeba ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage) (done)
+- przejrzeć skrypty tower bridge defense (done)
+- ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage) (done)
 - Zaimplementować event manager z ebooka (podpiåç resztę eventów)
 - Zrobić detekcję kolizji po zderzeniu z czołgiem (do poprawy)
 - Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone)
 - spawn enemies - na event onbecamevisible z ebooka?
 - Dorobić grafiki/animacje
 
+Architektura:
+- Użyć object pool
+
 Grafika:
 - czołg z kółkami osobno
 - obracanie köłek
 - eksplozja
-- an9macja explozji - scale 1->2->0
+- animacja explozji - scale 1->2->0
 - enemy z nogami osobno
 - animacja biegu
 - tło niebo

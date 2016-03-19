@@ -8,6 +8,7 @@ public enum EVENT_TYPE
 {
 	ENEMY_HITS_PLAYER,
 	HEALTH_CHANGE,
+	GAME_OVER
 }
 
 
@@ -16,7 +17,7 @@ public class GameEvent {
 	public EVENT_TYPE eventType;
 	public Component component;
 
-	public GameEvent(EVENT_TYPE _eventType, Component _component){
+	public GameEvent(EVENT_TYPE _eventType, Component _component = null){
 		eventType = _eventType;
 		component = _component;
 	}

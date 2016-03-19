@@ -10,8 +10,6 @@ public class EnemyMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		//TODO this shouldn't be coupled?
-		//TODO move "Player" to constant
 
 		//Wait with execution for the call from EnemyStateManager
 		enabled = false;

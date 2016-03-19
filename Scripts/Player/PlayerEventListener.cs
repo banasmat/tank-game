@@ -4,17 +4,20 @@ using System.Collections;
 public class PlayerEventListener : MonoBehaviour, IListener
 {
 	private PlayerHealth playerHealth;
+	private PlayerMovement playerMovement;
 	private Animator animator;
 		
 	void Awake ()
 	{
 		playerHealth = gameObject.GetComponent<PlayerHealth> ();
+		playerMovement = gameObject.GetComponent<PlayerMovement> ();
 		animator = GetComponent<Animator>();
 	}
 
 	void Start ()
 	{
 		EventManager.Instance.AddListener (EVENT_TYPE.ENEMY_HITS_PLAYER, this);
+		EventManager.Instance.AddListener (EVENT_TYPE.GAME_OVER, this);
 	}
 
 
@@ -22,17 +25,24 @@ public class PlayerEventListener : MonoBehaviour, IListener
 	{
 		switch (gameEvent.eventType) {
 		case EVENT_TYPE.ENEMY_HITS_PLAYER:
-			hitByEnemy ((EnemyStrength)gameEvent.component);
+			HitByEnemy ((EnemyStrength)gameEvent.component);
+			break;
+		case EVENT_TYPE.GAME_OVER:
+			GameOver ();
 			break;
 		}
 	}
 
-	private void hitByEnemy (EnemyStrength enemyStrength){
+	private void HitByEnemy (EnemyStrength enemyStrength){
 		playerHealth.health -= enemyStrength.strength;
 
-		Debug.Log (enemyStrength.strength);
-
-		//TODO move it to playerHealth script?
+		Debug.Log("player hit");
 		animator.SetTrigger (AnimationParamContainer.PLAYER_HIT);
+	}
+
+	private void GameOver(){
+		playerMovement.enabled = false;
+
+		animator.SetBool (AnimationParamContainer.PLAYER_DEAD, true);
 	}
 }
