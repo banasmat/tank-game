@@ -29,7 +29,7 @@ public class FireAmmunition : MonoBehaviour {
 		//spawning the bullet at position
 		bulletClone = (Instantiate(Bullet, transform.position+1*transform.forward, transform.rotation)) as GameObject;
 
-//		Clone.gameObject.tag = TagContainer.BULLET_TAG;
+//		Clone.gameObject.tag = TagContainer.BULLET;
 
 		//add force to the spawned objected
 		bulletClone.GetComponent<Rigidbody2D>().AddForce(transform.right * bulletForce);

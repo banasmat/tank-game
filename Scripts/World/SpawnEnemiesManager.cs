@@ -12,7 +12,7 @@ public class SpawnEnemiesManager : MonoBehaviour
 	void Start ()
 	{
 		spawnPointsCounter = 0;
-		spawnPoints = GameObject.FindGameObjectsWithTag(TagContainer.SPAWN_POINT_TAG);
+		spawnPoints = GameObject.FindGameObjectsWithTag(TagContainer.SPAWN_POINT);
 	}
 
 	// Spawn enemy when camera is close to one of the spawn points
@@ -36,7 +36,7 @@ public class SpawnEnemiesManager : MonoBehaviour
 		// Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
 		GameObject clonedEnemy;
 		clonedEnemy = Instantiate (enemy, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
-		clonedEnemy.gameObject.tag = TagContainer.ENEMY_TAG;
+		clonedEnemy.gameObject.tag = TagContainer.ENEMY;
 		Destroy (spawnPoint);
 	}
 }

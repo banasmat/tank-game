@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	private Rigidbody2D rigidBody2d;
 	private Animator animator;
+	private GameObject[] gearWheels;
 
     //TODO disable controls? just move? 
 	public float maxSpeed = 10f;
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour {
 	public void Awake () {
 		rigidBody2d = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
+		gearWheels = GameObject.FindGameObjectsWithTag (TagContainer.PLAYER_GEAR_WHEEL);
+
 	}
 	
 	// Update is called once per frame
@@ -22,9 +25,16 @@ public class PlayerMovement : MonoBehaviour {
 
         rigidBody2d.velocity = new Vector2(move * maxSpeed, rigidBody2d.velocity.y);
 	
-		animator.speed = rigidBody2d.velocity.x;
+		animator.speed = move;
+
+		animator.SetFloat(AnimationParamContainer.PLAYER_VELOCITY, rigidBody2d.velocity.x);
 
 		//TODO fix animation flow
-		animator.SetFloat(AnimationParamContainer.PLAYER_VELOCITY, rigidBody2d.velocity.x);
+		//animator.SetFloat(AnimationParamContainer.PLAYER_VELOCITY, rigidBody2d.velocity.x);
+
+		foreach(GameObject gearWheel in gearWheels){
+			
+			//gearWheel.transform.Rotate (0, 0, -rigidBody2d.velocity.x);
+		}
 	}
 }

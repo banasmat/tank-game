@@ -14,7 +14,7 @@ public class EnemyEventListener : MonoBehaviour {
 	public void OnCollisionEnter2D (Collision2D coll)
 	{
 		// When player hits enemy
-		if (coll.gameObject.tag == TagContainer.PLAYER_TAG) {
+		if (coll.gameObject.tag == TagContainer.PLAYER) {
 			hitByPlayer ();
 			EventManager.Instance.PostNotification (new GameEvent(EVENT_TYPE.ENEMY_HITS_PLAYER, gameObject.GetComponent<EnemyStrength>()));
 		}

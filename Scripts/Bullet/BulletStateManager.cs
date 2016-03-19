@@ -84,11 +84,11 @@ public class BulletStateManager : MonoBehaviour {
 
 		//TODO not yet sure which to use
 		//Rigidbody2D[] rigidBodies = GameObject.FindObjectsOfType<Rigidbody2D>();
-		GameObject[] rigidBodies = GameObject.FindGameObjectsWithTag(TagContainer.ENEMY_TAG);
+		GameObject[] rigidBodies = GameObject.FindGameObjectsWithTag(TagContainer.ENEMY);
 
 		foreach (GameObject r in rigidBodies) {
 
-			if (Vector2.Distance(r.transform.position, transform.position) < 2 && r.tag != TagContainer.PLAYER_TAG && r.tag != TagContainer.BULLET_TAG) {
+			if (Vector2.Distance(r.transform.position, transform.position) < 2 && r.tag != TagContainer.PLAYER && r.tag != TagContainer.BULLET) {
 				float distanceX = r.transform.position.x - transform.position.x;
 				float distanceY = r.transform.position.y - transform.position.y;
 
