@@ -8,7 +8,8 @@ MainTODO
 - Zrobić zmianę stanu i zniszczenie obiektu po trafieniu (done)
 - Kierunek strzelania (done) // Czy kierunek poziomy nie był bardziej grywalny?? Może warto dodać rodzaj broni strzelającej poziomo (np. karabin z wieżyczki)
 - Porządek w public/private variables - użyć getterów i setterów c #
-- WaitForSeconds zmienić na np. czekaj aż skończy się animacja
+- Uporządkować foldery - albo Player -> skrypty, sprajty itd., albo Sprites -> Player, Enemy itd.
+- WaitForSeconds zmienić na np. czekaj aż skończy się animacja (done)
 - przejrzeć skrypty tower bridge defense (done)
 - ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage) (done)
 - Zaimplementować event manager z ebooka (podpiåç resztę eventów)

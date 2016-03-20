@@ -5,12 +5,15 @@ public class PlayerEventListener : MonoBehaviour, IListener
 {
 	private PlayerHealth playerHealth;
 	private PlayerMovement playerMovement;
+	private FireAmmunition fireAmmunition;
 	private Animator animator;
+
 		
 	void Awake ()
 	{
 		playerHealth = gameObject.GetComponent<PlayerHealth> ();
 		playerMovement = gameObject.GetComponent<PlayerMovement> ();
+		fireAmmunition = gameObject.GetComponent<FireAmmunition> ();
 		animator = GetComponent<Animator>();
 	}
 
@@ -42,6 +45,7 @@ public class PlayerEventListener : MonoBehaviour, IListener
 
 	private void GameOver(){
 		playerMovement.enabled = false;
+		fireAmmunition.enabled = false;
 
 		animator.SetBool (AnimationParamContainer.PLAYER_DEAD, true);
 	}

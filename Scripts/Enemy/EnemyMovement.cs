@@ -10,11 +10,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-
-		//Wait with execution for the call from EnemyStateManager
-		enabled = false;
-
-		target = GameObject.FindGameObjectWithTag("Player").transform;
+		target = GameObject.FindGameObjectWithTag(TagContainer.PLAYER).transform;
 		step = speed * Time.deltaTime;
 
 	}

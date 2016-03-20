@@ -6,6 +6,7 @@ using System.Collections;
 //More events should be added to the list
 public enum EVENT_TYPE
 {
+	BULLET_HITS_ENEMY,
 	ENEMY_HITS_PLAYER,
 	HEALTH_CHANGE,
 	GAME_OVER
