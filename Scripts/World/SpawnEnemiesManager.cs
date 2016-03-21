@@ -1,31 +1,29 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
+using System.Collections;
 
 public class SpawnEnemiesManager : MonoBehaviour
 {
 	public Camera mainCamera;
 	//public PlayerHealth playerHealth;       // Reference to the player's heatlh.
 	public GameObject enemy;                // The enemy prefab to be spawned.
-	private GameObject[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
-	private int spawnPointsCounter;
+	private ArrayList spawnPoints;         // An array of the spawn points this enemy can spawn from.
 
 	void Start ()
 	{
-		spawnPointsCounter = 0;
-		spawnPoints = GameObject.FindGameObjectsWithTag(TagContainer.SPAWN_POINT);
+		GameObject[] _spawnPoints = GameObject.FindGameObjectsWithTag(TagContainer.SPAWN_POINT);
+		spawnPoints = new ArrayList (_spawnPoints);
 	}
 
 	// Spawn enemy when camera is close to one of the spawn points
 	void Update () {
 		int cameraWidth = (int)(mainCamera.aspect * mainCamera.orthographicSize);
 
-		//TODO might use a dynamic array to unset destroyed objects from array
-		for (int i = spawnPointsCounter; i < spawnPoints.Length; i++) {
-			if (null != spawnPoints [i]) {
-				if ((int)mainCamera.transform.position.x >= (int)spawnPoints [i].transform.position.x - cameraWidth) {
-					Spawn (spawnPoints [i]);
-					break;
-				}
+		//TODO bad solution for performance
+		foreach(GameObject spawnPoint in spawnPoints){
+			if ((int)mainCamera.transform.position.x >= (int)spawnPoint.transform.position.x - cameraWidth) {
+				Spawn (spawnPoint);
+				spawnPoints.Remove (spawnPoint);
+				break;
 			}
 		}
 	}
