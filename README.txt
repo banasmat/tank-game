@@ -16,6 +16,7 @@ MainTODO
 - Zrobić detekcję kolizji po zderzeniu z czołgiem (do poprawy)
 - Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone)
 - spawn enemies - na event onbecamevisible z ebooka?
+- nie iterowac po wszystkich spawn pointach. znalezc ktory jest najblizszy i tylko jego sprawdzać. Po wypuszczeniu wroga sprawdzić kolejny najbliższy.
 - Dorobić grafiki/animacje
 
 Architektura:
