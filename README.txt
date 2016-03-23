@@ -23,6 +23,7 @@ Architektura:
 - Użyć object pool
 
 Grafika:
+- OPTYMALIZACJA (rozmiar, sprajty)
 - czołg z kółkami osobno
 - obracanie köłek
 - eksplozja

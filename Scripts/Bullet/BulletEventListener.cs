@@ -8,13 +8,11 @@ public class BulletEventListener : MonoBehaviour {
 	private Rigidbody2D rigidBody;
 	private Animator animator;
 	private BoxCollider2D boxCollider2d;
-	private SpriteRenderer spriteRenderer;
 
 	void Awake(){
 		rigidBody = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator> ();
 		boxCollider2d = GetComponent<BoxCollider2D> ();
-		spriteRenderer = GetComponent<SpriteRenderer> ();
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
