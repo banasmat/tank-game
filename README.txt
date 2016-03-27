@@ -24,8 +24,9 @@ Architektura:
 
 Grafika:
 - OPTYMALIZACJA (rozmiar, sprajty)
-- czołg z kółkami osobno
-- obracanie köłek
+- czołg z kółkami osobno (done)
+- obracanie köłek (done)
+- konwencja bm - player, wrogowie
 - eksplozja
 - animacja explozji - scale 1->2->0
 - enemy z nogami osobno
@@ -41,6 +42,8 @@ Narzędzia
 Teren
 1. Wyczaić szerokość 'klocka' - ustawić grid w Illustratorze
 2. Przenosić klocki do Unity, łączyć je w gridzie, obrysowywać edge colliderem
+-zrobić klocki dajåce się używać ponownie
+- wyłåczać klocki już przejechane
 
 Grywalność
 - Manipulacja prędkością?
@@ -48,3 +51,5 @@ Grywalność
 - Opóźnienie strzelania (przeładunek)
 - Wrogowie spadający z nieba
 - Jazda do tyłu?
+- słabsza moc pocisköw
+- latajåce członki po eksplozji
