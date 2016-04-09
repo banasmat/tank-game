@@ -1,6 +1,4 @@
-BlackMetalTank in Unity
-
-MainTODO
+﻿MainTODO
 - Ustawić spawn wrogów (done)
 - Wrogowie mają biegnąć w kirunku tanka (done)
 - Zrobić strzelanie (done)
@@ -48,3 +46,6 @@ Grywalność
 - Opóźnienie strzelania (przeładunek)
 - Wrogowie spadający z nieba
 - Jazda do tyłu?
+- słabsza moc pocisköw
+
+- latajåce członki po eksplozji
