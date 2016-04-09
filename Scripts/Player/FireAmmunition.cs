@@ -33,6 +33,8 @@ public class FireAmmunition : MonoBehaviour {
 
 		//add force to the spawned objected
 		bulletClone.GetComponent<Rigidbody2D>().AddForce(transform.right * bulletForce);
+
+		//TODO block firing until reloaded
 	}
 
 

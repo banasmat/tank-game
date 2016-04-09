@@ -34,6 +34,8 @@ public class BulletEventListener : MonoBehaviour {
 	//TODO move to some other object?
 	private void Explode(){
 
+		EventManager.Instance.PostNotification (new GameEvent (EVENT_TYPE.BULLET_EXPLOSION));
+
 		animator.SetTrigger (AnimationParamContainer.BULLET_EXPLODE);
 
 		// Stop bullet from moving
@@ -55,6 +57,8 @@ public class BulletEventListener : MonoBehaviour {
 				//new Vector2(px, py).normalized * explosionForce / Vector2.Distance(r.transform.position
 				r.GetComponent<Rigidbody2D>().AddForce(
 					new Vector2(distanceX * explosionForce, distanceY * explosionForce), ForceMode2D.Impulse );
+
+				r.SendMessage("OnExplosion");
 			}
 		}
 

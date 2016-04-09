@@ -18,17 +18,22 @@ public class EnemyEventListener : MonoBehaviour {
 		// When enemy hits player
 		if (coll.gameObject.tag == TagContainer.PLAYER) {
 			
-			enemyHit ();
+			EnemyHit ();
 			EventManager.Instance.PostNotification (new GameEvent(EVENT_TYPE.ENEMY_HITS_PLAYER, gameObject.GetComponent<EnemyStrength>()));
 		}
 
 		// When bullet hits enemy
 		if (coll.gameObject.tag == TagContainer.BULLET) {
-			enemyHit ();
+			EnemyHit ();
 		}
 	}
 
-	private void enemyHit(){
+	public void OnExplosion ()
+	{
+		animator.SetTrigger (AnimationParamContainer.ENEMY_HIT);
+	}
+
+	private void EnemyHit(){
 		animator.SetTrigger (AnimationParamContainer.ENEMY_HIT);
 
 		enemyMovement.enabled = false;
