@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerHealth : MonoBehaviour {
+public class Player : MonoBehaviour {
 
 	public int health {
 		get{ return _health; }

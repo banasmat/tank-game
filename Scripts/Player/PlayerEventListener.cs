@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerEventListener : MonoBehaviour, IListener
 {
-	private PlayerHealth playerHealth;
+	private Player playerHealth;
 	private PlayerMovement playerMovement;
 	private FireAmmunition fireAmmunition;
 	private Animator animator;
@@ -11,9 +11,9 @@ public class PlayerEventListener : MonoBehaviour, IListener
 		
 	void Awake ()
 	{
-		playerHealth = gameObject.GetComponent<PlayerHealth> ();
+		playerHealth = gameObject.GetComponent<Player> ();
 		playerMovement = gameObject.GetComponent<PlayerMovement> ();
-		fireAmmunition = gameObject.GetComponent<FireAmmunition> ();
+		fireAmmunition = gameObject.GetComponentInChildren<FireAmmunition> ();
 		animator = GetComponent<Animator>();
 	}
 
@@ -28,7 +28,7 @@ public class PlayerEventListener : MonoBehaviour, IListener
 	{
 		switch (gameEvent.eventType) {
 		case EVENT_TYPE.ENEMY_HITS_PLAYER:
-			HitByEnemy ((EnemyStrength)gameEvent.component);
+			HitByEnemy ((Enemy)gameEvent.component);
 			break;
 		case EVENT_TYPE.GAME_OVER:
 			GameOver ();
@@ -36,11 +36,15 @@ public class PlayerEventListener : MonoBehaviour, IListener
 		}
 	}
 
-	private void HitByEnemy (EnemyStrength enemyStrength){
-		playerHealth.health -= enemyStrength.strength;
+	private void HitByEnemy (Enemy enemy){
+		playerHealth.health -= enemy.strength;
 
-		Debug.Log("player hit");
-		animator.SetTrigger (AnimationParamContainer.PLAYER_HIT);
+
+		//TODO needs refining
+		// Stop player for a while
+		//playerMovement.enabled = false;
+		//StartCoroutine(HaltPlayer());
+		//animator.SetTrigger (AnimationParamContainer.PLAYER_HIT);
 	}
 
 	private void GameOver(){
@@ -48,5 +52,10 @@ public class PlayerEventListener : MonoBehaviour, IListener
 		fireAmmunition.enabled = false;
 
 		animator.SetBool (AnimationParamContainer.PLAYER_DEAD, true);
+	}
+
+	IEnumerator HaltPlayer(){
+		yield return new WaitForSeconds (1);
+		playerMovement.enabled = true;
 	}
 }

@@ -4,7 +4,7 @@ using System.Collections;
 public class SpawnEnemiesManager : MonoBehaviour
 {
 	public Camera mainCamera;
-	//public PlayerHealth playerHealth;       // Reference to the player's heatlh.
+	//public Player playerHealth;       // Reference to the player's heatlh.
 	public GameObject enemy;                // The enemy prefab to be spawned.
 	private ArrayList spawnPoints;         // An array of the spawn points this enemy can spawn from.
 

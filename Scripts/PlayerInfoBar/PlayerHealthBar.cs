@@ -14,12 +14,12 @@ public class PlayerHealthBar : MonoBehaviour, IListener
 	{
 		switch (GameEvent.eventType) {
 		case EVENT_TYPE.HEALTH_CHANGE:
-			SetHealthBar ((PlayerHealth)GameEvent.component);
+			SetHealthBar ((Player)GameEvent.component);
 			break;
 		}
 	}
 
-	private void SetHealthBar (PlayerHealth playerHealth)
+	private void SetHealthBar (Player playerHealth)
 	{
 		gameObject.GetComponent<Transform> ().localScale = new Vector3 ((float)playerHealth.health / 100, .2f, 1);
 	}

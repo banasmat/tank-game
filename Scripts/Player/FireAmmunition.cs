@@ -4,17 +4,9 @@ using System.Collections.Generic;
 
 public class FireAmmunition : MonoBehaviour {
 
-	//the object that will be spawned
-
 	public GameObject Bullet;
 	public int bulletForce = 800;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-
-	// Update is called once per frame
 	void Update () {
 
 		if (Input.GetButtonDown("Fire1")){//when the left mouse button is pressed
