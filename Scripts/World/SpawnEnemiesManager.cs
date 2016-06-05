@@ -7,17 +7,17 @@ public class SpawnEnemiesManager : MonoBehaviour
 	//public Player playerHealth;       // Reference to the player's heatlh.
 	public GameObject enemy;                // The enemy prefab to be spawned.
 	private ArrayList spawnPoints;         // An array of the spawn points this enemy can spawn from.
+	private int cameraWidth;
 
 	void Start ()
 	{
 		GameObject[] _spawnPoints = GameObject.FindGameObjectsWithTag(TagContainer.SPAWN_POINT);
 		spawnPoints = new ArrayList (_spawnPoints);
+		cameraWidth = (int)(mainCamera.aspect * mainCamera.orthographicSize);
 	}
 
 	// Spawn enemy when camera is close to one of the spawn points
 	void Update () {
-		int cameraWidth = (int)(mainCamera.aspect * mainCamera.orthographicSize);
-
 		//TODO bad solution for performance
 		foreach(GameObject spawnPoint in spawnPoints){
 			if ((int)mainCamera.transform.position.x >= (int)spawnPoint.transform.position.x - cameraWidth) {
@@ -32,8 +32,7 @@ public class SpawnEnemiesManager : MonoBehaviour
 	void Spawn (GameObject spawnPoint)
 	{
 		// Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
-		GameObject clonedEnemy;
-		clonedEnemy = Instantiate (enemy, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+		GameObject clonedEnemy = Instantiate (enemy, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
 		clonedEnemy.gameObject.tag = TagContainer.ENEMY;
 		Destroy (spawnPoint);
 	}
