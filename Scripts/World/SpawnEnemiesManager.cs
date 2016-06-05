@@ -18,12 +18,14 @@ public class SpawnEnemiesManager : MonoBehaviour
 
 	// Spawn enemy when camera is close to one of the spawn points
 	void Update () {
-		//TODO bad solution for performance
 		foreach(GameObject spawnPoint in spawnPoints){
-			if ((int)mainCamera.transform.position.x >= (int)spawnPoint.transform.position.x - cameraWidth) {
+			if ((int)mainCamera.transform.position.x >= (int)spawnPoint.transform.position.x - cameraWidth * 2) {
 				Spawn (spawnPoint);
 				spawnPoints.Remove (spawnPoint);
 				break;
+			} else {
+				// Checking only closest spawn point
+				//break;
 			}
 		}
 	}

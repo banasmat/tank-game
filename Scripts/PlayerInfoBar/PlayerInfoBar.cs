@@ -18,9 +18,7 @@ public class PlayerInfoBar : MonoBehaviour {
 		camWidth = camHeight * Camera.main.aspect;
 	}
 
-	// Update is called once per frame
-	void FixedUpdate () {
-		position = new Vector2(Camera.main.transform.position.x - camWidth/2 + transformComponent.localScale.x, camHeight - transformComponent.localScale.y);
-		transformComponent.position = position;
+	void Update () {
+		transformComponent.position = new Vector2(Camera.main.transform.position.x - camWidth/2, camHeight - transformComponent.localScale.y);
 	}
 }

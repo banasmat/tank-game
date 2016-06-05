@@ -33,6 +33,7 @@ public class BackgroundMovement : MonoBehaviour {
 		startPosition = new Vector3(transform.position.x, transform.position.y);
 	}
 
+	//TODO optimize move some calculations to variables
 	void FixedUpdate ()
 	{
 		transform.position = new Vector3(startPosition.x + Camera.main.transform.position.x * scrollSpeed, transform.position.y);
@@ -40,13 +41,14 @@ public class BackgroundMovement : MonoBehaviour {
 		cameraRightBoundPosition = Camera.main.transform.position.x + cameraWidth;
 		spriteRightBoundPosition = transform.position.x + sprite.bounds.size.x / 2;
 
-		float differenceAhead = spriteRightBoundPosition - cameraRightBoundPosition + cameraWidth/2;
+		float differenceAhead = spriteRightBoundPosition - cameraRightBoundPosition;
 
 		// If image end is close to the camera right bound, create a new one
 		if (differenceAhead < cameraWidth * 2 && differenceAhead > 0) {
 			if (false == cloned) {
 				// Make sure that new object is intersected a bit with the old one
-				GameObject clonedBackground = Instantiate (this.gameObjectPrefab, new Vector3(spriteRightBoundPosition + (sprite.bounds.size.x / 2) - Camera.main.transform.position.x * scrollSpeed - 1, transform.position.y), transform.rotation) as GameObject;
+				//FIXME When Camera.main.transform.position.x gets higher, new object's x is too low
+				GameObject clonedBackground = Instantiate (this.gameObjectPrefab, new Vector3(spriteRightBoundPosition + (sprite.bounds.size.x / 2) - Camera.main.transform.position.x * scrollSpeed - 0.1f, transform.position.y), transform.rotation) as GameObject;
 				cloned = true;
 			}
 		}

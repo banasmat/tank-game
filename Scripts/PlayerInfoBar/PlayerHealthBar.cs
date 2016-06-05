@@ -4,7 +4,6 @@ using System.Collections;
 //TODO rename to PlayerInfoBarEventListener?
 public class PlayerHealthBar : MonoBehaviour, IListener
 {
-
 	void Start ()
 	{
 		EventManager.Instance.AddListener (EVENT_TYPE.HEALTH_CHANGE, this);
@@ -21,6 +20,6 @@ public class PlayerHealthBar : MonoBehaviour, IListener
 
 	private void SetHealthBar (Player playerHealth)
 	{
-		gameObject.GetComponent<Transform> ().localScale = new Vector3 ((float)playerHealth.health / 100, .2f, 1);
+		transform.localScale = new Vector3 ((float)playerHealth.health / 100, transform.localScale.y);
 	}
 }
