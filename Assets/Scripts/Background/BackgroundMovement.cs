@@ -4,21 +4,23 @@ using System.Collections;
 public class BackgroundMovement : MonoBehaviour {
 
 	public GameObject gameObjectPrefab;
-	public float reversedScrollSpeed; // The higher decimal, the slower movement
-	public float groundYPositionDifference; // Y position in relation to the ground level
+	public float scrollSpeed;
+	public float positionAboveGround; // Y position in relation to the ground level
 
-	protected float cameraWidth;
-	protected float cameraRightEdgePosition;
-	protected float spriteRightEdgePosition;
-	protected Vector3 startPosition;
-	protected GameObject ground;
-	protected Sprite sprite;
-	protected Sprite groundSprite;
-	protected Transform groundTransform;
-	protected bool cloned;
-	protected float yPosition;
-	protected float spriteSizeHalf;
-	protected float cameraWidthDoubled;
+	private Vector3 startPosition;
+	private GameObject ground;
+	private Sprite sprite;
+	private Sprite groundSprite;
+	private Transform groundTransform;
+
+	private bool cloned;
+	private float reversedScrollSpeed;
+	private float cameraWidth;
+	private float cameraRightEdgePosition;
+	private float spriteRightEdgePosition;
+	private float yPosition;
+	private float spriteSizeHalf;
+	private float cameraWidthDoubled;
 
 	void Awake ()
 	{
@@ -33,7 +35,9 @@ public class BackgroundMovement : MonoBehaviour {
 		spriteSizeHalf = sprite.bounds.size.x / 2;
 		cameraWidthDoubled = cameraWidth * 2;
 
-		yPosition = groundTransform.position.y + groundYPositionDifference;
+		reversedScrollSpeed = -1 * (scrollSpeed - 1); 
+
+		yPosition = groundTransform.position.y + positionAboveGround;
 	}
 
 	void Start(){
