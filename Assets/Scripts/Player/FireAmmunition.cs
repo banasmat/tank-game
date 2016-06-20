@@ -8,9 +8,11 @@ public class FireAmmunition : MonoBehaviour {
 	public int bulletForce = 800;
 
 	private ObjectPool objectPool;
+	private ObjectPoolManager objectPoolManager;
 
 	void Awake(){
-		objectPool = new ObjectPool (20);
+		objectPoolManager = GameObject.FindGameObjectWithTag (TagContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
+		objectPoolManager.CreatePool (Bullet, 10);
 	}
 
 	void Update () {
@@ -24,13 +26,9 @@ public class FireAmmunition : MonoBehaviour {
 		//Clone of the bullet
 		GameObject bulletClone;
 
-		//FIXME how do we add bullets to the pool? Create separate GameObject BulletsPool??
-		try{
-			bulletClone = objectPool.retrieve();
-		} catch (UnityException){
-			//spawning the bullet at position
-			bulletClone = (Instantiate(Bullet, transform.position+1*transform.forward, transform.rotation)) as GameObject;
-		}
+
+		bulletClone = objectPoolManager.Retrieve(Bullet, transform.position+1*transform.forward, transform.rotation);
+
 
 		//bulletClone.gameObject.tag = TagContainer.BULLET;
 

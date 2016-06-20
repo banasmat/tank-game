@@ -11,7 +11,7 @@ public class BackgroundMovement : MonoBehaviour {
 	private GameObject ground;
 	private Sprite sprite;
 	private Transform groundTransform;
-	private ObjectPool objectPool;
+	private ObjectPoolManager objectPoolManager;
 
 	private bool cloned;
 	private float reversedScrollSpeed;
@@ -22,9 +22,11 @@ public class BackgroundMovement : MonoBehaviour {
 	private float spriteSizeHalf;
 	private float cameraWidthDoubled;
 
+
 	void Awake ()
 	{
-		objectPool = new ObjectPool (2);
+		objectPoolManager = GameObject.FindGameObjectWithTag (TagContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
+		objectPoolManager.CreatePool (gameObjectPrefab, 3);
 
 		sprite = GetComponent<SpriteRenderer> ().sprite;
 
@@ -61,11 +63,7 @@ public class BackgroundMovement : MonoBehaviour {
 				// Make sure that new tile is intersected a bit with the old one ( - 0.1f )
 				//TODO When Camera.main.transform.position.x gets higher, new object's x is too low. Temporarily fixed with changing Y position ( yPosition - 10 )
 
-				try{
-					GameObject clonedBackground = objectPool.retrieve();
-				} catch(UnityException e){
-					GameObject clonedBackground = Instantiate (this.gameObjectPrefab, new Vector3 (spriteRightEdgePosition + spriteSizeHalf - Camera.main.transform.position.x * reversedScrollSpeed - 0.1f, yPosition - 10), transform.rotation) as GameObject;
-				}
+				GameObject clonedBackground = objectPoolManager.Retrieve(this.gameObjectPrefab, new Vector3 (spriteRightEdgePosition + spriteSizeHalf - Camera.main.transform.position.x * reversedScrollSpeed - 0.1f, yPosition - 10), transform.rotation);
 
 				cloned = true;
 			}
@@ -74,7 +72,7 @@ public class BackgroundMovement : MonoBehaviour {
 		// If sprite is left behind the camera, destroy it
 		if ((Camera.main.transform.position.x - cameraWidth - spriteRightEdgePosition) > cameraWidthDoubled) {
 			//Destroy (gameObject);
-			objectPool.add (gameObject);
+			objectPoolManager.Add (gameObject);
 		}
 	}
 }

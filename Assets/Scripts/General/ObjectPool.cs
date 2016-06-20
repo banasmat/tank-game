@@ -9,9 +9,7 @@ public class ObjectPool {
 		gameObjects = new GameObject[capacity];
 	}
 
-	public void add (GameObject gameObject){
-
-		gameObject.SetActive (false);
+	public void Add (GameObject gameObject){
 
 		for (int i = 0; i < gameObjects.Length; i ++) {
 			if (null == gameObjects[i]) {
@@ -21,11 +19,12 @@ public class ObjectPool {
 		}
 	}
 
-	public GameObject retrieve(){
+	public GameObject Retrieve(){
 		for (int i = 0; i < gameObjects.Length; i ++) {
 			if (null != gameObjects[i]) {
-				gameObjects[i].SetActive(true);
-				return gameObjects [i];
+				GameObject retrievedGameObject = gameObjects [i];
+				//gameObjects [i] = null;
+				return retrievedGameObject;
 			}
 		}
 		//TODO specific exception type, insert GameObject name. or maybe even clone object here and set position in other class...
