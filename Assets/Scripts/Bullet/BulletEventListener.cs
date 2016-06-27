@@ -8,10 +8,8 @@ public class BulletEventListener : MonoBehaviour {
 	private Rigidbody2D rigidBody;
 	private Animator animator;
 	private BoxCollider2D boxCollider2d;
-	private ObjectPoolManager objectPoolManager;
 
 	void Awake(){
-		objectPoolManager = GameObject.FindGameObjectWithTag (TagContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
 		rigidBody = GetComponent<Rigidbody2D> ();
 		animator = GetComponent<Animator> ();
 		boxCollider2d = GetComponent<BoxCollider2D> ();
@@ -68,7 +66,8 @@ public class BulletEventListener : MonoBehaviour {
 	}
 
 	private IEnumerator DestroyObject(){
-		yield return new WaitForSeconds (2);
-		objectPoolManager.Add (gameObject);
+		yield return new WaitForSeconds (1);
+		//gameObject.GetComponent<Rigidbody2D>().
+		Destroy (gameObject);
 	}
 }

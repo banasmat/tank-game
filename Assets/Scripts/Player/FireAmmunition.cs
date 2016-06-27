@@ -4,15 +4,21 @@ using System.Collections.Generic;
 
 public class FireAmmunition : MonoBehaviour {
 
-	public GameObject Bullet;
+	public GameObject bulletPrefab;
+	private Rigidbody2D bulletPrefabRigidBody;
 	public int bulletForce = 800;
 
 	private ObjectPool objectPool;
 	private ObjectPoolManager objectPoolManager;
 
+
+
 	void Awake(){
+		//TODO at the moment we're not using object pool here. Probably remove.
 		objectPoolManager = GameObject.FindGameObjectWithTag (TagContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
-		objectPoolManager.CreatePool (Bullet, 10);
+		objectPoolManager.CreatePool (bulletPrefab, 10);
+
+		bulletPrefabRigidBody = bulletPrefab.GetComponent<Rigidbody2D> ();
 	}
 
 	void Update () {
@@ -26,15 +32,10 @@ public class FireAmmunition : MonoBehaviour {
 		//Clone of the bullet
 		GameObject bulletClone;
 
-
-		bulletClone = objectPoolManager.Retrieve(Bullet, transform.position+1*transform.forward, transform.rotation);
-
-
-		//bulletClone.gameObject.tag = TagContainer.BULLET;
+		bulletClone = Instantiate(bulletPrefab, transform.position+1*transform.forward, transform.rotation) as GameObject;
 
 		//add force to the spawned objected
 		bulletClone.GetComponent<Rigidbody2D>().AddForce(transform.right * bulletForce);
-
 		//TODO block firing until reloaded
 	}
 

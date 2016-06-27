@@ -9,7 +9,7 @@ public class ObjectPoolManager : MonoBehaviour {
 
 	private Dictionary<string, ObjectPool> dictionary;
 
-	void Awake(){
+	public ObjectPoolManager(){
 		dictionary = new Dictionary<string, ObjectPool> ();
 	}
 
@@ -21,34 +21,35 @@ public class ObjectPoolManager : MonoBehaviour {
 
 	public void Add (GameObject _gameObject){
 		ObjectPool objectPool;
-		try{
-			dictionary.TryGetValue (_gameObject.name, out objectPool);
-
+		if (dictionary.TryGetValue (_gameObject.name, out objectPool)) {
 			_gameObject.SetActive (false);
-			objectPool.Add(_gameObject);
 
-		}catch(ArgumentNullException e){
-			throw new UnityException ("Object pool for " + _gameObject.name + " has not been initialized. Object can't be added.");			
+			objectPool.Add (_gameObject);
+		} else {
+			throw new UnityException ("Object pool for " + _gameObject.name + " has not been initialized. Object can't be added.");	
 		}
 	}
 
 	public GameObject Retrieve (GameObject _gameObject, Vector3 _position, Quaternion _rotation){
 		ObjectPool objectPool;
 		GameObject retrievedObject;
-		try{
-			dictionary.TryGetValue (_gameObject.name, out objectPool);
+		if(dictionary.TryGetValue (_gameObject.name, out objectPool)){
 			try{
 				retrievedObject = objectPool.Retrieve();
 
 				retrievedObject.transform.position = _position;
 				retrievedObject.transform.rotation = _rotation;
 				retrievedObject.SetActive(true);
-			} catch(UnityException e){
+			} catch(UnityException) {
+				Debug.Log ("Object pool for " + _gameObject.name + " is empty. Object can't be retrieved. Instantiating new object");
 				retrievedObject = Instantiate (_gameObject, _position, _rotation) as GameObject;
+				// "(Clone)" in game object names would force creating new pools
+				retrievedObject.name = retrievedObject.name.Replace ("(Clone)", "");
 			}
-		}catch(ArgumentNullException e){
+		} else {
 			throw new UnityException ("Object pool for " + _gameObject.name + " has not been initialized. Object can't be retrieved.");			
 		}
+
 		return retrievedObject;
 	}
 
