@@ -11,6 +11,7 @@ public class Explosion : MonoBehaviour {
 	}
 	
 	void Start () {
+		
 		Explode ();
 	}
 
@@ -21,8 +22,9 @@ public class Explosion : MonoBehaviour {
 		// For each collider...
 		foreach(Collider2D en in enemies)
 		{
+			//TODO for now exploding enemies are handled by EnemyEventListener
 			// Check if it has a rigidbody (since there is only one per enemy, on the parent).
-			Rigidbody2D rb = en.GetComponent<Rigidbody2D>();
+			/*Rigidbody2D rb = en.GetComponent<Rigidbody2D>();
 			if(rb != null && rb.tag == TagContainer.ENEMY)
 			{
 				// Find the Enemy script and set the enemy's health to zero.
@@ -34,7 +36,7 @@ public class Explosion : MonoBehaviour {
 				// Apply a force in this direction with a magnitude of explosionForce.
 				Vector3 force = deltaPos.normalized * explosionForce;
 				rb.AddForce(force);
-			}
+			}*/
 		}
 
 		// Set the explosion effect's position to the explosion's position and play the particle system.

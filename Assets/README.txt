@@ -31,10 +31,11 @@ Grafika:
 - animacja biegu (done)
 - tło niebo (done)
 - tło góry (done)
-- parallax animacja tła
+- parallax animacja tła (done)
+- animacja explozji - scale 1->2->0 (done)
 - OPTYMALIZACJA (rozmiar, sprajty)
 - eksplozja
-- animacja explozji - scale 1->2->0
+
 
 
 Narzędzia
@@ -55,3 +56,4 @@ Grywalność
 - Opóźnienie strzelania (przeładunek)
 - Wrogowie spadający z nieba
 - Jazda do tyłu?
+- Punkty za trafienie urwaną głową w coś?

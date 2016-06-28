@@ -28,11 +28,6 @@ public class EnemyEventListener : MonoBehaviour {
 		}
 	}
 
-	public void OnExplosion ()
-	{
-		animator.SetTrigger (AnimationParamContainer.ENEMY_HIT);
-	}
-
 	private void EnemyHit(){
 		animator.SetTrigger (AnimationParamContainer.ENEMY_HIT);
 
@@ -40,11 +35,28 @@ public class EnemyEventListener : MonoBehaviour {
 		GetComponent<BoxCollider2D> ().enabled = false ;
 		GetComponent<CircleCollider2D> ().enabled = false ;
 
+		makeLimbFly (transform.Find ("Head").gameObject);
+		makeLimbFly (transform.Find ("RightHandPivot").gameObject);
+		makeLimbFly (transform.Find ("LeftLegPivot").gameObject);
+
 		StartCoroutine(DestroyObject());
 	}
 
+	private void makeLimbFly(GameObject _gameObject){
+		//TODO maybe it's better to ADD rigidbody programatically
+		Rigidbody2D _rigidBody = _gameObject.AddComponent<Rigidbody2D> ();
+		//_rigidBody.mass = 1f;
+		//_rigidBody.gravityScale = 1f;
+		//_rigidBody.angularDrag = 0.05f;
+
+		float x = Random.Range (-1f, 1f) + _gameObject.transform.position.x;
+		float y = Random.Range (-1f, 1f) + _gameObject.transform.position.y;
+		Vector2 direction = new Vector2 (x, y).normalized * 500;
+		_rigidBody.AddRelativeForce (direction);
+	}
+
 	IEnumerator DestroyObject(){
-		yield return new WaitForSeconds (3);
+		yield return new WaitForSeconds (4);
 		Destroy (gameObject);
 	}
 }
