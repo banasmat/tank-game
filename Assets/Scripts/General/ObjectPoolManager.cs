@@ -40,6 +40,8 @@ public class ObjectPoolManager : MonoBehaviour {
 				retrievedObject.transform.position = _position;
 				retrievedObject.transform.rotation = _rotation;
 				retrievedObject.SetActive(true);
+				// Run Start like if object is new
+				retrievedObject.BroadcastMessage("Start");
 			} catch(UnityException) {
 				Debug.Log ("Object pool for " + _gameObject.name + " is empty. Object can't be retrieved. Instantiating new object");
 				retrievedObject = Instantiate (_gameObject, _position, _rotation) as GameObject;

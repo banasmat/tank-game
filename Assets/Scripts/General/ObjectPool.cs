@@ -21,14 +21,13 @@ public class ObjectPool {
 
 	public GameObject Retrieve(){
 		for (int i = 0; i < gameObjects.Length; i ++) {
-			if (null != gameObjects[i]) {
+			if (null != gameObjects[i] && false == gameObjects[i].activeInHierarchy) {
 				GameObject retrievedGameObject = gameObjects [i];
-				//gameObjects [i] = null;
 				return retrievedGameObject;
 			}
 		}
-		//TODO specific exception type, insert GameObject name. or maybe even clone object here and set position in other class...
-		throw new UnityException ("ObjectPool is empty.");
+		//TODO specific exception type? insert GameObject name?
+		throw new UnityException ("ObjectPool is empty or all objects are in use.");
 	}
 	
 }

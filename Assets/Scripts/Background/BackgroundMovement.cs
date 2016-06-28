@@ -32,7 +32,7 @@ public class BackgroundMovement : MonoBehaviour {
 
 		ground = GameObject.FindGameObjectWithTag (TagContainer.GROUND);
 		groundTransform = ground.GetComponent<Transform> ();
-		cloned = false;
+
 		cameraWidth = Camera.main.orthographicSize;
 
 		spriteSizeHalf = sprite.bounds.size.x / 2;
@@ -44,6 +44,7 @@ public class BackgroundMovement : MonoBehaviour {
 	}
 
 	void Start(){
+		cloned = false;
 		startPosition = new Vector3(transform.position.x, yPosition);
 	}
 
@@ -62,9 +63,7 @@ public class BackgroundMovement : MonoBehaviour {
 			if (false == cloned) {
 				// Make sure that new tile is intersected a bit with the old one ( - 0.1f )
 				//TODO When Camera.main.transform.position.x gets higher, new object's x is too low. Temporarily fixed with changing Y position ( yPosition - 10 )
-
 				GameObject clonedBackground = objectPoolManager.Retrieve(this.gameObjectPrefab, new Vector3 (spriteRightEdgePosition + spriteSizeHalf - Camera.main.transform.position.x * reversedScrollSpeed - 0.1f, yPosition - 10), transform.rotation);
-
 				cloned = true;
 			}
 		}
