@@ -56,4 +56,4 @@ Grywalność
 - Opóźnienie strzelania (przeładunek)
 - Wrogowie spadający z nieba
 - Jazda do tyłu?
-- Punkty za trafienie urwaną głową w coś?
+- Punkty za trafienie urwaną głową w coś? np trafienie innego wroga.

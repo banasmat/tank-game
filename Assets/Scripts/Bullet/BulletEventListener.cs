@@ -6,7 +6,6 @@ public class BulletEventListener : MonoBehaviour {
 	public GameObject explosionPrefab;			// Prefab of explosion effect.
 	//private ParticleSystem explosionFX;		// Reference to the particle system of the explosion effect.
 
-
 	void Awake(){
 		//TODO implement particle system
 //		explosionFX = GameObject.FindGameObjectWithTag("ExplosionFX").GetComponent<ParticleSystem>();
@@ -30,7 +29,6 @@ public class BulletEventListener : MonoBehaviour {
 
 	//TODO move to some other object?
 	private void Explode(){
-
 		Destroy (gameObject);
 
 		GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation) as GameObject;
