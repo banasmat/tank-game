@@ -71,9 +71,9 @@ public class EnemyEventListener : MonoBehaviour {
 
 		float x = Random.Range (-1f, 1f) + _gameObject.transform.position.x;
 		float y = Random.Range (-1f, 1f) + _gameObject.transform.position.y + 10;
-		Vector2 direction = new Vector2 (x, y).normalized * 500;
+		Vector2 direction = new Vector2 (x, y).normalized * 250;
 		_rigidBody.AddRelativeForce (direction);
-		_rigidBody.AddTorque (0.5f);
+		_rigidBody.AddTorque (5);
 
 	}
 

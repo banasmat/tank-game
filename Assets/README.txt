@@ -10,9 +10,10 @@
 - ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage) (done)
 - Zaimplementować event manager z ebooka (podpiåç resztę eventów) (done)
 - Zrobić detekcję kolizji po zderzeniu z czołgiem (done)
-- Niszczyć (albo wrzucić do poola) bullet po trafieniu, tworzyć nowy obiekt - eksplozja
-- Poczytać o particle system
-- latające członki po eksplozji
+- Niszczyć (albo wrzucić do poola) bullet po trafieniu, tworzyć nowy obiekt - eksplozja (done)
+- Poczytać o particle system (done)
+- latające członki po eksplozji (done)
+- dym za czołgiem (albo po zniszczeniu czołgu)
 - Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone)
 - Porządek w public/private variables - użyć getterów i setterów c #
 - Uporządkować foldery - albo Player -> skrypty, sprajty itd., albo Sprites -> Player, Enemy itd.
