@@ -6,6 +6,11 @@ public class Explosion : MonoBehaviour {
 	public float explosionRadius = 10f;
 	public float explosionForce = 100f;
 
+	private ObjectPoolManager objectPoolManager;
+
+	public void Awake(){
+		objectPoolManager = GameObject.Find (NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
+	}
 
 	void Start () {
 		Explode ();
@@ -57,6 +62,6 @@ public class Explosion : MonoBehaviour {
 
 	private IEnumerator DestroyObject(){
 		yield return new WaitForSeconds (2);
-		Destroy (gameObject);
+		objectPoolManager.Add (gameObject);
 	}
 }

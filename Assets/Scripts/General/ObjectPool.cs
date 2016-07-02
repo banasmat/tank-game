@@ -10,13 +10,15 @@ public class ObjectPool {
 	}
 
 	public void Add (GameObject gameObject){
-
+		
 		for (int i = 0; i < gameObjects.Length; i ++) {
 			if (null == gameObjects[i]) {
 				gameObjects[i] = gameObject;
-				break;
+				return;
 			}
 		}
+
+		throw new UnityException ("ObjectPool is full for " + gameObject.name + " is full.");
 	}
 
 	public GameObject Retrieve(){

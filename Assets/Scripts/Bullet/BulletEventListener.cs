@@ -7,17 +7,17 @@ public class BulletEventListener : MonoBehaviour {
 	//private ParticleSystem explosionFX;		// Reference to the particle system of the explosion effect.
 
 	private ExplosionParticleManager explosionParticleManager;
-
+	private ObjectPoolManager objectPoolManager;
 
 	void Awake(){
-		//TODO implement particle system
 //		explosionFX = GameObject.FindGameObjectWithTag("ExplosionFX").GetComponent<ParticleSystem>();
 		explosionParticleManager = GameObject.Find(NameContainer.EXPLOSION_PARTICLE_MANAGER).GetComponent<ExplosionParticleManager>();
+		objectPoolManager = GameObject.Find (NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
+		//TODO probably move it to FireAmmunition (which is called only once)
+		objectPoolManager.CreatePool (explosionPrefab, 5);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-
-		//TODO particle pool
 
 		// When bullet hits enemy
 		if (coll.gameObject.tag == TagContainer.ENEMY) {
@@ -40,9 +40,8 @@ public class BulletEventListener : MonoBehaviour {
 		}
 	}
 
-	//TODO move to some other object?
 	private void CreateExplosion(){
-		GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation) as GameObject;
+		objectPoolManager.Retrieve(explosionPrefab, transform.position, transform.rotation);
 	}
 
 

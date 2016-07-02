@@ -23,8 +23,13 @@ public class ObjectPoolManager : MonoBehaviour {
 		ObjectPool objectPool;
 		if (dictionary.TryGetValue (_gameObject.name, out objectPool)) {
 			_gameObject.SetActive (false);
+			try{
+				objectPool.Add (_gameObject);
+			} catch (UnityException){
+				// Destroy game object if pool is already full.
+				Destroy (_gameObject);
+			}
 
-			objectPool.Add (_gameObject);
 		} else {
 			throw new UnityException ("Object pool for " + _gameObject.name + " has not been initialized. Object can't be added.");	
 		}
