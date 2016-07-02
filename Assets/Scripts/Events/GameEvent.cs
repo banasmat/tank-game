@@ -7,7 +7,6 @@ using System.Collections;
 public enum EVENT_TYPE
 {
 	BULLET_EXPLOSION,
-	BULLET_HITS_ENEMY,
 	ENEMY_HITS_PLAYER,
 	HEALTH_CHANGE,
 	GAME_OVER

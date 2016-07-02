@@ -7,10 +7,12 @@ public class EnemyEventListener : MonoBehaviour {
 
 	private EnemyMovement enemyMovement;
 	private Animator animator;
+	private ExplosionParticleManager explosionParticleManager;
 
 	public void Awake(){
 		enemyMovement = GetComponent<EnemyMovement> ();
 		animator = GetComponent<Animator> ();
+		explosionParticleManager = GameObject.Find(NameContainer.EXPLOSION_PARTICLE_MANAGER).GetComponent<ExplosionParticleManager>();
 	}
 
 	public void OnCollisionEnter2D (Collision2D coll)
@@ -30,18 +32,24 @@ public class EnemyEventListener : MonoBehaviour {
 
 	private void EnemyHitByPlayer(){
 		animator.SetTrigger (AnimationParamContainer.ENEMY_HIT);
+		CreateBloodyParticleSystem ();
+
 		DisableAndDestroy ();
 	}
 
 	private void EnemyHit(){
+		DisconnectBodyPart (transform.Find ("Head").gameObject);
+
+		CreateBloodyParticleSystem ();
+
+		animator.SetTrigger (AnimationParamContainer.ENEMY_HIT);
 
 		DisableAndDestroy ();
+	}
 
-		//animator.SetTrigger (AnimationParamContainer.ENEMY_HIT);
-
-		DisconnectBodyPart (transform.Find ("Head").gameObject);
-		//DisconnectBodyPart (transform.Find ("RightHandPivot").gameObject);
-		//DisconnectBodyPart (transform.Find ("LeftLegPivot").gameObject);
+	private void CreateBloodyParticleSystem(){
+		explosionParticleManager.setColor (new Color (1, 0, 0, 1));
+		explosionParticleManager.createExplosionParticleSystem (transform);
 	}
 
 	private void DisableAndDestroy(){

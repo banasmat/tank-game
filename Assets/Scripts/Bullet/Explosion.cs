@@ -15,7 +15,7 @@ public class Explosion : MonoBehaviour {
 		// Find all the colliders on the Enemies layer within the explosionRadius.
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
-		// For each collider...
+		// TODO not used. Delete?
 		foreach(Collider2D en in colliders)
 		{
 			if(en.gameObject.tag == TagContainer.ENEMY)

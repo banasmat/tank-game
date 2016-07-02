@@ -5,13 +5,14 @@ public class BulletEventListener : MonoBehaviour {
 
 	public GameObject explosionPrefab;			// Prefab of explosion effect.
 	//private ParticleSystem explosionFX;		// Reference to the particle system of the explosion effect.
-	public GameObject explosionParticleSystemPrefab;
 
+	private ExplosionParticleManager explosionParticleManager;
 
 
 	void Awake(){
 		//TODO implement particle system
 //		explosionFX = GameObject.FindGameObjectWithTag("ExplosionFX").GetComponent<ParticleSystem>();
+		explosionParticleManager = GameObject.Find(NameContainer.EXPLOSION_PARTICLE_MANAGER).GetComponent<ExplosionParticleManager>();
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
@@ -21,16 +22,9 @@ public class BulletEventListener : MonoBehaviour {
 		// When bullet hits enemy
 		if (coll.gameObject.tag == TagContainer.ENEMY) {
 
-			// TODO maybe just use on collision enter in enemy
-			EventManager.Instance.PostNotification (new GameEvent (EVENT_TYPE.BULLET_HITS_ENEMY));
-
 			// Red particles
 			CreateExplosion ();
-			ParticleSystem _explosionParticleSystem = CreateExplosionParticleSystem ();
 
-			//TODO delegate to separate function, remove code duplication, move color to const
-			_explosionParticleSystem.startColor = new Color(1, 0, 0, 1);
-			_explosionParticleSystem.Play ();
 			Destroy (gameObject);
 		}
 
@@ -38,26 +32,17 @@ public class BulletEventListener : MonoBehaviour {
 
 			// Brown particles
 			CreateExplosion ();
-			ParticleSystem _explosionParticleSystem = CreateExplosionParticleSystem ();
 
-			//TODO delegate to separate function, remove code duplication, move color to const
-			_explosionParticleSystem.startColor = new Color(0.54f, 0.27f, 0.07f, 1);
-			_explosionParticleSystem.Play ();
+			explosionParticleManager.setColor (new Color (0.54f, 0.27f, 0.07f, 1));
+			explosionParticleManager.createExplosionParticleSystem (transform);
+
 			Destroy (gameObject);
-
 		}
-
-
 	}
 
 	//TODO move to some other object?
 	private void CreateExplosion(){
 		GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation) as GameObject;
-	}
-
-	private ParticleSystem CreateExplosionParticleSystem(){
-		GameObject explosionParticleSystem = Instantiate(explosionParticleSystemPrefab, transform.position, transform.rotation) as GameObject;
-		return explosionParticleSystem.GetComponent<ParticleSystem> ();
 	}
 
 

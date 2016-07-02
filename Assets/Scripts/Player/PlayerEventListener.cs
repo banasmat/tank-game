@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerEventListener : MonoBehaviour, IListener
 {
-	private Player playerHealth;
+	private Player player;
 	private PlayerMovement playerMovement;
 	private FireAmmunition fireAmmunition;
 	private Animator animator;
@@ -11,7 +11,7 @@ public class PlayerEventListener : MonoBehaviour, IListener
 		
 	void Awake ()
 	{
-		playerHealth = gameObject.GetComponent<Player> ();
+		player = gameObject.GetComponent<Player> ();
 		playerMovement = gameObject.GetComponent<PlayerMovement> ();
 		fireAmmunition = gameObject.GetComponentInChildren<FireAmmunition> ();
 		animator = GetComponent<Animator>();
@@ -37,14 +37,9 @@ public class PlayerEventListener : MonoBehaviour, IListener
 	}
 
 	private void HitByEnemy (Enemy enemy){
-		playerHealth.health -= enemy.strength;
+		player.health -= enemy.strength;
 
-
-		//TODO needs refining
-		// Stop player for a while
-		//playerMovement.enabled = false;
-		//StartCoroutine(HaltPlayer());
-		//animator.SetTrigger (AnimationParamContainer.PLAYER_HIT);
+		player.ApplyStains ();
 	}
 
 	private void GameOver(){

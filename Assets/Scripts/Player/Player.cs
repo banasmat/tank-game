@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+	public Sprite stainedTankBody;
+
 	public int health {
 		get{ return _health; }
 		set {
@@ -17,5 +19,18 @@ public class Player : MonoBehaviour {
 	}
 
 	private int _health = 100;
+	private bool stainsApplied = false;
+
+	//TODO probably will have to do it incrementaly
+	public void ApplyStains(){
+
+		if (false == stainsApplied) {
+			GameObject tankBody = transform.Find ("TankBody").gameObject;
+
+			tankBody.GetComponent<SpriteRenderer> ().sprite = stainedTankBody;
+
+			stainsApplied = true;
+		}
+	}
 
 }

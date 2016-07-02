@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: 1794d211a88840c428b50802570ef845
-timeCreated: 1458466123
+timeCreated: 1467483753
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: tank_0
     21300002: tank_1
     21300004: tank_2
+    21300006: tank_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -57,65 +58,88 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 2
-        y: 70
-        width: 378
+        y: 237
+        width: 379
         height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 189, y: 8}
-        - {x: 189, y: 73}
-        - {x: 158, y: 75}
-        - {x: -77, y: 75}
-        - {x: -189, y: -34}
-        - {x: -189, y: -68}
-        - {x: -176, y: -74}
-        - {x: 6, y: -59}
-        - {x: 92, y: -75}
-        - {x: 140, y: -75}
-        - {x: 157, y: -67}
-        - {x: 163, y: -44}
-        - {x: 77, y: 9}
-        - {x: 181, y: -3}
+      - - {x: 187.5, y: 54}
+        - {x: 179.5, y: 56}
+        - {x: 170.5, y: 58}
+        - {x: 162.5, y: 58}
+        - {x: 124.5, y: 75}
+        - {x: -97.5, y: 75}
+        - {x: -189.5, y: 9}
+        - {x: -189.5, y: -70}
+        - {x: -183.5, y: -75}
+        - {x: 151.5, y: -75}
+        - {x: 172.5, y: -71}
+        - {x: 151.5, y: -43}
+        - {x: 189.5, y: -18}
+        - {x: 189.5, y: 51}
     - name: tank_1
       rect:
         serializedVersion: 2
         x: 19
-        y: 0
+        y: 167
         width: 61
         height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: 22.5, y: 30.5}
-        - {x: -19.5, y: 30.5}
-        - {x: -30.5, y: 23.5}
-        - {x: -30.5, y: -29.5}
-        - {x: -27.5, y: -30.5}
-        - {x: 21.5, y: -30.5}
-        - {x: 29.5, y: -20.5}
-        - {x: 30.5, y: -15.5}
-        - {x: 30.5, y: 18.5}
+      - - {x: -18.5, y: 30.5}
+        - {x: -30.5, y: 22.5}
+        - {x: -30.5, y: -26.5}
+        - {x: -19.5, y: -30.5}
+        - {x: 30.5, y: -30.5}
+        - {x: 30.5, y: 30.5}
     - name: tank_2
       rect:
         serializedVersion: 2
         x: 110
-        y: 18
+        y: 185
         width: 36
         height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -8, y: 18}
-        - {x: -18, y: 14}
-        - {x: -18, y: -18}
-        - {x: 14, y: -18}
-        - {x: 18, y: -14}
-        - {x: 18, y: 14}
-        - {x: 13, y: 18}
+      - - {x: -14, y: 18}
+        - {x: -18, y: 16}
+        - {x: -18, y: -14}
+        - {x: -7, y: -18}
+        - {x: 11, y: -18}
+        - {x: 18, y: -12}
+        - {x: 18, y: 15}
+        - {x: 15, y: 18}
+    - name: tank_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1
+        width: 379
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 189.5, y: 62}
+        - {x: 29.5, y: 58}
+        - {x: 4.5, y: 75}
+        - {x: -76.5, y: 75}
+        - {x: -189.5, y: -41}
+        - {x: -189.5, y: -75}
+        - {x: -188.5, y: -75}
+        - {x: -40.5, y: -65}
+        - {x: 74.5, y: -75}
+        - {x: 138.5, y: -75}
+        - {x: 152.5, y: -70}
+        - {x: 151.5, y: -53}
+        - {x: 165.5, y: -7}
+        - {x: 189.5, y: 12}
     outline: []
   spritePackingTag: 
   userData: 

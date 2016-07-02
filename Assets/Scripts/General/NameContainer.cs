@@ -1,0 +1,8 @@
+﻿using System;
+
+public class NameContainer
+{
+	public const string OBJECT_POOL_MANAGER = "ObjectPoolManager";
+	public const string EXPLOSION_PARTICLE_MANAGER	 = "ExplosionParticleManager";
+}
+

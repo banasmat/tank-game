@@ -15,11 +15,15 @@
 - latające członki po eksplozji (done)
 - dym za czołgiem (albo po zniszczeniu czołgu)
 - Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone)
+- Brudny czołg po rozjechaniu wroga
+- Klocki do składania terenu
+- Usuwanie niepotrzebnych klocków terenu
+- Siła pocisku zależna od długości przyciśnięcia (?) + pasek (?)
+- Przeładowanie pocisków - pasek
 - Porządek w public/private variables - użyć getterów i setterów c #
 - Uporządkować foldery - albo Player -> skrypty, sprajty itd., albo Sprites -> Player, Enemy itd.
 - spawn enemies - na event onbecamevisible z ebooka?
 - nie iterowac po wszystkich spawn pointach. znalezc ktory jest najblizszy i tylko jego sprawdzać. Po wypuszczeniu wroga sprawdzić kolejny najbliższy.
-- Dorobić grafiki/animacje
 
 Architektura:
 - Event listener (done)

@@ -15,7 +15,7 @@ public class FireAmmunition : MonoBehaviour {
 
 	void Awake(){
 		//TODO at the moment we're not using object pool here. Probably remove.
-		objectPoolManager = GameObject.FindGameObjectWithTag (TagContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
+		objectPoolManager = GameObject.FindGameObjectWithTag (NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
 		objectPoolManager.CreatePool (bulletPrefab, 10);
 
 		bulletPrefabRigidBody = bulletPrefab.GetComponent<Rigidbody2D> ();
