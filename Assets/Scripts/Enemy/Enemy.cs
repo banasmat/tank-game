@@ -10,10 +10,6 @@ public class Enemy : MonoBehaviour {
 
 	public void Awake(){
 		rigidBody = gameObject.GetComponent<Rigidbody2D> ();
-
-	
-
-
 	}
 
 	public void addExplosionComponents(){

@@ -7,13 +7,10 @@ public class EnemyEventListener : MonoBehaviour {
 
 	private EnemyMovement enemyMovement;
 	private Animator animator;
-	private ParticleSystem _particleSystem;
 
 	public void Awake(){
 		enemyMovement = GetComponent<EnemyMovement> ();
 		animator = GetComponent<Animator> ();
-		_particleSystem = GetComponent<ParticleSystem> ();
-		_particleSystem.Stop();
 	}
 
 	public void OnCollisionEnter2D (Collision2D coll)
@@ -39,8 +36,6 @@ public class EnemyEventListener : MonoBehaviour {
 	private void EnemyHit(){
 
 		DisableAndDestroy ();
-
-		_particleSystem.Play();
 
 		//animator.SetTrigger (AnimationParamContainer.ENEMY_HIT);
 

@@ -7,11 +7,7 @@ public class Explosion : MonoBehaviour {
 	public float explosionForce = 100f;
 
 
-	void Awake () {
-	}
-	
 	void Start () {
-		
 		Explode ();
 	}
 
@@ -19,7 +15,6 @@ public class Explosion : MonoBehaviour {
 		// Find all the colliders on the Enemies layer within the explosionRadius.
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
-		Debug.Log (colliders.Length);
 		// For each collider...
 		foreach(Collider2D en in colliders)
 		{
@@ -29,7 +24,7 @@ public class Explosion : MonoBehaviour {
 			//TODO for now exploding enemies are handled by EnemyEventListener
 			// Check if it has a rigidbody (since there is only one per enemy, on the parent).
 				Rigidbody2D rb = en.GetComponent<Rigidbody2D>();
-				Debug.Log (rb);
+
 				if(rb != null)
 				{
 					//rb.WakeUp ();
@@ -61,7 +56,7 @@ public class Explosion : MonoBehaviour {
 	}
 
 	private IEnumerator DestroyObject(){
-		yield return new WaitForSeconds (1);
+		yield return new WaitForSeconds (2);
 		Destroy (gameObject);
 	}
 }
