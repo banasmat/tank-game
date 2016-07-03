@@ -15,8 +15,10 @@
 - latające członki po eksplozji (done)
 - dym po zniszczeniu czołgu (done)
 - Brudny czołg po rozjechaniu wroga - kilka poziomów (done)
+- Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone) (done)
+- Health tanka ma się zmieniać płynnie (bar musi znać poprzednią wartość?)
+- Użyć dziedziczenia w info barach
 - poczytać o Unity GUI - dopracować info bar
-- Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone)
 - Siła pocisku zależna od długości przyciśnięcia (?) + pasek (?)
 - Przeładowanie pocisków - pasek
 - jeżeli czołg jest do góry nogami - ustawić go z powrtotem

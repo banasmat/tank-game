@@ -25,6 +25,7 @@ public class ReloadBar : MonoBehaviour {
 
 	public void SetBar (int percentage)
 	{
+		//TODO reuse in all bars
 		//TODO not sure why we have to divide percentage by 2...
 		transform.localScale = Vector3.Lerp (empty, full, Time.deltaTime * percentage/2);
 		float actualWidth = transform.localScale.x * width;
