@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerInfoBar : MonoBehaviour {
+public class PlayerInfoBox : MonoBehaviour {
 
 	private Vector2 position;
 

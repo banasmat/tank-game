@@ -7,46 +7,58 @@ public class FireAmmunition : MonoBehaviour {
 	public GameObject bulletPrefab;
 	private Rigidbody2D bulletPrefabRigidBody;
 
-	public int bulletForce = 800;
+	public float maxPressTime = 2;
+
+	public int bulletForce = 200;
 	public int reloadTime = 2;
 
 	private ObjectPoolManager objectPoolManager;
 	private ReloadBar reloadBar;
+	private FireForceBar fireForceBar;
 
-	private float downTime, upTime, pressTime = 0;
+	private float downTime, pressTime = 0;
 
 	private bool isReloading = false;
 
-	void Awake(){
+	public void Awake(){
 		//TODO at the moment we're not using object pool here. Probably remove.
 		objectPoolManager = GameObject.Find(NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
 		objectPoolManager.CreatePool (bulletPrefab, 10);
 
 		reloadBar = GameObject.Find(NameContainer.RELOAD_BAR).GetComponent<ReloadBar>();
+		fireForceBar = GameObject.Find(NameContainer.FIRE_FORCE_BAR).GetComponent<FireForceBar>();
 
 		bulletPrefabRigidBody = bulletPrefab.GetComponent<Rigidbody2D> ();
 	}
 
-	void Update () {
+	public void Update(){
 		// Fire bullet with force depending on how long the key was pressed
 		if (Input.GetKeyDown(KeyCode.LeftControl)){//when the left mouse button is pressed
+			Debug.Log ("Fire key pressed");
 			if(false == isReloading){
-
 				downTime = Time.time;
-
-				//TODO info bar
 			}
 		}
-		if (Input.GetKeyUp (KeyCode.LeftControl)) {
+		// Release key, fire bullet
+		if (Input.GetKeyUp (KeyCode.LeftControl) || pressTime >= maxPressTime) {
 
-			if(false == isReloading && 0 != downTime){
-				upTime = Time.time;
-				pressTime = upTime - downTime; 
-
+			if(0 != downTime){
 				FireBullet(pressTime);
 
+				fireForceBar.SetBarValue (0);
+
 				downTime = 0;
+				pressTime = 0;
 			}
+		}
+	}
+
+	public void FixedUpdate () {
+
+		// Control Info Bar
+		if (downTime != 0) {
+			pressTime = Time.time - downTime;
+			fireForceBar.SetBarValue (pressTime * (100/maxPressTime)); // We're passing percentage
 		}
 	}
 
@@ -75,7 +87,7 @@ public class FireAmmunition : MonoBehaviour {
 				isReloading = false;
 			}
 
-			reloadBar.SetBar (i);
+			reloadBar.SetBarValue (i);
 
 			yield return new WaitForFixedUpdate();
 		}

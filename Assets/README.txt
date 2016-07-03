@@ -16,11 +16,13 @@
 - dym po zniszczeniu czołgu (done)
 - Brudny czołg po rozjechaniu wroga - kilka poziomów (done)
 - Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone) (done)
+- Użyć dziedziczenia w info barach (done)
 - Health tanka ma się zmieniać płynnie (bar musi znać poprzednią wartość?)
-- Użyć dziedziczenia w info barach
+- Przeładowanie pocisków - pasek (done)
+- Siła pocisku zależna od długości przyciśnięcia + pasek (done)
+- Minimalna siła pocisku - dostosować siły do grywalności
+- Zdebugować odrzut na nietrafionym wrogu
 - poczytać o Unity GUI - dopracować info bar
-- Siła pocisku zależna od długości przyciśnięcia (?) + pasek (?)
-- Przeładowanie pocisków - pasek
 - jeżeli czołg jest do góry nogami - ustawić go z powrtotem
 - Klocki do składania terenu (pagórki różnego kształtu + edge collider)
 - Usuwanie niepotrzebnych klocków terenu
@@ -58,8 +60,8 @@ Teren
 
 Grywalność
 - słabsza moc pocisków (done)
-- zmienna moc pocisków
-- Manipulacja prędkością?
+- zmienna moc pocisków (done)
+- Manipulacja prędkością? - hamulec
 - Rodzaje broni strzelające: klasycznie, poziomo, punktowo, bomby, możdzierze, rozproszone...
 - Broń białą - młot
 - Osłona - pole siłowe
@@ -67,3 +69,4 @@ Grywalność
 - Wrogowie spadający z nieba
 - Jazda do tyłu?
 - Punkty za trafienie urwaną głową w coś? np trafienie innego wroga.
+
