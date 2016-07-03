@@ -56,9 +56,4 @@ public class PlayerEventListener : MonoBehaviour, IListener
 
 		_particleSystem.Play ();
 	}
-
-	IEnumerator HaltPlayer(){
-		yield return new WaitForSeconds (1);
-		playerMovement.enabled = true;
-	}
 }

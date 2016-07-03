@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public Sprite stainedTankBody;
+	public Sprite[] stainedTankBody;
 
 	public int health {
 		get{ return _health; }
@@ -19,18 +19,23 @@ public class Player : MonoBehaviour {
 	}
 
 	private int _health = 100;
-	private bool stainsApplied = false;
+	private int stainsLvl = 0;
 
-	//TODO probably will have to do it incrementaly
+	//TODO refactor
 	public void ApplyStains(){
 
-		if (false == stainsApplied) {
-			GameObject tankBody = transform.Find ("TankBody").gameObject;
+		if (stainsLvl < stainedTankBody.Length) {
+			GameObject tankBody = transform.Find (NameContainer.TANK_BODY).gameObject;
 
-			tankBody.GetComponent<SpriteRenderer> ().sprite = stainedTankBody;
+			StartCoroutine (SetStainedSprite (tankBody));
 
-			stainsApplied = true;
 		}
+	}
+
+	IEnumerator SetStainedSprite(GameObject tankBody){
+		yield return new WaitForSeconds (0.25f);
+		tankBody.GetComponent<SpriteRenderer> ().sprite = stainedTankBody[stainsLvl];
+		stainsLvl ++;
 	}
 
 }

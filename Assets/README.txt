@@ -13,14 +13,16 @@
 - Niszczyć (albo wrzucić do poola) bullet po trafieniu, tworzyć nowy obiekt - eksplozja (done)
 - Poczytać o particle system (done)
 - latające członki po eksplozji (done)
-- dym za czołgiem (albo po zniszczeniu czołgu)
-- jeżeli czołg jest do góry nogami - ustawić go z powrtotem
+- dym po zniszczeniu czołgu (done)
+- Brudny czołg po rozjechaniu wroga - kilka poziomów (done)
+- poczytać o Unity GUI - dopracować info bar
 - Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone)
-- Brudny czołg po rozjechaniu wroga - kilka poziomów
-- Klocki do składania terenu (pagórki + edge collider)
-- Usuwanie niepotrzebnych klocków terenu
 - Siła pocisku zależna od długości przyciśnięcia (?) + pasek (?)
 - Przeładowanie pocisków - pasek
+- jeżeli czołg jest do góry nogami - ustawić go z powrtotem
+- Klocki do składania terenu (pagórki różnego kształtu + edge collider)
+- Usuwanie niepotrzebnych klocków terenu
+- Dym stopniowo - zależnie od zdrowia czołgu
 - Porządek w public/private variables - użyć getterów i setterów c #
 - Uporządkować foldery - albo Player -> skrypty, sprajty itd., albo Sprites -> Player, Enemy itd.
 - spawn enemies - na event onbecamevisible z ebooka?
