@@ -18,9 +18,9 @@ public class PlayerHealthBar : MonoBehaviour, IListener
 		}
 	}
 
+	//TODO should be smooth (Update, LERP)?
 	private void SetHealthBar (Player playerHealth)
 	{
 		transform.localScale = new Vector3 ((float)playerHealth.health / 100, transform.localScale.y);
-		Debug.Log (transform.position);
 	}
 }
