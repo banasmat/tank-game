@@ -14,6 +14,7 @@
 - Poczytać o particle system (done)
 - latające członki po eksplozji (done)
 - dym za czołgiem (albo po zniszczeniu czołgu)
+- jeżeli czołg jest do góry nogami - ustawić go z powrtotem
 - Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone)
 - Brudny czołg po rozjechaniu wroga - kilka poziomów
 - Klocki do składania terenu (pagórki + edge collider)

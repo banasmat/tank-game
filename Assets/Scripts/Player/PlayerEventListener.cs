@@ -7,6 +7,7 @@ public class PlayerEventListener : MonoBehaviour, IListener
 	private PlayerMovement playerMovement;
 	private FireAmmunition fireAmmunition;
 	private Animator animator;
+	private ParticleSystem _particleSystem;
 
 		
 	void Awake ()
@@ -15,6 +16,8 @@ public class PlayerEventListener : MonoBehaviour, IListener
 		playerMovement = gameObject.GetComponent<PlayerMovement> ();
 		fireAmmunition = gameObject.GetComponentInChildren<FireAmmunition> ();
 		animator = GetComponent<Animator>();
+		_particleSystem = GetComponent<ParticleSystem> ();
+		_particleSystem.Stop ();
 	}
 
 	void Start ()
@@ -47,6 +50,11 @@ public class PlayerEventListener : MonoBehaviour, IListener
 		fireAmmunition.enabled = false;
 
 		animator.SetBool (AnimationParamContainer.PLAYER_DEAD, true);
+
+
+		// Smoke
+
+		_particleSystem.Play ();
 	}
 
 	IEnumerator HaltPlayer(){
