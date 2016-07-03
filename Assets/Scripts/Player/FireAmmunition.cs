@@ -13,6 +13,8 @@ public class FireAmmunition : MonoBehaviour {
 	private ObjectPoolManager objectPoolManager;
 	private ReloadBar reloadBar;
 
+	private float downTime, upTime, pressTime = 0;
+
 	private bool isReloading = false;
 
 	void Awake(){
@@ -26,21 +28,34 @@ public class FireAmmunition : MonoBehaviour {
 	}
 
 	void Update () {
-
-		if (Input.GetButtonDown("Fire1")){//when the left mouse button is pressed
-
+		// Fire bullet with force depending on how long the key was pressed
+		if (Input.GetKeyDown(KeyCode.LeftControl)){//when the left mouse button is pressed
 			if(false == isReloading){
-				FireBullet();//look for and use the fire bullet operation
+
+				downTime = Time.time;
+
+				//TODO info bar
+			}
+		}
+		if (Input.GetKeyUp (KeyCode.LeftControl)) {
+
+			if(false == isReloading && 0 != downTime){
+				upTime = Time.time;
+				pressTime = upTime - downTime; 
+
+				FireBullet(pressTime);
+
+				downTime = 0;
 			}
 		}
 	}
 
-	public void FireBullet(){
+	public void FireBullet(float _force){
 		//Clone of the bullet
 		GameObject bulletClone;
 
 		bulletClone = Instantiate(bulletPrefab, transform.position+1*transform.forward, transform.rotation) as GameObject;
-		bulletClone.GetComponent<Rigidbody2D>().AddForce(transform.right * bulletForce);
+		bulletClone.GetComponent<Rigidbody2D>().AddForce(transform.right * _force * bulletForce);
 
 
 		StartCoroutine (Reload ());
