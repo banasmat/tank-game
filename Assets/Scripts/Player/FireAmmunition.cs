@@ -7,10 +7,9 @@ public class FireAmmunition : MonoBehaviour {
 	public GameObject bulletPrefab;
 	private Rigidbody2D bulletPrefabRigidBody;
 
-	public float maxPressTime = 2;
-
-	public int bulletForce = 200;
-	public int reloadTime = 2;
+	public int bulletForce = 500;
+	public float reloadTime = 1.5f;
+	public float maxPressTime = 1.5f;
 
 	private ObjectPoolManager objectPoolManager;
 	private ReloadBar reloadBar;
@@ -34,7 +33,6 @@ public class FireAmmunition : MonoBehaviour {
 	public void Update(){
 		// Fire bullet with force depending on how long the key was pressed
 		if (Input.GetKeyDown(KeyCode.LeftControl)){//when the left mouse button is pressed
-			Debug.Log ("Fire key pressed");
 			if(false == isReloading){
 				downTime = Time.time;
 			}
@@ -43,7 +41,7 @@ public class FireAmmunition : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.LeftControl) || pressTime >= maxPressTime) {
 
 			if(0 != downTime){
-				FireBullet(pressTime);
+				FireBullet(Mathf.Clamp(pressTime, 1, 500));
 
 				fireForceBar.SetBarValue (0);
 
