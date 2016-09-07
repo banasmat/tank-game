@@ -1,25 +1,5 @@
 ﻿MainTODO
-- Ustawić spawn wrogów (done)
-- Wrogowie mają biegnąć w kirunku tanka (done)
-- Zrobić strzelanie (done)
-- Zrobić detekcję kolizji po trafieniu nabojem (done)
-- Zrobić zmianę stanu i zniszczenie obiektu po trafieniu (done)
-- Kierunek strzelania (done) // Czy kierunek poziomy nie był bardziej grywalny?? Może warto dodać rodzaj broni strzelającej poziomo (np. karabin z wieżyczki)
-- WaitForSeconds zmienić na np. czekaj aż skończy się animacja (done)
-- przejrzeć skrypty tower bridge defense (done)
-- ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage) (done)
-- Zaimplementować event manager z ebooka (podpiåç resztę eventów) (done)
-- Zrobić detekcję kolizji po zderzeniu z czołgiem (done)
-- Niszczyć (albo wrzucić do poola) bullet po trafieniu, tworzyć nowy obiekt - eksplozja (done)
-- Poczytać o particle system (done)
-- latające członki po eksplozji (done)
-- dym po zniszczeniu czołgu (done)
-- Brudny czołg po rozjechaniu wroga - kilka poziomów (done)
-- Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone) (done)
-- Użyć dziedziczenia w info barach (done)
-- Health tanka ma się zmieniać płynnie (bar musi znać poprzednią wartość?)
-- Przeładowanie pocisków - pasek (done)
-- Siła pocisku zależna od długości przyciśnięcia + pasek (done)
+- Użyć folderu Resources
 - Minimalna siła pocisku - dostosować siły do grywalności
 - Zdebugować odrzut na nietrafionym wrogu
 - poczytać o Unity GUI - dopracować info bar
@@ -33,18 +13,10 @@
 - nie iterowac po wszystkich spawn pointach. znalezc ktory jest najblizszy i tylko jego sprawdzać. Po wypuszczeniu wroga sprawdzić kolejny najbliższy.
 
 Architektura:
-- Event listener (done)
+- Zamienić managery (które nie muszą implementować MonoBehaviour) na singletony
 - Użyć object pool (do poprawy)
 
 Grafika:
-- czołg z kółkami osobno (done)
-- obracanie kółek (done)
-- enemy z nogami osobno (done)
-- animacja biegu (done)
-- tło niebo (done)
-- tło góry (done)
-- parallax animacja tła (done)
-- animacja explozji - scale 1->2->0 (done)
 - OPTYMALIZACJA (rozmiar, sprajty)
 - eksplozja
 
@@ -59,8 +31,6 @@ Teren
 2. Przenosić klocki do Unity, łączyć je w gridzie, obrysowywać edge colliderem
 
 Grywalność
-- słabsza moc pocisków (done)
-- zmienna moc pocisków (done)
 - Manipulacja prędkością? - hamulec
 - Rodzaje broni strzelające: klasycznie, poziomo, punktowo, bomby, możdzierze, rozproszone...
 - Broń białą - młot
@@ -70,3 +40,37 @@ Grywalność
 - Jazda do tyłu?
 - Punkty za trafienie urwaną głową w coś? np trafienie innego wroga.
 
+
+DONE
+- Ustawić spawn wrogów (done)
+- Wrogowie mają biegnąć w kirunku tanka (done)
+- Zrobić strzelanie (done)
+- Zrobić detekcję kolizji po trafieniu nabojem (done)
+- Zrobić zmianę stanu i zniszczenie obiektu po trafieniu (done)
+- WaitForSeconds zmienić na np. czekaj aż skończy się animacja (done)
+- przejrzeć skrypty tower bridge defense (done)
+- ustalić jak wywołać funkcję innego skryptu podłączonego pod ten sam obiekt (inaczej niż sendMessage) (done)
+- Zaimplementować event manager z ebooka (podpiåç resztę eventów) (done)
+- Kierunek strzelania (done)
+- Zrobić detekcję kolizji po zderzeniu z czołgiem (done)
+- Niszczyć (albo wrzucić do poola) bullet po trafieniu, tworzyć nowy obiekt - eksplozja (done)
+- Poczytać o particle system (done)
+- latające członki po eksplozji (done)
+- dym po zniszczeniu czołgu (done)
+- Brudny czołg po rozjechaniu wroga - kilka poziomów (done)
+- Zrobić health tanka (do poprawy - health bar ma sie skracac w 1 strone) (done)
+- Użyć dziedziczenia w info barach (done)
+- Health tanka ma się zmieniać płynnie (bar musi znać poprzednią wartość?)
+- Przeładowanie pocisków - pasek (done)
+- Siła pocisku zależna od długości przyciśnięcia + pasek (done)
+- czołg z kółkami osobno (done)
+- obracanie kółek (done)
+- enemy z nogami osobno (done)
+- animacja biegu (done)
+- tło niebo (done)
+- tło góry (done)
+- parallax animacja tła (done)
+- animacja explozji - scale 1->2->0 (done)
+- Event listener (done)
+- słabsza moc pocisków (done)
+- zmienna moc pocisków (done)
