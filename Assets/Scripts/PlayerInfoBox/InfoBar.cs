@@ -26,7 +26,7 @@ public class InfoBar : MonoBehaviour
 		//TODO not sure why we have to divide percentage by 2...
 		transform.localScale = Vector3.Lerp (empty, full, Time.deltaTime * percentage/2);
 		float actualWidth = transform.localScale.x * width;
-		transform.position = new Vector3(transform.parent.transform.position.x + actualWidth/2, transform.position.y);
+		transform.position = new Vector3(transform.position.x - actualWidth/2, transform.position.y);
 	}
 
 }
