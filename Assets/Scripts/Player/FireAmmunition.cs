@@ -12,8 +12,8 @@ public class FireAmmunition : MonoBehaviour {
 	public float maxPressTime = 1.5f;
 
 	private ObjectPoolManager objectPoolManager;
-	private ReloadBar reloadBar;
-	private FireForceBar fireForceBar;
+	private InfoBar reloadBar;
+	private InfoBar fireForceBar;
 
 	private float downTime, pressTime = 0;
 
@@ -24,8 +24,8 @@ public class FireAmmunition : MonoBehaviour {
 		objectPoolManager = GameObject.Find(NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
 		objectPoolManager.CreatePool (bulletPrefab, 10);
 
-		reloadBar = GameObject.Find(NameContainer.RELOAD_BAR).GetComponent<ReloadBar>();
-		fireForceBar = GameObject.Find(NameContainer.FIRE_FORCE_BAR).GetComponent<FireForceBar>();
+		reloadBar = GameObject.Find(NameContainer.RELOAD_BAR).GetComponent<InfoBar>();
+		fireForceBar = GameObject.Find(NameContainer.FIRE_FORCE_BAR).GetComponent<InfoBar>();
 
 		bulletPrefabRigidBody = bulletPrefab.GetComponent<Rigidbody2D> ();
 	}

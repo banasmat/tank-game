@@ -12,13 +12,13 @@ public class PlayerMovement : MonoBehaviour {
 	public float maxPressTime = 1;
 
 	private bool isBreaking = false;
-	private BreakBar breakBar;
+	private InfoBar breakBar;
 
 	// Use this for initialization
 	public void Awake () {
 		rigidBody2d = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
-		breakBar = GameObject.Find(NameContainer.BREAK_BAR).GetComponent<BreakBar>();
+		breakBar = GameObject.Find(NameContainer.BREAK_BAR).GetComponent<InfoBar>();
 	}
 	
 	// Update is called once per frame
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour {
 				downTime = Time.time;
 			}
 		}
-		Debug.Log (downTime);
+
 		if (downTime > 0) {
 			// Control Info Bar
 			pressTime = Time.time - downTime;

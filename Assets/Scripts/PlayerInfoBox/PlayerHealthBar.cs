@@ -4,9 +4,10 @@ using System.Collections;
 //TODO rename to PlayerInfoBarEventListener?
 public class PlayerHealthBar : InfoBar, IListener
 {
-	void Start ()
-	{
-		EventManager.Instance.AddListener (EVENT_TYPE.HEALTH_CHANGE, this);
+	new void Start ()
+    {
+        base.Start();
+        EventManager.Instance.AddListener (EVENT_TYPE.HEALTH_CHANGE, this);
 	}
 
 	public void OnEvent (GameEvent GameEvent)
