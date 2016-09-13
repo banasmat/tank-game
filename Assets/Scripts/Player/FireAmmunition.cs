@@ -7,9 +7,9 @@ public class FireAmmunition : MonoBehaviour {
 	public GameObject bulletPrefab;
 	private Rigidbody2D bulletPrefabRigidBody;
 
-	public int bulletForce = 500;
-	public float reloadTime = 1.5f;
-	public float maxPressTime = 1.5f;
+	private int bulletForce = 500;
+	private float reloadTimeInFrames = 25;
+	private float maxPressTime = 1.5f;
 
 	private ObjectPoolManager objectPoolManager;
 	private InfoBar reloadBar;
@@ -73,30 +73,22 @@ public class FireAmmunition : MonoBehaviour {
 
 
 	IEnumerator Reload(){
-		//TODO Reload time
+        // It has to be done with frames becasue WaintForSeconds can't be called more often than once per frame
 
-		for (int i = 0; i <= 100; i+= 1) {
+        isReloading = true;
+        float lastTime = Time.time;
+        float multiplier = 100 / reloadTimeInFrames;
+        
+        for (int i = 0; i <= reloadTimeInFrames; i+= 1) {
 
-			if (i == 0) {
-				isReloading = true;
-			}
+            reloadBar.SetBarValue (i * multiplier);
 
-			if (i == 100) {
-				isReloading = false;
-			}
+            yield return new WaitForFixedUpdate();
+			
+        }
 
-			reloadBar.SetBarValue (i);
+        isReloading = false;
 
-			yield return new WaitForFixedUpdate();
-		}
-
-
-
-
-
-	}
-
-
-
+    }
 
 }

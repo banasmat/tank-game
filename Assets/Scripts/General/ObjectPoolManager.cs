@@ -48,7 +48,7 @@ public class ObjectPoolManager : MonoBehaviour {
 				// Run Start like if object is new
 				retrievedObject.BroadcastMessage("Start");
 			} catch(UnityException) {
-				Debug.Log ("Object pool for " + _gameObject.name + " is empty. Object can't be retrieved. Instantiating new object");
+				//Debug.Log ("Object pool for " + _gameObject.name + " is empty. Object can't be retrieved. Instantiating new object");
 				retrievedObject = Instantiate (_gameObject, _position, _rotation) as GameObject;
 				// "(Clone)" in game object names would force creating new pools
 				retrievedObject.name = retrievedObject.name.Replace ("(Clone)", "");
