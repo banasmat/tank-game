@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-public class TagContainer {
+﻿public class TagContainer {
 
 	public const string PLAYER = "Player";
 	public const string ENEMY = "Enemy";
