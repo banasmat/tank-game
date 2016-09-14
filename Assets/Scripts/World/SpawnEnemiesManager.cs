@@ -11,6 +11,7 @@ public class SpawnEnemiesManager : MonoBehaviour
 
 	void Start ()
 	{
+        mainCamera = GameObject.Find(NameContainer.MAIN_CAMERA).GetComponent<Camera>();
 		GameObject[] _spawnPoints = GameObject.FindGameObjectsWithTag(TagContainer.SPAWN_POINT);
 		spawnPoints = new ArrayList (_spawnPoints);
 		cameraWidth = (int)(mainCamera.aspect * mainCamera.orthographicSize);

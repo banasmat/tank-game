@@ -3,11 +3,24 @@ using System.Collections;
 
 public class CameraMovement : MonoBehaviour {
 
-	public Camera mainCamera;
-    public Transform player;
+	private Camera mainCamera;
+    private Transform player;
+
+    private float cameraWidth;
+    private float cameraOffset;
+
+    void Start()
+    {
+        mainCamera = GetComponent<Camera>();
+        player = GameObject.Find(NameContainer.PLAYER).GetComponent<Transform>();
+
+        float height = 2f * mainCamera.orthographicSize;
+        cameraWidth = height * mainCamera.aspect;
+        cameraOffset = cameraWidth / 3;
+    }
 
 	void Update () {
-		transform.position = new Vector3(player.position.x + 4, player.position.y, -20);
+        transform.position = new Vector3(player.position.x + cameraOffset, player.position.y, -20);
     }
 }
 
