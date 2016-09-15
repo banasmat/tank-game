@@ -49,7 +49,9 @@ public class FireAmmunition : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.LeftControl)){//when the left mouse button is pressed
 			if(false == isReloading){
 				downTime = Time.time;
-                upTime = 0;
+
+                // EXPERIMENTAL barrel rotation
+                //upTime = 0;
             }
 		}
 
@@ -60,11 +62,10 @@ public class FireAmmunition : MonoBehaviour {
 				FireBullet(Mathf.Clamp(pressTime, 1, 500));
 
 				fireForceBar.SetBarValue (0);
-                
-                upTime = Time.time;
 
-                actualBarrelRotation = barrelPivot.localRotation;
-
+                // EXPERIMENTAL barrel rotation
+                //upTime = Time.time;
+                //actualBarrelRotation = barrelPivot.localRotation;
 
                 downTime = 0;
 				pressTime = 0;
@@ -72,17 +73,17 @@ public class FireAmmunition : MonoBehaviour {
         }
 
         // EXPERIMENTAL barrel rotation
-        if (downTime > 0)
-        {
-            barrelPivot.localRotation = Quaternion.Lerp(minBarrelRotation, maxBarrelRotation, Time.time - downTime);
+        //if (downTime > 0)
+        //{
+        //    barrelPivot.localRotation = Quaternion.Lerp(minBarrelRotation, maxBarrelRotation, Time.time - downTime);
 
-            pressTime = Time.time - downTime;
-        }
-        else
-        {
-            //TODO not perfect. The barrel falls down slower than goes up...
-            barrelPivot.localRotation = Quaternion.Lerp(actualBarrelRotation, minBarrelRotation, Time.time - upTime);
-        }
+        //    pressTime = Time.time - downTime;
+        //}
+        //else
+        //{
+        //    //TODO not perfect. The barrel falls down slower than goes up...
+        //    barrelPivot.localRotation = Quaternion.Lerp(actualBarrelRotation, minBarrelRotation, Time.time - upTime);
+        //}
     }
 
 	public void FixedUpdate () {
