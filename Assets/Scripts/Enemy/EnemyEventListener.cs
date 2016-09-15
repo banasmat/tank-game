@@ -52,37 +52,38 @@ public class EnemyEventListener : MonoBehaviour {
 		explosionParticleManager.createExplosionParticleSystem (transform);
 	}
 
-	private void DisableAndDestroy(){
+	private void DisableAndDestroy()
+    {
 		enemyMovement.enabled = false;
 		GetComponent<BoxCollider2D> ().enabled = false ;
 		GetComponent<CircleCollider2D> ().enabled = false ;
 
-		StartCoroutine(DestroyObject());
+		StartCoroutine(DestroyObject(gameObject));
 	}
 
 	private void DisconnectBodyPart(GameObject _gameObject){
-		//TODO maybe it's better to ADD rigidbody programatically
-		Rigidbody2D _rigidBody = _gameObject.AddComponent<Rigidbody2D> ();
-		//Collider2D _collider2D = _gameObject.AddComponent<BoxCollider2D> ();
 
-		_rigidBody.mass = 0.5f;
-		_rigidBody.gravityScale = 0.5f;
-		//_rigidBody.velocity = new Vector2(0,0);
-		//_rigidBody.angularVelocity = 0;
-		//_rigidBody.isKinematic = true;
-		//StartCoroutine(IncreaseDrag(_rigidBody));
+        Rigidbody2D _rigidBody = _gameObject.AddComponent<Rigidbody2D> ();
+        _rigidBody.mass = 1;
+        _rigidBody.gravityScale = 1;
 
-		float x = Random.Range (-1f, 1f) + _gameObject.transform.position.x;
-		float y = Random.Range (-1f, 1f) + _gameObject.transform.position.y + 10;
-		Vector2 direction = new Vector2 (x, y).normalized * 250;
-		_rigidBody.AddRelativeForce (direction);
-		_rigidBody.AddTorque (5);
+        // Make sure that new rigidbody is not affected by parent rigidbody
+        _gameObject.transform.parent = null;
+        
 
-	}
+		float x = Random.Range (0, 100) + _gameObject.transform.position.x;
+		float y = Random.Range (0, 100) + _gameObject.transform.position.y;
+		Vector2 direction = new Vector2 (x, y).normalized * 500;
 
-	IEnumerator DestroyObject(){
+        _rigidBody.AddRelativeForce (direction);
+        _rigidBody.AddTorque (500);
+
+        StartCoroutine(DestroyObject(_gameObject));
+    }
+
+	IEnumerator DestroyObject(GameObject _gameObject){
 		yield return new WaitForSeconds (2);
-		Destroy (gameObject);
+		Destroy (_gameObject);
 	}
 
 	IEnumerator IncreaseDrag(Rigidbody2D _rigidBody){

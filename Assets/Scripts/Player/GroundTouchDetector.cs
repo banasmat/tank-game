@@ -23,8 +23,6 @@ public class GroundTouchDetector : MonoBehaviour {
             {
                 // Rotating player back to initial position
                 player.transform.rotation = Quaternion.Lerp(player.transform.rotation, originalRotationValue, Time.time * rotationResetSpeed);
-
-                Debug.Log("rotating player");
             }
         }
 	}
