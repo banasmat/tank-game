@@ -7,6 +7,12 @@ public class FireAmmunition : MonoBehaviour {
 	public GameObject bulletPrefab;
 	private Rigidbody2D bulletPrefabRigidBody;
 
+    private Transform barrelPivot;
+    private Quaternion minBarrelRotation;
+    private Quaternion maxBarrelRotation;
+
+    private Transform playerTransform;
+
 	private int bulletForce = 500;
 	private float reloadTimeInFrames = 25;
 	private float maxPressTime = 1.5f;
@@ -15,7 +21,7 @@ public class FireAmmunition : MonoBehaviour {
 	private InfoBar reloadBar;
 	private InfoBar fireForceBar;
 
-	private float downTime, pressTime = 0;
+	private float downTime, upTime, pressTime = 0;
 
 	private bool isReloading = false;
 
@@ -24,7 +30,13 @@ public class FireAmmunition : MonoBehaviour {
 		objectPoolManager = GameObject.Find(NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
 		objectPoolManager.CreatePool (bulletPrefab, 10);
 
-		reloadBar = GameObject.Find(NameContainer.RELOAD_BAR).GetComponent<InfoBar>();
+        barrelPivot = GameObject.Find(NameContainer.BARREL_PIVOT).transform;
+        minBarrelRotation = Quaternion.Euler(0, 0, 0);
+        maxBarrelRotation = Quaternion.Euler(0, 0, 70);
+
+        playerTransform = GameObject.Find(NameContainer.PLAYER).transform;
+
+        reloadBar = GameObject.Find(NameContainer.RELOAD_BAR).GetComponent<InfoBar>();
 		fireForceBar = GameObject.Find(NameContainer.FIRE_FORCE_BAR).GetComponent<InfoBar>();
 
 		bulletPrefabRigidBody = bulletPrefab.GetComponent<Rigidbody2D> ();
@@ -35,8 +47,10 @@ public class FireAmmunition : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.LeftControl)){//when the left mouse button is pressed
 			if(false == isReloading){
 				downTime = Time.time;
-			}
+                upTime = 0;
+            }
 		}
+
 		// Release key, fire bullet
 		if (Input.GetKeyUp (KeyCode.LeftControl) || pressTime >= maxPressTime) {
 
@@ -44,12 +58,27 @@ public class FireAmmunition : MonoBehaviour {
 				FireBullet(Mathf.Clamp(pressTime, 1, 500));
 
 				fireForceBar.SetBarValue (0);
+                Debug.Log(pressTime);
+                upTime = Time.time - pressTime + barrelPivot.localRotation.z/10;
 
-				downTime = 0;
+
+                downTime = 0;
 				pressTime = 0;
 			}
-		}
-	}
+        }
+
+        // EXPERIMENTAL barrel rotation
+        if (downTime > 0)
+        {
+            barrelPivot.localRotation = Quaternion.Lerp(minBarrelRotation, maxBarrelRotation, Time.time - downTime);
+
+            pressTime = Time.time - downTime;
+        }
+        else
+        {
+            barrelPivot.localRotation = Quaternion.Lerp(maxBarrelRotation, minBarrelRotation, Time.time - upTime);
+        }
+    }
 
 	public void FixedUpdate () {
 
