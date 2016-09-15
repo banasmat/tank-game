@@ -1,9 +1,6 @@
 ﻿MainTODO
-- Użyć folderu Resources
 - Minimalna siła pocisku - dostosować siły do grywalności
 - Zdebugować odrzut na nietrafionym wrogu
-- poczytać o Unity GUI - dopracować info bar
-- jeżeli czołg jest do góry nogami - ustawić go z powrtotem
 - Klocki do składania terenu (pagórki różnego kształtu + edge collider)
 - Usuwanie niepotrzebnych klocków terenu
 - Dym stopniowo - zależnie od zdrowia czołgu
@@ -11,6 +8,9 @@
 - Uporządkować foldery - albo Player -> skrypty, sprajty itd., albo Sprites -> Player, Enemy itd.
 - spawn enemies - na event onbecamevisible z ebooka?
 - nie iterowac po wszystkich spawn pointach. znalezc ktory jest najblizszy i tylko jego sprawdzać. Po wypuszczeniu wroga sprawdzić kolejny najbliższy.
+- System punktów
+- Wypróbować system strzelania: lufa obraca się wokół osi z jak player przyciska
+- Menu UI
 
 Architektura:
 - Zamienić managery (które nie muszą implementować MonoBehaviour) na singletony
@@ -19,7 +19,6 @@ Architektura:
 Grafika:
 - OPTYMALIZACJA (rozmiar, sprajty)
 - eksplozja
-
 
 
 Narzędzia
@@ -31,11 +30,9 @@ Teren
 2. Przenosić klocki do Unity, łączyć je w gridzie, obrysowywać edge colliderem
 
 Grywalność
-- Manipulacja prędkością? - hamulec
 - Rodzaje broni strzelające: klasycznie, poziomo, punktowo, bomby, możdzierze, rozproszone...
 - Broń białą - młot
 - Osłona - pole siłowe
-- Opóźnienie strzelania (przeładunek)
 - Wrogowie spadający z nieba
 - Jazda do tyłu?
 - Punkty za trafienie urwaną głową w coś? np trafienie innego wroga.
@@ -74,3 +71,7 @@ DONE
 - Event listener (done)
 - słabsza moc pocisków (done)
 - zmienna moc pocisków (done)
+- jeżeli czołg jest do góry nogami - ustawić go z powrtotem
+- poczytać o Unity GUI - dopracować info bar
+- Opóźnienie strzelania (przeładunek)
+- Manipulacja prędkością? - hamulec

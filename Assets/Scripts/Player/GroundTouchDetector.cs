@@ -22,7 +22,7 @@ public class GroundTouchDetector : MonoBehaviour {
             if((Time.time - stoppedTouchingGroundAt) > maxTimeWithoutTouchingGround)
             {
                 // Rotating player back to initial position
-                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, originalRotationValue, Time.time * rotationResetSpeed);
+                player.transform.rotation = Quaternion.Lerp(player.transform.rotation, originalRotationValue, Time.time * rotationResetSpeed);
 
                 Debug.Log("rotating player");
             }
