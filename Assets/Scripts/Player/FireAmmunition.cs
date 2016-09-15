@@ -10,6 +10,7 @@ public class FireAmmunition : MonoBehaviour {
     private Transform barrelPivot;
     private Quaternion minBarrelRotation;
     private Quaternion maxBarrelRotation;
+    private Quaternion actualBarrelRotation;
 
     private Transform playerTransform;
 
@@ -33,6 +34,7 @@ public class FireAmmunition : MonoBehaviour {
         barrelPivot = GameObject.Find(NameContainer.BARREL_PIVOT).transform;
         minBarrelRotation = Quaternion.Euler(0, 0, 0);
         maxBarrelRotation = Quaternion.Euler(0, 0, 70);
+        actualBarrelRotation = barrelPivot.localRotation;
 
         playerTransform = GameObject.Find(NameContainer.PLAYER).transform;
 
@@ -58,8 +60,10 @@ public class FireAmmunition : MonoBehaviour {
 				FireBullet(Mathf.Clamp(pressTime, 1, 500));
 
 				fireForceBar.SetBarValue (0);
-                Debug.Log(pressTime);
-                upTime = Time.time - pressTime + barrelPivot.localRotation.z/10;
+                
+                upTime = Time.time;
+
+                actualBarrelRotation = barrelPivot.localRotation;
 
 
                 downTime = 0;
@@ -76,7 +80,8 @@ public class FireAmmunition : MonoBehaviour {
         }
         else
         {
-            barrelPivot.localRotation = Quaternion.Lerp(maxBarrelRotation, minBarrelRotation, Time.time - upTime);
+            //TODO not perfect. The barrel falls down slower than goes up...
+            barrelPivot.localRotation = Quaternion.Lerp(actualBarrelRotation, minBarrelRotation, Time.time - upTime);
         }
     }
 
