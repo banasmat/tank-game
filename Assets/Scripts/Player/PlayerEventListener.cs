@@ -40,7 +40,7 @@ public class PlayerEventListener : MonoBehaviour, IListener
 	}
 
 	private void HitByEnemy (Enemy enemy){
-		player.health -= enemy.strength;
+		player.health -= enemy.Strength;
 
 		player.ApplyStains ();
 	}

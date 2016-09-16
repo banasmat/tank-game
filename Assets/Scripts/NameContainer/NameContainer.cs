@@ -15,5 +15,8 @@
 	public const string RELOAD_BAR = "ReloadBar";
 	public const string FIRE_FORCE_BAR = "FireForceBar";
 	public const string BREAK_BAR = "BreakBar";
+
+    public const string ENEMY_KIEBEL = "bieber";
+    public const string ENEMY_ONE_ERECTION_1 = "one-direction1";
 }
 

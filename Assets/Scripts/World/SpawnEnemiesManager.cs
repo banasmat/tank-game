@@ -35,6 +35,7 @@ public class SpawnEnemiesManager : MonoBehaviour
 	{
 		// Create an instance of the enemy prefab at the randomly selected spawn point's position and rotation.
 		GameObject clonedEnemy = Instantiate (spawnPoint.GetComponent<SpawnPoint>().Enemy, spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+        EnemyManager.SetProperties(clonedEnemy);
 		clonedEnemy.gameObject.tag = TagContainer.ENEMY;
 		Destroy (spawnPoint);
 	}
