@@ -5,7 +5,6 @@ using UnityEngine;
 
 class EnemyManager
 {
-    // Keys should be the same as Enemy class properties
     private static readonly Dictionary<string, Dictionary<string, int>> enemyStatsDictionary = new Dictionary<string, Dictionary<string, int>>
     {
         {
@@ -39,12 +38,10 @@ class EnemyManager
 
         Dictionary<string, int> enemyStats;
 
-        // Set Enemy properties defined in enemyStatsDictionary
         if (enemyStatsDictionary.TryGetValue(enemyName, out enemyStats))
         {
             enemy.Strength = enemyStats["Strength"];
             enemy.Points = enemyStats["Points"];
-
         }
         else
         {
