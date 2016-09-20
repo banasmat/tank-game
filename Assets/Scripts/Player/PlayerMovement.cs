@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour {
 		//TODO WARNING code duplication (FireBullet)
 
 		// Break
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.RightControl)) {
 			if (false == isBreaking) {
 				isBreaking = true;
 
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour {
 			breakBar.SetBarValue (pressTime * (100/maxPressTime)); // We're passing percentage
 		}
 
-		if (Input.GetKeyUp (KeyCode.Space) || pressTime >= maxPressTime) {
+		if (Input.GetKeyUp (KeyCode.RightControl) || pressTime >= maxPressTime) {
 		
 			if (0 != downTime) {
 				isBreaking = false;

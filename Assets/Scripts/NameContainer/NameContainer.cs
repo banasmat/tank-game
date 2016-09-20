@@ -6,6 +6,8 @@
 	public const string EXPLOSION_PARTICLE_MANAGER	 = "ExplosionParticleManager";
     public const string SCORE_PARTICLE_MANAGER = "ScoreManager";
 
+    public const string PAUSE_MENU_PANEL = "PauseMenuPanel";
+
     public const string SCORE = "Score";
 
     public const string PLAYER = "Player";

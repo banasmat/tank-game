@@ -17,6 +17,11 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = Vector2.MoveTowards (transform.position, target.position, step);
+
+        if(false == GamePlayManager.Instance.Paused)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, step);
+        }
+
 	}
 }
