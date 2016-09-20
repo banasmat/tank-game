@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
 class EnemyManager
@@ -20,6 +19,14 @@ class EnemyManager
             new Dictionary<string, int>
             {
                 {"Strength", 30},
+                {"Points", 20},
+            }
+        },
+        {
+            NameContainer.ENEMY_KAYNE,
+            new Dictionary<string, int>
+            {
+                {"Strength", 25},
                 {"Points", 15},
             }
         },

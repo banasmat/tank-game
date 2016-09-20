@@ -18,5 +18,6 @@
 
     public const string ENEMY_KIEBEL = "bieber";
     public const string ENEMY_ONE_ERECTION_1 = "one-direction1";
+    public const string ENEMY_KAYNE = "kayne";
 }
 

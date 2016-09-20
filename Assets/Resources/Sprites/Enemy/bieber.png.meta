@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b0b9437a566a3e14a92913219c1eee84
-timeCreated: 1473952726
+timeCreated: 1474382531
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -50,68 +50,64 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: bieber_0
+    - serializedVersion: 2
+      name: bieber_0
       rect:
         serializedVersion: 2
         x: 9
-        y: 43
-        width: 56
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -21, y: 35}
-        - {x: -28, y: 33}
-        - {x: -28, y: -15}
-        - {x: -17, y: -35}
-        - {x: 9, y: -35}
-        - {x: 28, y: -15}
-        - {x: 28, y: 26}
-        - {x: 19, y: 35}
-    - name: bieber_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1
-        width: 36
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -17, y: 19}
-        - {x: -18, y: 18}
-        - {x: -18, y: -19}
-        - {x: 18, y: -19}
-        - {x: 18, y: 17}
-        - {x: 15, y: 19}
-    - name: bieber_2
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 7
-        width: 18
-        height: 24
+        y: 40
+        width: 48
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-    - name: bieber_3
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bieber_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bieber_2
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 6
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bieber_3
       rect:
         serializedVersion: 2
         x: 63
         y: 2
         width: 13
-        height: 28
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
