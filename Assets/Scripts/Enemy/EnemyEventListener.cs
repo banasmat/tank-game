@@ -27,7 +27,8 @@ public class EnemyEventListener : MonoBehaviour {
 		// When bullet hits enemy
 		if (coll.gameObject.tag == TagContainer.BULLET) {
 			EnemyHit ();
-		}
+            EventManager.Instance.PostNotification(new GameEvent(EVENT_TYPE.BULLET_HITS_ENEMY, gameObject.GetComponent<Enemy>()));
+        }
 	}
 
 	private void EnemyHitByPlayer(){

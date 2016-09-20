@@ -8,6 +8,7 @@ public enum EVENT_TYPE
 {
 	BULLET_EXPLOSION,
 	ENEMY_HITS_PLAYER,
+    BULLET_HITS_ENEMY, //TODO maybe this should contain bullet and enemy object
 	HEALTH_CHANGE,
 	GAME_OVER
 }

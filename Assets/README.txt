@@ -37,6 +37,7 @@ Grywalność
 - Jazda do tyłu?
 - Punkty za trafienie urwaną głową w coś? np trafienie innego wroga.
 - Bonusy: ustrzel konkretnych wrogów w konkretny sposób
+- Podwójne punkty za trafienie oderwanej głowy
 
 
 DONE

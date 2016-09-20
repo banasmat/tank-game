@@ -4,6 +4,9 @@
 
     public const string OBJECT_POOL_MANAGER = "ObjectPoolManager";
 	public const string EXPLOSION_PARTICLE_MANAGER	 = "ExplosionParticleManager";
+    public const string SCORE_PARTICLE_MANAGER = "ScoreManager";
+
+    public const string SCORE = "Score";
 
     public const string PLAYER = "Player";
 	public const string TANK_BODY = "TankBody";
