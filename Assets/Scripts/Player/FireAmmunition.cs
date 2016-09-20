@@ -31,14 +31,15 @@ public class FireAmmunition : MonoBehaviour {
 		objectPoolManager = GameObject.Find(NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
 		objectPoolManager.CreatePool (bulletPrefab, 10);
 
-        barrelPivot = GameObject.Find(NameContainer.BARREL_PIVOT).transform;
-        minBarrelRotation = Quaternion.Euler(0, 0, 0);
-        maxBarrelRotation = Quaternion.Euler(0, 0, 70);
-        actualBarrelRotation = barrelPivot.localRotation;
+        // EXPERIMENTAL barrel rotation
+        //barrelPivot = GameObject.Find(NameContainer.BARREL_PIVOT).transform;
+        //minBarrelRotation = Quaternion.Euler(0, 0, 0);
+        //maxBarrelRotation = Quaternion.Euler(0, 0, 70);
+        //actualBarrelRotation = barrelPivot.localRotation;
 
         playerTransform = GameObject.Find(NameContainer.PLAYER).transform;
 
-        reloadBar = GameObject.Find(NameContainer.RELOAD_BAR).GetComponent<InfoBar>();
+        //reloadBar = GameObject.Find(NameContainer.RELOAD_BAR).GetComponent<InfoBar>();
 		fireForceBar = GameObject.Find(NameContainer.FIRE_FORCE_BAR).GetComponent<InfoBar>();
 
 		bulletPrefabRigidBody = bulletPrefab.GetComponent<Rigidbody2D> ();
@@ -116,7 +117,7 @@ public class FireAmmunition : MonoBehaviour {
         
         for (int i = 0; i <= reloadTimeInFrames; i+= 1) {
 
-            reloadBar.SetBarValue (i * multiplier);
+            //reloadBar.SetBarValue (i * multiplier);
 
             yield return new WaitForFixedUpdate();
 			
