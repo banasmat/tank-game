@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 40bff28812544fb42ab234bab6b4e260
-timeCreated: 1458464986
+timeCreated: 1474456842
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -56,214 +56,142 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 1
+  spriteTessellationDetail: -1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
+    serializedVersion: 2
     sprites:
-    - name: track_0
+    - serializedVersion: 2
+      name: track_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 897
-        width: 320
-        height: 87
+        y: 850
+        width: 304
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 136, y: 43.5}
-        - {x: -154, y: 43.5}
-        - {x: -160, y: 35.5}
-        - {x: -160, y: -12.5}
-        - {x: -158, y: -15.5}
-        - {x: -112, y: -43.5}
-        - {x: 115, y: -43.5}
-        - {x: 160, y: -16.5}
-        - {x: 160, y: 31.5}
-        - {x: 151, y: 37.5}
-    - name: track_1
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: track_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 797
-        width: 320
-        height: 88
+        y: 755
+        width: 304
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 160, y: 37}
-        - {x: 155, y: 44}
-        - {x: -160, y: 44}
-        - {x: -160, y: -9}
-        - {x: -148, y: -37}
-        - {x: -120, y: -44}
-        - {x: 110, y: -44}
-        - {x: 123, y: -42}
-        - {x: 157, y: -23}
-        - {x: 160, y: -8}
-    - name: track_2
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: track_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 697
-        width: 320
-        height: 88
+        y: 661
+        width: 303
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 160, y: 34}
-        - {x: 152, y: 44}
-        - {x: -160, y: 44}
-        - {x: -160, y: -11}
-        - {x: -145, y: -44}
-        - {x: 104, y: -44}
-        - {x: 133, y: -32}
-        - {x: 160, y: -8}
-    - name: track_3
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: track_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 597
-        width: 320
-        height: 88
+        y: 566
+        width: 303
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -136, y: 44}
-        - {x: -160, y: 38}
-        - {x: -160, y: -18}
-        - {x: -159, y: -19}
-        - {x: -122, y: -44}
-        - {x: 139, y: -44}
-        - {x: 160, y: -10}
-        - {x: 160, y: 28}
-        - {x: 144, y: 44}
-    - name: track_4
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: track_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 497
-        width: 320
-        height: 88
+        x: 1
+        y: 471
+        width: 303
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -135, y: 44}
-        - {x: -152, y: 40}
-        - {x: -160, y: 37}
-        - {x: -160, y: -16}
-        - {x: -150, y: -44}
-        - {x: 118, y: -44}
-        - {x: 160, y: -21}
-        - {x: 160, y: 39}
-        - {x: 145, y: 44}
-    - name: track_5
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: track_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 397
-        width: 319
-        height: 88
+        x: 1
+        y: 377
+        width: 303
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 151.5, y: 44}
-        - {x: -142.5, y: 44}
-        - {x: -159.5, y: 34}
-        - {x: -159.5, y: -15}
-        - {x: -113.5, y: -44}
-        - {x: 112.5, y: -44}
-        - {x: 146.5, y: -31}
-        - {x: 159.5, y: -7}
-        - {x: 159.5, y: 36}
-    - name: track_6
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: track_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 297
-        width: 320
-        height: 88
+        y: 282
+        width: 304
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -143, y: 44}
-        - {x: -160, y: 32}
-        - {x: -160, y: -12}
-        - {x: -129, y: -44}
-        - {x: 119, y: -44}
-        - {x: 160, y: -15}
-        - {x: 160, y: 34}
-        - {x: 142, y: 44}
-    - name: track_7
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: track_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 199
-        width: 320
-        height: 88
+        x: 1
+        y: 190
+        width: 303
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -156, y: 44}
-        - {x: -157, y: 42}
-        - {x: -160, y: 33}
-        - {x: -160, y: -12}
-        - {x: -159, y: -14}
-        - {x: -120, y: -43}
-        - {x: -108, y: -44}
-        - {x: 118, y: -44}
-        - {x: 160, y: -18}
-        - {x: 160, y: 44}
-    - name: track_8
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: track_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 99
-        width: 320
-        height: 88
+        y: 95
+        width: 304
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 141, y: 44}
-        - {x: -154, y: 44}
-        - {x: -160, y: 33}
-        - {x: -160, y: -14}
-        - {x: -159, y: -14}
-        - {x: -113, y: -44}
-        - {x: 108, y: -44}
-        - {x: 144, y: -28}
-        - {x: 160, y: -4}
-        - {x: 160, y: 33}
-    - name: track_9
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: track_9
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 320
-        height: 87
+        width: 303
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: 157, y: 42.5}
-        - {x: 152, y: 43.5}
-        - {x: -151, y: 43.5}
-        - {x: -160, y: 30.5}
-        - {x: -160, y: -7.5}
-        - {x: -130, y: -41.5}
-        - {x: -113, y: -43.5}
-        - {x: 120, y: -43.5}
-        - {x: 141, y: -41.5}
-        - {x: 160, y: -14.5}
-        - {x: 160, y: 31.5}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
