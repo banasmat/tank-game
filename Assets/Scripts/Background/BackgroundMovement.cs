@@ -61,9 +61,8 @@ public class BackgroundMovement : MonoBehaviour {
 		// If image end is close to the camera right bound, create a new one
 		if (differenceAhead < cameraWidthDoubled && differenceAhead > 0) {
 			if (false == cloned) {
-				// Make sure that new tile is intersected a bit with the old one ( - 0.1f )
 				//TODO When Camera.main.transform.position.x gets higher, new object's x is too low. Temporarily fixed with changing Y position ( yPosition - 10 )
-				GameObject clonedBackground = objectPoolManager.Retrieve(this.gameObjectPrefab, new Vector3 (spriteRightEdgePosition + spriteSizeHalf - Camera.main.transform.position.x * reversedScrollSpeed - 0.1f, yPosition - 10), transform.rotation);
+				GameObject clonedBackground = objectPoolManager.Retrieve(this.gameObjectPrefab, new Vector3 (spriteRightEdgePosition + spriteSizeHalf - Camera.main.transform.position.x * reversedScrollSpeed, yPosition - 10), transform.rotation);
 				cloned = true;
 			}
 		}
