@@ -51,7 +51,7 @@ public class BackgroundMovement : MonoBehaviour {
 		startPosition = new Vector3(transform.position.x, yPosition);
 	}
 
-	//TODO optimize move some calculations to variables
+	//FIXME not smooth on android
 	void FixedUpdate ()
 	{
 		transform.position = new Vector3(startPosition.x + Camera.main.transform.position.x * reversedScrollSpeed, yPosition);

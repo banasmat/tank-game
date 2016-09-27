@@ -11,6 +11,8 @@ public class CameraMovement : MonoBehaviour {
 
     void Start()
     {
+        Screen.orientation = ScreenOrientation.Landscape;
+
         mainCamera = GetComponent<Camera>();
         player = GameObject.Find(NameContainer.PLAYER).GetComponent<Transform>();
 

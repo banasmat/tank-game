@@ -11,6 +11,7 @@
 - System punktów
 - Wypróbować system strzelania: lufa obraca się wokół osi z jak player przyciska
 - Menu UI
+- Zapisywanie punktów za levele - wyświetlanie ilości gwiazdek
 
 Architektura:
 - Zamienić managery (które nie muszą implementować MonoBehaviour) na singletony

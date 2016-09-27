@@ -47,7 +47,8 @@ public class FireAmmunition : MonoBehaviour {
 
 	public void Update(){
 		// Fire bullet with force depending on how long the key was pressed
-		if (Input.GetKeyDown(KeyCode.LeftControl)){//when the left mouse button is pressed
+		if (Input.GetKeyDown(KeyCode.LeftControl) || Input.touchCount > 0) //TODO create a button on screen?
+        {
 			if(false == isReloading){
 				downTime = Time.time;
 
@@ -57,7 +58,7 @@ public class FireAmmunition : MonoBehaviour {
 		}
 
 		// Release key, fire bullet
-		if (Input.GetKeyUp (KeyCode.LeftControl) || pressTime >= maxPressTime) {
+		if (Input.GetKeyUp (KeyCode.LeftControl) || pressTime >= maxPressTime || Input.touchCount == 0) {
 
 			if(0 != downTime){
 				FireBullet(Mathf.Clamp(pressTime, 1, 500));
