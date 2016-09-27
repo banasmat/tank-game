@@ -21,9 +21,10 @@ public class BackgroundMovement : MonoBehaviour {
 	private float yPosition;
 	private float spriteSizeHalf;
 	private float cameraWidthDoubled;
+    private float cameraWidthHalf;
 
 
-	void Awake ()
+    void Awake ()
 	{
 		objectPoolManager = GameObject.Find (NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
 		objectPoolManager.CreatePool (gameObjectPrefab, 3);
@@ -32,13 +33,15 @@ public class BackgroundMovement : MonoBehaviour {
 
 		ground = GameObject.FindGameObjectWithTag (TagContainer.GROUND);
 		groundTransform = ground.GetComponent<Transform> ();
-
-		cameraWidth = Camera.main.orthographicSize;
+        
+        // TODO hardcoded for now. Hard to retrieve from system.
+		cameraWidth = 14;
 
 		spriteSizeHalf = sprite.bounds.size.x / 2;
 		cameraWidthDoubled = cameraWidth * 2;
+        cameraWidthHalf = cameraWidth / 2;
 
-		reversedScrollSpeed = -1 * (scrollSpeed - 1); 
+        reversedScrollSpeed = -1 * (scrollSpeed - 1); 
 
 		yPosition = groundTransform.position.y + positionAboveGround;
 	}
@@ -52,26 +55,32 @@ public class BackgroundMovement : MonoBehaviour {
 	void FixedUpdate ()
 	{
 		transform.position = new Vector3(startPosition.x + Camera.main.transform.position.x * reversedScrollSpeed, yPosition);
+        
+        spriteRightEdgePosition = transform.position.x + spriteSizeHalf;
 
-		cameraRightEdgePosition = Camera.main.transform.position.x + cameraWidth;
-		spriteRightEdgePosition = transform.position.x + spriteSizeHalf;
+        if (false == cloned)
+        {
 
-		float differenceAhead = spriteRightEdgePosition - cameraRightEdgePosition;
+            cameraRightEdgePosition = Camera.main.transform.position.x + cameraWidthHalf;
 
-		// If image end is close to the camera right bound, create a new one
-		if (differenceAhead < cameraWidthDoubled && differenceAhead > 0) {
-			if (false == cloned) {
+            float differenceAhead = spriteRightEdgePosition - cameraRightEdgePosition;
+
+		    // If image end is close to the camera right bound, create a new one
+		    if (differenceAhead < cameraWidthDoubled && differenceAhead > 0) {
+			
 				//TODO When Camera.main.transform.position.x gets higher, new object's x is too low. Temporarily fixed with changing Y position ( yPosition - 10 )
-				GameObject clonedBackground = objectPoolManager.Retrieve(this.gameObjectPrefab, new Vector3 (spriteRightEdgePosition + spriteSizeHalf - Camera.main.transform.position.x * reversedScrollSpeed, yPosition - 10), transform.rotation);
+				GameObject clonedBackground = objectPoolManager.Retrieve(this.gameObjectPrefab, new Vector3 (spriteRightEdgePosition + spriteSizeHalf - Camera.main.transform.position.x * reversedScrollSpeed - 1f, yPosition - 10), transform.rotation);
 				cloned = true;
-			}
-		}
-
-		// If sprite is left behind the camera, destroy it
-		if ((Camera.main.transform.position.x - cameraWidth - spriteRightEdgePosition) > cameraWidthDoubled) {
-			//Destroy (gameObject);
-			objectPoolManager.Add (gameObject);
-		}
+		    }
+        } else
+        {
+            // If sprite is left behind the camera, destroy it
+            if ((spriteRightEdgePosition + cameraWidthDoubled) < Camera.main.transform.position.x)
+            {
+                //Destroy (gameObject);
+                objectPoolManager.Add(gameObject);
+            }
+        }
 	}
 }
 
