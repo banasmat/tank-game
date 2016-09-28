@@ -7,6 +7,15 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class MenuButtonsScript : MonoBehaviour {
 
+    private GameObject confirmationPopup;
+    private delegate void actionToConfirm();
+    private actionToConfirm _actionToConfirm; // Callback that will run when confirmation popup is accepted
+
+    public void Awake()
+    {
+        confirmationPopup = GameObject.Find(NameContainer.CONFIRMATION_POPUP_PANEL);
+        confirmationPopup.SetActive(false);
+    }
 
     #region These methods are connected with buttons in the Editor
 
@@ -19,9 +28,12 @@ public class MenuButtonsScript : MonoBehaviour {
     {
         if(true == showPopup)
         {
-            //TODO are you sure? popup
+            showConfirmationPopup(backToMainMenu);
+        } else
+        {
+            backToMainMenu();
         }
-        SceneManager.LoadScene(LevelContainer.MAIN_MENU);
+        
     }
 
     public void LoadLevel(int level)
@@ -30,13 +42,8 @@ public class MenuButtonsScript : MonoBehaviour {
     }
 
     public void RestartLevelButton()
-    {   
-        //TODO are you sure? popup
-        string sceneName = SceneManager.GetActiveScene().name;
-
-        int level = Array.FindIndex(LevelContainer.LEVEL, value => value.Equals(sceneName));
-
-        SceneManager.LoadScene(LevelContainer.LEVEL[level]);
+    {
+        showConfirmationPopup(restartLevel);
     }
 
     /// <summary>
@@ -47,5 +54,45 @@ public class MenuButtonsScript : MonoBehaviour {
         GameObject.Find(NameContainer.PAUSE_MENU_PANEL).SetActive(false);
     }
 
+    public void CloseConfirmationPopup()
+    {
+        confirmationPopup.SetActive(false);
+
+        _actionToConfirm = null;
+    }
+
+    public void AcceptConfirmationPopup()
+    {
+        if(null != _actionToConfirm)
+        {
+            // Run callback
+            _actionToConfirm();
+        }
+        confirmationPopup.SetActive(false);
+    }
+
     #endregion
+
+    private void backToMainMenu()
+    {
+        SceneManager.LoadScene(LevelContainer.MAIN_MENU);
+    }
+
+    private void restartLevel()
+    {
+        string sceneName = SceneManager.GetActiveScene().name;
+        int level = Array.FindIndex(LevelContainer.LEVEL, value => value.Equals(sceneName));
+        SceneManager.LoadScene(LevelContainer.LEVEL[level]);
+    }
+
+    /// <summary>
+    /// Shows confirmation popup and sets callback to run when popup is confirmed
+    /// </summary>
+    /// <param name="_actionToConfirm"></param>
+    private void showConfirmationPopup(actionToConfirm _actionToConfirm) //TODO add message text as param?
+    {
+        confirmationPopup.SetActive(true);
+
+        this._actionToConfirm = _actionToConfirm;
+    }
 }

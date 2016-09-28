@@ -7,6 +7,7 @@
     public const string SCORE_PARTICLE_MANAGER = "ScoreManager";
 
     public const string PAUSE_MENU_PANEL = "PauseMenuPanel";
+    public const string CONFIRMATION_POPUP_PANEL = "ConfirmationPopupPanel";
 
     public const string SCORE = "Score";
 
