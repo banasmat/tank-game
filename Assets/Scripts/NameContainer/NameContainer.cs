@@ -8,8 +8,6 @@
 
     public const string PAUSE_MENU_PANEL = "PauseMenuPanel";
 
-    public const string MAIN_MENU_CONTROLLER = "MainMenuController";
-
     public const string SCORE = "Score";
 
     public const string PLAYER = "Player";
