@@ -7,4 +7,5 @@
         
     public const string MAIN_MENU = "MainMenu";
     public const string LEVELS_MENU = "LevelsMenu";
+    public const string INTRO = "Intro";
 }

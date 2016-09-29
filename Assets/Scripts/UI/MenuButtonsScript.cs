@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Handles Menu UI buttons
+/// Handles Menu UI buttons. Connected to UI canvas objects.
 /// </summary>
 public class MenuButtonsScript : MonoBehaviour {
 
@@ -13,8 +13,12 @@ public class MenuButtonsScript : MonoBehaviour {
 
     public void Awake()
     {
+        // Other game objects are set active or inactive in the editor
         confirmationPopup = GameObject.Find(NameContainer.CONFIRMATION_POPUP_PANEL);
-        confirmationPopup.SetActive(false);
+        if(null != confirmationPopup)
+        {
+            confirmationPopup.SetActive(false);
+        }
     }
 
     #region These methods are connected with buttons in the Editor
@@ -46,6 +50,11 @@ public class MenuButtonsScript : MonoBehaviour {
         showConfirmationPopup(restartLevel);
     }
 
+    public void IntroButton()
+    {
+        SceneManager.LoadScene(LevelContainer.INTRO);
+    }
+
     /// <summary>
     /// Disables pause menu
     /// </summary>
@@ -75,7 +84,10 @@ public class MenuButtonsScript : MonoBehaviour {
 
     private void backToMainMenu()
     {
-        SceneManager.LoadScene(LevelContainer.MAIN_MENU);
+        if(LevelContainer.MAIN_MENU != SceneManager.GetActiveScene().name)
+        {
+            SceneManager.LoadScene(LevelContainer.MAIN_MENU);
+        }
     }
 
     private void restartLevel()

@@ -8,6 +8,8 @@
 
     public const string PAUSE_MENU_PANEL = "PauseMenuPanel";
     public const string CONFIRMATION_POPUP_PANEL = "ConfirmationPopupPanel";
+    public const string SETTINGS_PANEL = "SettingsPanel";
+    public const string HOW_TO_PLAY_PANEL = "HowToPlayPanel";
 
     public const string SCORE = "Score";
 
