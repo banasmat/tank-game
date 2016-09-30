@@ -12,7 +12,13 @@ public class EnemyEventListener : MonoBehaviour {
 	public void Awake(){
 		enemyMovement = GetComponent<EnemyMovement> ();
 		animator = GetComponent<Animator> ();
-		explosionParticleManager = GameObject.Find(NameContainer.EXPLOSION_PARTICLE_MANAGER).GetComponent<ExplosionParticleManager>();
+
+        // TODO bad design. This listener is used in scene without this manager
+        GameObject _explosionParticleManager = GameObject.Find(NameContainer.EXPLOSION_PARTICLE_MANAGER);
+        if(null != _explosionParticleManager)
+        {
+            explosionParticleManager = _explosionParticleManager.GetComponent<ExplosionParticleManager>();
+        }
 	}
 
 	public void OnCollisionEnter2D (Collision2D coll)

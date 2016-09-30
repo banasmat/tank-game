@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyMovement : MonoBehaviour {
 
-	public float speed = 2f;
+	public float Speed = 2f;
 	public Transform target;
 	private float step;
 
@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		target = GameObject.FindGameObjectWithTag(TagContainer.PLAYER).transform;
-		step = speed * Time.deltaTime;
+		step = Speed * Time.deltaTime;
 
 	}
 	

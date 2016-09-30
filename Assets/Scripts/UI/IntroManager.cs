@@ -86,6 +86,9 @@ public class IntroManager : MonoBehaviour {
         GameObject nextScene = sceneGameObjects[pointer];
 
         activeScene.SetActive(false);
+
+        Destroy(activeScene);
+
         nextScene.SetActive(true);
 
         introTextContainer.text = sceneTexts[pointer];

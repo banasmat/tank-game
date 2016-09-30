@@ -4,7 +4,6 @@
 - Klocki do składania terenu (pagórki różnego kształtu + edge collider)
 - Usuwanie niepotrzebnych klocków terenu
 - Dym stopniowo - zależnie od zdrowia czołgu
-
 - spawn enemies - na event onbecamevisible z ebooka?
 - nie iterowac po wszystkich spawn pointach. znalezc ktory jest najblizszy i tylko jego sprawdzać. Po wypuszczeniu wroga sprawdzić kolejny najbliższy.
 - System punktów
@@ -12,6 +11,11 @@
 - Menu UI
 - Zapisywanie punktów za levele - wyświetlanie ilości gwiazdek
 - LOGO
+
+Intro:
+- Animacja kamery (lub terenu)
+- W ostatniej scenie czołg strzela do masy wrogów
+
 
 Architektura:
 - Zamienić managery (które nie muszą implementować MonoBehaviour) na singletony
