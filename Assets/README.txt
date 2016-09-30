@@ -4,18 +4,19 @@
 - Klocki do składania terenu (pagórki różnego kształtu + edge collider)
 - Usuwanie niepotrzebnych klocków terenu
 - Dym stopniowo - zależnie od zdrowia czołgu
-- Porządek w public/private variables - użyć getterów i setterów c #
-- Uporządkować foldery - albo Player -> skrypty, sprajty itd., albo Sprites -> Player, Enemy itd.
+
 - spawn enemies - na event onbecamevisible z ebooka?
 - nie iterowac po wszystkich spawn pointach. znalezc ktory jest najblizszy i tylko jego sprawdzać. Po wypuszczeniu wroga sprawdzić kolejny najbliższy.
 - System punktów
 - Wypróbować system strzelania: lufa obraca się wokół osi z jak player przyciska
 - Menu UI
 - Zapisywanie punktów za levele - wyświetlanie ilości gwiazdek
+- LOGO
 
 Architektura:
 - Zamienić managery (które nie muszą implementować MonoBehaviour) na singletony
 - Użyć object pool (do poprawy)
+- Porządek w public/private variables - użyć getterów i setterów c #
 
 Grafika:
 - OPTYMALIZACJA (rozmiar, sprajty)
@@ -78,3 +79,4 @@ DONE
 - poczytać o Unity GUI - dopracować info bar
 - Opóźnienie strzelania (przeładunek)
 - Manipulacja prędkością? - hamulec
+- Uporządkować foldery - albo Player -> skrypty, sprajty itd., albo Sprites -> Player, Enemy itd.

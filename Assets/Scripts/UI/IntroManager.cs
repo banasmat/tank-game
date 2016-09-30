@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class IntroManager : MonoBehaviour {
 
@@ -9,7 +10,9 @@ public class IntroManager : MonoBehaviour {
 
     private GameObject activeScene;
     private int pointer = 0;
+    private Text introTextContainer; // We're using one text container to avoid scaling issues
 
+    // We need to keep the coroutine in variable to be able to stop it with StopCoroutine
     private IEnumerator nextSceneCoroutine;
 
     private static readonly string[] sceneNames = new string[7]
@@ -23,12 +26,27 @@ public class IntroManager : MonoBehaviour {
         "Scene7"
     };
 
+    // These should correspond sceneNames
+    private static readonly string[] sceneTexts = new string[7]
+    {
+        "Evil popstars are getting more and more popular",
+        "Their lame music is turning people into brainless creatures",
+        "Clones of Justin Kiebel...",
+        "...One Erection...",
+        "...and Gayne West...",
+        "... are swarming everywhere",
+        "Now get into your tank and stop this madness!"
+    };
+
     void Start()
     {
+        introTextContainer = GameObject.Find(NameContainer.INTRO_TEXT_CONTAINER).GetComponent<Text>();
+
         sceneGameObjects = new List<GameObject>();
 
         GameObject sceneGameObject;
 
+        //TODO if scenes get too big, might lazy load them from resources
         foreach(string sceneName in sceneNames)
         {
             sceneGameObject = GameObject.Find(sceneName);
@@ -39,6 +57,7 @@ public class IntroManager : MonoBehaviour {
 
         activeScene = sceneGameObjects[0];
         activeScene.SetActive(true);
+        introTextContainer.text = sceneTexts[pointer];
 
         nextSceneCoroutine = waitAndShowNextScene();
         StartCoroutine(nextSceneCoroutine);
@@ -68,6 +87,9 @@ public class IntroManager : MonoBehaviour {
 
         activeScene.SetActive(false);
         nextScene.SetActive(true);
+
+        introTextContainer.text = sceneTexts[pointer];
+
         activeScene = nextScene;
 
         nextSceneCoroutine = waitAndShowNextScene();

@@ -126,7 +126,7 @@ public class EventManager : MonoBehaviour
 		Listeners = TmpListeners;
 	}
 	//-----------------------------------------------------------
-	//Called on scene change. Clean up dictionary
+	//Called on scene change. Clean up dictionary //TODO deprecated
 	void OnLevelWasLoaded ()
 	{
 		RemoveRedundancies ();
