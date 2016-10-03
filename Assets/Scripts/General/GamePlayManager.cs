@@ -1,8 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
-
-class GamePlayManager : MonoBehaviour
+﻿class GamePlayManager
 {
     #region Singleton
     private static readonly GamePlayManager instance = new GamePlayManager();
