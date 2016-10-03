@@ -8,9 +8,9 @@ public class SpawnEnemiesManager : MonoBehaviour
 	private ArrayList spawnPoints;         // An array of the spawn points this enemy can spawn from.
 	private int cameraWidth;
 
-	void Start ()
+    void Start ()
 	{
-        mainCamera = GameObject.Find(NameContainer.MAIN_CAMERA).GetComponent<Camera>();
+        mainCamera = Camera.main;
 		GameObject[] _spawnPoints = GameObject.FindGameObjectsWithTag(TagContainer.SPAWN_POINT);
 		spawnPoints = new ArrayList (_spawnPoints);
 		cameraWidth = (int)(mainCamera.aspect * mainCamera.orthographicSize);
@@ -18,6 +18,7 @@ public class SpawnEnemiesManager : MonoBehaviour
 
 	// Spawn enemy when camera is close to one of the spawn points
 	void Update () {
+
 		foreach(GameObject spawnPoint in spawnPoints){
 			if ((int)mainCamera.transform.position.x >= (int)spawnPoint.transform.position.x - cameraWidth * 2) {
 				Spawn (spawnPoint);

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 //Singleton EventManager to send events to listeners
 //Works with IListener implementations
 
-public class EventManager : MonoBehaviour
+public class EventManager : ScriptableObject
 {
 
 	#region C# properties
@@ -15,7 +15,6 @@ public class EventManager : MonoBehaviour
 	//Public access to instance
 	public static EventManager Instance {
 		get{ return instance; }
-		set{ }
 	}
 
 	#endregion
@@ -23,7 +22,7 @@ public class EventManager : MonoBehaviour
 	#region variables
 
 	// Notifications Manager instance (singleton design pattern)
-	private static EventManager instance = null;
+	private static readonly EventManager instance = ScriptableObject.CreateInstance(typeof(EventManager)) as EventManager;
 
 	//Array of listeners (all objects registered for events)
 	private Dictionary<EVENT_TYPE, List<IListener>> Listeners = new Dictionary<EVENT_TYPE, List<IListener>> ();
@@ -34,16 +33,6 @@ public class EventManager : MonoBehaviour
 
 	#region methods
 
-	//Called at start-up to initialize
-	void Awake ()
-	{
-		//If no instance exists, then assign this instance
-		if (instance == null) {
-			instance = this;
-			DontDestroyOnLoad (gameObject);
-		} else
-			DestroyImmediate (this);
-	}
 	//-----------------------------------------------------------
 	/// <summary>
 	/// Function to add listener to array of listeners

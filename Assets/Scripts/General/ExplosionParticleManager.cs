@@ -1,29 +1,35 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class ExplosionParticleManager : MonoBehaviour {
+public class ExplosionParticleManager : ScriptableObject {
 
-	public GameObject explosionParticleSystemPrefab;
+    private GameObject explosionParticleSystemPrefab;
 
-	private Color particleColor;
+    private Color particleColor = new Color(1, 1, 1, 1);
 
-	private ObjectPoolManager objectPoolManager;
+    #region Singleton
+    private static readonly ExplosionParticleManager instance = ScriptableObject.CreateInstance(typeof(ExplosionParticleManager)) as ExplosionParticleManager;
 
-	public void Awake(){
-		// Setting defaults
-		particleColor = new Color (1, 1, 1, 1);
-
-		objectPoolManager = GameObject.Find (NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
-		objectPoolManager.CreatePool (explosionParticleSystemPrefab, 5);
-	}
+    public static ExplosionParticleManager Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+    #endregion
 
 	public void setColor(Color _color){
 		particleColor = _color;
 	}
 
 	public void createExplosionParticleSystem(Transform _transform){
-		
-		GameObject explosionParticleSystem = objectPoolManager.Retrieve (explosionParticleSystemPrefab, _transform.position, _transform.rotation);
+
+        if (null == explosionParticleSystemPrefab)
+        {
+            explosionParticleSystemPrefab = Resources.Load(PrefabContainer.EXPLOSION_PARTICLE_SYSTEM) as GameObject;
+        }
+
+        GameObject explosionParticleSystem = ObjectPoolManager.Instance.Retrieve (explosionParticleSystemPrefab, _transform.position, _transform.rotation);
 		ParticleSystem _explosionParticleSystem = explosionParticleSystem.GetComponent<ParticleSystem> ();
 
 		//TODO delegate to separate function, remove code duplication, move color to const

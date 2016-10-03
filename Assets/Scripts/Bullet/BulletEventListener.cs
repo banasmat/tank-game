@@ -11,10 +11,10 @@ public class BulletEventListener : MonoBehaviour {
 
 	void Awake(){
 //		explosionFX = GameObject.FindGameObjectWithTag("ExplosionFX").GetComponent<ParticleSystem>();
-		explosionParticleManager = GameObject.Find(NameContainer.EXPLOSION_PARTICLE_MANAGER).GetComponent<ExplosionParticleManager>();
-		objectPoolManager = GameObject.Find (NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
-		//TODO probably move it to FireAmmunition (which is called only once)
-		objectPoolManager.CreatePool (explosionPrefab, 5);
+		explosionParticleManager = ExplosionParticleManager.Instance;
+		objectPoolManager = ObjectPoolManager.Instance;
+        //TODO probably move it to FireAmmunition (which is called only once)
+        objectPoolManager.CreatePool (explosionPrefab, 5);
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {

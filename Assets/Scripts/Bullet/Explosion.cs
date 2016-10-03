@@ -9,8 +9,8 @@ public class Explosion : MonoBehaviour {
 	private ObjectPoolManager objectPoolManager;
 
 	public void Awake(){
-		objectPoolManager = GameObject.Find (NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
-	}
+		objectPoolManager = ObjectPoolManager.Instance;
+    }
 
 	void Start () {
 		Explode ();

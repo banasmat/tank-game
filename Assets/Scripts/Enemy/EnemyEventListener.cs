@@ -13,12 +13,7 @@ public class EnemyEventListener : MonoBehaviour {
 		enemyMovement = GetComponent<EnemyMovement> ();
 		animator = GetComponent<Animator> ();
 
-        // TODO bad design. This listener is used in scene without this manager
-        GameObject _explosionParticleManager = GameObject.Find(NameContainer.EXPLOSION_PARTICLE_MANAGER);
-        if(null != _explosionParticleManager)
-        {
-            explosionParticleManager = _explosionParticleManager.GetComponent<ExplosionParticleManager>();
-        }
+        explosionParticleManager = ExplosionParticleManager.Instance;
 	}
 
 	public void OnCollisionEnter2D (Collision2D coll)
@@ -45,7 +40,7 @@ public class EnemyEventListener : MonoBehaviour {
 	}
 
 	private void EnemyHit(){
-		DisconnectBodyPart (transform.Find ("Head").gameObject);
+		DisconnectBodyPart (transform.Find (NameContainer.HEAD).gameObject);
 
 		CreateBloodyParticleSystem ();
 

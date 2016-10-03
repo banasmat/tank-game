@@ -3,17 +3,35 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ObjectPoolManager : MonoBehaviour {
-
-	//TODO singleton?
+public class ObjectPoolManager : ScriptableObject
+{
 
 	private Dictionary<string, ObjectPool> dictionary;
+    private int defaultCapacity = 5;
 
-	public ObjectPoolManager(){
+    #region Singleton
+    private static readonly ObjectPoolManager instance = ScriptableObject.CreateInstance(typeof(ObjectPoolManager)) as ObjectPoolManager;
+
+    public static ObjectPoolManager Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+    #endregion
+
+    private ObjectPoolManager(){
 		dictionary = new Dictionary<string, ObjectPool> ();
 	}
 
-	public void CreatePool (GameObject _gameObject, int capacity = 3) {
+	public void CreatePool (GameObject _gameObject, int capacity = 0) {
+
+        if(0 == capacity)
+        {
+            capacity = defaultCapacity;
+        }
+
 		if(false == dictionary.ContainsKey(_gameObject.name)){
 			dictionary.Add (_gameObject.name, new ObjectPool(capacity));
 		}
@@ -30,9 +48,12 @@ public class ObjectPoolManager : MonoBehaviour {
 				Destroy (_gameObject);
 			}
 
-		} else {
-			throw new UnityException ("Object pool for " + _gameObject.name + " has not been initialized. Object can't be added.");	
-		}
+		} else
+        {
+            // Object pool has not been initialized. Creating new pool.
+			CreatePool(_gameObject, 5);
+            Add(_gameObject);
+        }
 	}
 
 	public GameObject Retrieve (GameObject _gameObject, Vector3 _position, Quaternion _rotation){
@@ -54,8 +75,10 @@ public class ObjectPoolManager : MonoBehaviour {
 				retrievedObject.name = retrievedObject.name.Replace ("(Clone)", "");
 			}
 		} else {
-			throw new UnityException ("Object pool for " + _gameObject.name + " has not been initialized. Object can't be retrieved.");			
-		}
+            // Object pool has not been initialized. Creating new pool.
+            CreatePool(_gameObject, 5);
+            return Retrieve(_gameObject,_position, _rotation);
+        }
 
 		return retrievedObject;
 	}
