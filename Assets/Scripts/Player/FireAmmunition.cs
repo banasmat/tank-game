@@ -49,7 +49,7 @@ public class FireAmmunition : MonoBehaviour {
 		}
 
 		// Release key, fire bullet
-		if (Input.GetKeyUp (KeyCode.LeftControl) || pressTime >= maxPressTime || Input.touchCount == 0) {
+		if (Input.GetKeyUp (KeyCode.LeftControl) || pressTime >= maxPressTime || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) {
 
 			if(0 != downTime){
 				FireBullet(Mathf.Clamp(pressTime, 1, 500));
