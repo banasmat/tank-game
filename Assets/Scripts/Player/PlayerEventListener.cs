@@ -17,7 +17,10 @@ public class PlayerEventListener : MonoBehaviour, IListener
 		fireAmmunition = gameObject.GetComponentInChildren<FireAmmunition> ();
 		animator = GetComponent<Animator>();
 		_particleSystem = GetComponent<ParticleSystem> ();
-		_particleSystem.Stop ();
+        if(null != _particleSystem)
+        {
+		    _particleSystem.Stop ();
+        }
 	}
 
 	void Start ()

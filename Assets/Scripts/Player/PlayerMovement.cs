@@ -18,7 +18,13 @@ public class PlayerMovement : MonoBehaviour {
 	public void Awake () {
 		rigidBody2d = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
-		breakBar = GameObject.Find(NameContainer.BREAK_BAR).GetComponent<InfoBar>();
+
+        GameObject _breakBar = GameObject.Find(NameContainer.BREAK_BAR);
+        // TODO this is to avoid null reference errors. Probably scene objects should be retrieved by one separate object that would provide some proxies in case elements are not on stage?
+        if (null != _breakBar)
+        {
+            breakBar = _breakBar.GetComponent<InfoBar>();
+        }
 	}
 	
 	// Update is called once per frame

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class FireAmmunition : MonoBehaviour {
 
@@ -27,20 +26,15 @@ public class FireAmmunition : MonoBehaviour {
 	private bool isReloading = false;
 
 	public void Awake(){
-		//TODO at the moment we're not using object pool here. Probably remove.
-		objectPoolManager = GameObject.Find(NameContainer.OBJECT_POOL_MANAGER).GetComponent<ObjectPoolManager>();
-		objectPoolManager.CreatePool (bulletPrefab, 10);
-
-        // EXPERIMENTAL barrel rotation
-        //barrelPivot = GameObject.Find(NameContainer.BARREL_PIVOT).transform;
-        //minBarrelRotation = Quaternion.Euler(0, 0, 0);
-        //maxBarrelRotation = Quaternion.Euler(0, 0, 70);
-        //actualBarrelRotation = barrelPivot.localRotation;
 
         playerTransform = GameObject.Find(NameContainer.PLAYER).transform;
 
-        //reloadBar = GameObject.Find(NameContainer.RELOAD_BAR).GetComponent<InfoBar>();
-		fireForceBar = GameObject.Find(NameContainer.FIRE_FORCE_BAR).GetComponent<InfoBar>();
+        GameObject _fireForceBar = GameObject.Find(NameContainer.FIRE_FORCE_BAR);
+
+        if(null != _fireForceBar)
+        {
+            fireForceBar = _fireForceBar.GetComponent<InfoBar>();
+        }
 
 		bulletPrefabRigidBody = bulletPrefab.GetComponent<Rigidbody2D> ();
 	}
@@ -51,9 +45,6 @@ public class FireAmmunition : MonoBehaviour {
         {
 			if(false == isReloading){
 				downTime = Time.time;
-
-                // EXPERIMENTAL barrel rotation
-                //upTime = 0;
             }
 		}
 
@@ -65,27 +56,11 @@ public class FireAmmunition : MonoBehaviour {
 
 				fireForceBar.SetBarValue (0);
 
-                // EXPERIMENTAL barrel rotation
-                //upTime = Time.time;
-                //actualBarrelRotation = barrelPivot.localRotation;
-
                 downTime = 0;
 				pressTime = 0;
 			}
         }
 
-        // EXPERIMENTAL barrel rotation
-        //if (downTime > 0)
-        //{
-        //    barrelPivot.localRotation = Quaternion.Lerp(minBarrelRotation, maxBarrelRotation, Time.time - downTime);
-
-        //    pressTime = Time.time - downTime;
-        //}
-        //else
-        //{
-        //    //TODO not perfect. The barrel falls down slower than goes up...
-        //    barrelPivot.localRotation = Quaternion.Lerp(actualBarrelRotation, minBarrelRotation, Time.time - upTime);
-        //}
     }
 
 	public void FixedUpdate () {
