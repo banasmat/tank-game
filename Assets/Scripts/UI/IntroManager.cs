@@ -26,6 +26,17 @@ public class IntroManager : MonoBehaviour {
         "Scene7"
     };
 
+    private static readonly int[] sceneDurations = new int[7]
+    {
+        3,
+        3,
+        5,
+        5,
+        5,
+        6,
+        7
+    };
+
     // These should correspond sceneNames
     private static readonly string[] sceneTexts = new string[7]
     {
@@ -59,13 +70,13 @@ public class IntroManager : MonoBehaviour {
         activeScene.SetActive(true);
         introTextContainer.text = sceneTexts[pointer];
 
-        nextSceneCoroutine = waitAndShowNextScene();
+        nextSceneCoroutine = waitAndShowNextScene(sceneDurations[0]);
         StartCoroutine(nextSceneCoroutine);
     }
 
-    private IEnumerator waitAndShowNextScene()
+    private IEnumerator waitAndShowNextScene(int wait)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(wait);
 
         ShowNextScene();
     }
@@ -95,7 +106,7 @@ public class IntroManager : MonoBehaviour {
 
         activeScene = nextScene;
 
-        nextSceneCoroutine = waitAndShowNextScene();
+        nextSceneCoroutine = waitAndShowNextScene(sceneDurations[pointer]);
         StartCoroutine(nextSceneCoroutine);
     }
 }

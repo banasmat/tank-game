@@ -6,11 +6,6 @@ public class FireAmmunition : MonoBehaviour {
 	public GameObject bulletPrefab;
 	private Rigidbody2D bulletPrefabRigidBody;
 
-    private Transform barrelPivot;
-    private Quaternion minBarrelRotation;
-    private Quaternion maxBarrelRotation;
-    private Quaternion actualBarrelRotation;
-
     private Transform playerTransform;
 
 	private int bulletForce = 500;
@@ -49,10 +44,11 @@ public class FireAmmunition : MonoBehaviour {
 		}
 
 		// Release key, fire bullet
-		if (Input.GetKeyUp (KeyCode.LeftControl) || pressTime >= maxPressTime || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) {
+		if (Input.GetKeyUp (KeyCode.LeftControl) || pressTime >= maxPressTime || (Input.touchCount > 0 && Input.GetTouch(0).phase.Equals(TouchPhase.Ended))) {
 
 			if(0 != downTime){
 				FireBullet(Mathf.Clamp(pressTime, 1, 500));
+                
 
 				fireForceBar.SetBarValue (0);
 
@@ -72,15 +68,17 @@ public class FireAmmunition : MonoBehaviour {
 		}
 	}
 
-	public void FireBullet(float _force){
+	public void FireBullet(float _force, bool reload = true){
 		//Clone of the bullet
 		GameObject bulletClone;
 
 		bulletClone = Instantiate(bulletPrefab, transform.position+1*transform.forward, transform.rotation) as GameObject;
 		bulletClone.GetComponent<Rigidbody2D>().AddForce(transform.right * _force * bulletForce);
 
-
-		StartCoroutine (Reload ());
+        if (reload)
+        {
+		    StartCoroutine (Reload ());
+        }
 	}
 
 
