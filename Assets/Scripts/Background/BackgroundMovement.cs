@@ -7,6 +7,8 @@ public class BackgroundMovement : MonoBehaviour {
 	public float scrollSpeed;
 	public float positionAboveGround; // Y position in relation to the ground level
 
+    public PlayerMovement playerMovement;
+
 	private Vector3 startPosition;
 	private GameObject ground;
 	private Sprite sprite;
@@ -26,6 +28,8 @@ public class BackgroundMovement : MonoBehaviour {
 
     void Awake ()
 	{
+        playerMovement = GameObject.Find(NameContainer.PLAYER).GetComponent<PlayerMovement>();
+
         objectPoolManager = ObjectPoolManager.Instance;
 		objectPoolManager.CreatePool (gameObjectPrefab, 3);
 
@@ -41,7 +45,7 @@ public class BackgroundMovement : MonoBehaviour {
 		cameraWidthDoubled = cameraWidth * 2;
         cameraWidthHalf = cameraWidth / 2;
 
-        reversedScrollSpeed = -1 * (scrollSpeed - 1); 
+        reversedScrollSpeed = -1 * (scrollSpeed - 1) / 100; 
 
 		yPosition = groundTransform.position.y + positionAboveGround;
 	}
@@ -52,10 +56,16 @@ public class BackgroundMovement : MonoBehaviour {
 	}
 
 	//FIXME not smooth on android
-	void FixedUpdate ()
+	void Update ()
 	{
-		transform.position = new Vector3(startPosition.x + Camera.main.transform.position.x * reversedScrollSpeed, yPosition);
-        
+        // Correct y position
+        if(transform.position.y != yPosition)
+        {
+            transform.position = new Vector3(transform.position.x, yPosition);
+        }
+
+        transform.Translate(new Vector3(playerMovement.Velocity.x * reversedScrollSpeed, 0));
+
         spriteRightEdgePosition = transform.position.x + spriteSizeHalf;
 
         if (false == cloned)

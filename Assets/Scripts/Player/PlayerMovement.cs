@@ -5,6 +5,11 @@ public class PlayerMovement : MonoBehaviour {
 
 	public float maxSpeed = 10f;
 
+    public Vector3 Velocity { get {
+            return rigidBody2d.velocity;
+        }
+    }
+
 	private Rigidbody2D rigidBody2d;
 	private Animator animator;
 
@@ -13,6 +18,10 @@ public class PlayerMovement : MonoBehaviour {
 
 	private bool isBreaking = false;
 	private InfoBar breakBar;
+
+    private int speed = 50;
+    private int slowDown = 2;
+    
 
 	// Use this for initialization
 	public void Awake () {
@@ -28,13 +37,13 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	public void FixedUpdate () {
+	public void Update () {
         //float move = Input.GetAxis("Horizontal");
 
-		float move = 1;
+		float move = speed * Time.deltaTime;
 
 		if (true == isBreaking) {
-			move = 0.5f;
+			move = move/slowDown;
 		}
 
         rigidBody2d.velocity = new Vector2(move * maxSpeed, rigidBody2d.velocity.y);
