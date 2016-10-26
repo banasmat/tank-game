@@ -34,7 +34,7 @@ public class IntroManager : MonoBehaviour {
         5,
         5,
         6,
-        7
+        6
     };
 
     // These should correspond sceneNames
