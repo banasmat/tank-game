@@ -9,7 +9,7 @@ public class IntroBehaviour : MonoBehaviour {
     // Use this for initialization
     void OnEnable () {
 
-        fireAmmunition = transform.Find(NameContainer.BARREL_PIVOT).Find(NameContainer.BARREL).GetComponent<FireAmmunition>();
+        fireAmmunition = gameObject.GetComponentInChildren<FireAmmunition>();
 
         if (null != fireAmmunition)
         {

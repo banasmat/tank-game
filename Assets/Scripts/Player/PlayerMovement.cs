@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 	private bool isBreaking = false;
 	private InfoBar breakBar;
 
-    private int speed = 50;
+    private int speed = 30;
     private int slowDown = 2;
     
 
