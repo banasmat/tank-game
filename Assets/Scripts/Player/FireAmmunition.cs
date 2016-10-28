@@ -41,7 +41,7 @@ public class FireAmmunition : MonoBehaviour {
 
 
 	IEnumerator Reload(){
-        // It has to be done with frames becasue WaintForSeconds can't be called more often than once per frame
+        // It has to be done with frames becasue WaitForSeconds can't be called more often than once per frame
 
         IsReloading = true;
         float lastTime = Time.time;

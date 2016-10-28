@@ -7,8 +7,7 @@ public class FireButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler 
 
     private FireAmmunition fireAmmunition;
 
-
-    private InfoBar fireForceBar;
+    private InfoBar fireForceBar;  // TODO decouple info bar
     private float maxPressTime = 1.5f;
 
     private float downTime, upTime, pressTime = 0;
