@@ -1,0 +1,143 @@
+fileFormatVersion: 2
+guid: d63628a1ff8aea2459b2c9ba1feffd0f
+timeCreated: 1477911984
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: soil_0
+    21300002: soil_1
+    21300004: soil_2
+    21300006: soil_3
+    21300008: soil_4
+    21300010: soil_5
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: soil_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 875
+        width: 811
+        height: 376
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 48}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: soil_1
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 876
+        width: 906
+        height: 376
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 224}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: soil_2
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 467
+        width: 807
+        height: 336
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: soil_3
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 461
+        width: 914
+        height: 377
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 0, z: 4, w: 222}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: soil_4
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 0
+        width: 626
+        height: 387
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 5, w: 229}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: soil_5
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 0
+        width: 627
+        height: 386
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 0, z: 4, w: 230}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
