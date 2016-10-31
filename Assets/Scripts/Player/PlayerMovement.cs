@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private int speed = 40;
     private int slowDown = 2;
-    
+
+    private float activeGroundObjectPositionX;
 
 	// Use this for initialization
 	public void Awake () {
@@ -40,5 +41,19 @@ public class PlayerMovement : MonoBehaviour {
 		animator.speed = move;
 
 		animator.SetFloat(AnimationParamContainer.PLAYER_VELOCITY, rigidBody2d.velocity.x);
+    }
+
+    public void OnCollisionEnter2D(Collision2D coll)
+    {
+        // When player reaches new ground element
+        if (coll.gameObject.tag == TagContainer.GROUND)
+        {
+            if(activeGroundObjectPositionX != coll.gameObject.transform.position.x)
+            {
+                EventManager.Instance.PostNotification(new GameEvent(EVENT_TYPE.PLAYER_TOUCHES_NEW_GROUND_ELEMENT, coll.gameObject.transform));
+
+                activeGroundObjectPositionX = coll.gameObject.transform.position.x;
+            }
+        }
     }
 }
