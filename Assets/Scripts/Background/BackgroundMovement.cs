@@ -55,7 +55,6 @@ public class BackgroundMovement : MonoBehaviour {
 		startPosition = new Vector3(transform.position.x, YPosition);
 	}
 
-	//FIXME not smooth on android
 	void Update ()
 	{
         // Correct y position

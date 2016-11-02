@@ -2,9 +2,7 @@
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
-
-	public float maxSpeed = 10f;
-
+    
     public Vector3 Velocity { get {
             return rigidBody2d.velocity;
         }
@@ -15,7 +13,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	public bool IsBreaking = false;
 
-    private int speed = 40;
+    private int speed = 100;
     private int slowDown = 2;
 
     private float activeGroundObjectPositionX;
@@ -36,9 +34,9 @@ public class PlayerMovement : MonoBehaviour {
 			move = move/slowDown;
 		}
 
-        rigidBody2d.velocity = new Vector2(move * maxSpeed, rigidBody2d.velocity.y);
+        rigidBody2d.velocity = new Vector2(move, rigidBody2d.velocity.y);
 	
-		animator.speed = move;
+		animator.speed = move/2;
 
 		animator.SetFloat(AnimationParamContainer.PLAYER_VELOCITY, rigidBody2d.velocity.x);
     }
