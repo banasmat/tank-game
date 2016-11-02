@@ -5,22 +5,20 @@ public class BackgroundMovement : MonoBehaviour {
 
 	public GameObject gameObjectPrefab;
 	public float scrollSpeed;
-	public float positionAboveGround; // Y position in relation to the ground level
+    public float YPosition;
 
     public PlayerMovement playerMovement;
 
 	private Vector3 startPosition;
-	private GameObject ground;
 	private Sprite sprite;
-	private Transform groundTransform;
 	private ObjectPoolManager objectPoolManager;
 
-	private bool cloned;
+    private bool cloned;
 	private float reversedScrollSpeed;
 	private float cameraWidth;
 	private float cameraRightEdgePosition;
 	private float spriteRightEdgePosition;
-	private float yPosition;
+	
 	private float spriteSizeHalf;
 	private float cameraWidthDoubled;
     private float cameraWidthHalf;
@@ -35,8 +33,7 @@ public class BackgroundMovement : MonoBehaviour {
 
 		sprite = GetComponent<SpriteRenderer> ().sprite;
 
-		ground = GameObject.FindGameObjectWithTag (TagContainer.GROUND);
-		groundTransform = ground.GetComponent<Transform> ();
+        Transform groundTransform = GameObject.Find(NameContainer.GROUND).GetComponent<Transform> ();
         
         // TODO hardcoded for now. Hard to retrieve from system.
 		cameraWidth = 14;
@@ -47,21 +44,24 @@ public class BackgroundMovement : MonoBehaviour {
 
         reversedScrollSpeed = -1 * (scrollSpeed - 1) / 100; 
 
-		yPosition = groundTransform.position.y + positionAboveGround;
+		if(0 == YPosition)
+        {
+            YPosition = transform.position.y;
+        }
 	}
 
 	void Start(){
 		cloned = false;
-		startPosition = new Vector3(transform.position.x, yPosition);
+		startPosition = new Vector3(transform.position.x, YPosition);
 	}
 
 	//FIXME not smooth on android
 	void Update ()
 	{
         // Correct y position
-        if(transform.position.y != yPosition)
+        if(transform.position.y != YPosition)
         {
-            transform.position = new Vector3(transform.position.x, yPosition);
+            transform.position = new Vector3(transform.position.x, YPosition);
         }
 
         transform.Translate(new Vector3(playerMovement.Velocity.x * reversedScrollSpeed, 0));
@@ -79,9 +79,11 @@ public class BackgroundMovement : MonoBehaviour {
 		    if (differenceAhead < cameraWidthDoubled && differenceAhead > 0) {
 			
 				//TODO When Camera.main.transform.position.x gets higher, new object's x is too low. Temporarily fixed with changing Y position ( yPosition - 10 )
-				GameObject clonedBackground = objectPoolManager.Retrieve(this.gameObjectPrefab, new Vector3 (spriteRightEdgePosition + spriteSizeHalf - Camera.main.transform.position.x * reversedScrollSpeed - 1f, yPosition - 10), transform.rotation);
+				GameObject clonedBackground = objectPoolManager.Retrieve(this.gameObjectPrefab, new Vector3 (spriteRightEdgePosition + spriteSizeHalf - Camera.main.transform.position.x * reversedScrollSpeed - 1f, YPosition - 10), transform.rotation);
 				cloned = true;
-		    }
+                clonedBackground.GetComponent<BackgroundMovement>().YPosition = transform.position.y;
+
+            }
         } else
         {
             // If sprite is left behind the camera, destroy it

@@ -11,8 +11,6 @@ public class EnemyMovement : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		target = GameObject.FindGameObjectWithTag(TagContainer.PLAYER).transform;
-		step = Speed * Time.deltaTime;
-
 	}
 	
 	// Update is called once per frame
@@ -20,6 +18,7 @@ public class EnemyMovement : MonoBehaviour {
 
         if(false == GamePlayManager.Instance.Paused)
         {
+            step = Speed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, target.position, step);
         }
 

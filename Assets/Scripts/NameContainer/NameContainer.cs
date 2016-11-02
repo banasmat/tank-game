@@ -15,6 +15,7 @@
 
 
     public const string SCORE = "Score";
+    public const string GROUND = "Ground";
 
     public const string PLAYER = "Player";
 	public const string TANK_BODY = "TankBody";
