@@ -16,10 +16,12 @@ public class PlayerMovement : MonoBehaviour {
     private int speed = 140;
     private int slowDown = 2;
 
+    // We're assuming that player can touch max 2 elements at once
     private float activeGroundObjectPositionX;
+    private float previousGroundObjectPositionX;
 
-	// Use this for initialization
-	public void Awake () {
+    // Use this for initialization
+    public void Awake () {
 		rigidBody2d = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
 	}
@@ -46,11 +48,14 @@ public class PlayerMovement : MonoBehaviour {
         // When player reaches new ground element
         if (coll.gameObject.tag == TagContainer.GROUND)
         {
-            if(activeGroundObjectPositionX != coll.gameObject.transform.position.x)
+            float x = coll.gameObject.transform.position.x;
+
+            if (activeGroundObjectPositionX != x && previousGroundObjectPositionX != x)
             {
                 EventManager.Instance.PostNotification(new GameEvent(EVENT_TYPE.PLAYER_TOUCHES_NEW_GROUND_ELEMENT, coll.gameObject.transform));
 
-                activeGroundObjectPositionX = coll.gameObject.transform.position.x;
+                previousGroundObjectPositionX = activeGroundObjectPositionX;
+                activeGroundObjectPositionX = x;
             }
         }
     }
