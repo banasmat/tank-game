@@ -5,12 +5,13 @@ public class BackgroundMovement : MonoBehaviour {
 
 	public GameObject gameObjectPrefab;
 	public float scrollSpeed;
+
+    [HideInInspector]
     public float YPosition;
 
-    public PlayerMovement playerMovement;
+    private PlayerMovement playerMovement;
 
 	private Vector3 startPosition;
-	private Sprite sprite;
 	private ObjectPoolManager objectPoolManager;
 
     private bool cloned;
@@ -31,7 +32,6 @@ public class BackgroundMovement : MonoBehaviour {
         objectPoolManager = ObjectPoolManager.Instance;
 		objectPoolManager.CreatePool (gameObjectPrefab, 3);
 
-		sprite = GetComponent<SpriteRenderer> ().sprite;
 
         Transform groundTransform = GameObject.Find(NameContainer.GROUND).GetComponent<Transform> ();
         
