@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class IntroSpawnPoint : SpawnPoint {
 
+    public float spawnRate = 1;
+
     public void OnEnable()
     {
         spawnEnemy();
@@ -11,8 +13,7 @@ public class IntroSpawnPoint : SpawnPoint {
 
     private IEnumerator SpawnEnemies()
     {
-        //TODO random
-        yield return new WaitForSeconds(Random.Range(1f, 2f));
+        yield return new WaitForSeconds(Random.Range(spawnRate, spawnRate * 2));
 
         spawnEnemy();
 
