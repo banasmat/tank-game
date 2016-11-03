@@ -5,6 +5,7 @@ public class PauseMenu : MonoBehaviour {
 
 	void Awake () {
         gameObject.SetActive(false);
+        GetComponent<RectTransform>().localPosition = new Vector2(0, 0);
 	}
 
     public void ToggleActive()

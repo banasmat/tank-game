@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b2df9ce4e671504408d64ea1cd5950bf
-timeCreated: 1478165440
+timeCreated: 1478187998
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,7 @@ TextureImporter:
     21300010: background_5
     21300012: background_6
     21300014: background_7
+    21300016: background_8
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -64,6 +65,19 @@ TextureImporter:
       name: background_0
       rect:
         serializedVersion: 2
+        x: 856
+        y: 1602
+        width: 4023
+        height: 1113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: background_1
+      rect:
+        serializedVersion: 2
         x: 0
         y: 928
         width: 177
@@ -74,7 +88,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_1
+      name: background_2
       rect:
         serializedVersion: 2
         x: 228
@@ -87,20 +101,20 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_2
+      name: background_3
       rect:
         serializedVersion: 2
         x: 644
         y: 699
         width: 1313
-        height: 616
+        height: 619
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_3
+      name: background_4
       rect:
         serializedVersion: 2
         x: 2184
@@ -113,7 +127,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_4
+      name: background_5
       rect:
         serializedVersion: 2
         x: 20
@@ -126,7 +140,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_5
+      name: background_6
       rect:
         serializedVersion: 2
         x: 230
@@ -139,7 +153,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_6
+      name: background_7
       rect:
         serializedVersion: 2
         x: 585
@@ -152,12 +166,12 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_7
+      name: background_8
       rect:
         serializedVersion: 2
-        x: 2185
+        x: 2184
         y: 0
-        width: 2694
+        width: 2695
         height: 585
       alignment: 0
       pivot: {x: 0, y: 0}
