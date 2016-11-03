@@ -10,7 +10,7 @@ public class GroundManager : MonoBehaviour, IListener {
     private GameObject player;
     private int activeElementPointer = 0;
 
-    private int offset = 2;
+    private int margin = 10;
 
 	
 	void Start () {
@@ -27,7 +27,7 @@ public class GroundManager : MonoBehaviour, IListener {
         groundElements.Sort((x, y) => x.transform.position.x.CompareTo(y.transform.position.x));
 
         // Disable all all game objects except two first
-        for (int i = offset; i < groundElements.Count; i++)
+        for (int i = margin; i < groundElements.Count; i++)
         {
             groundElements[i].gameObject.SetActive(false);
         }
@@ -58,7 +58,7 @@ public class GroundManager : MonoBehaviour, IListener {
 
         // Activate ground element few steps ahead
         try { 
-            groundElements[activeElementPointer + offset].SetActive(true);
+            groundElements[activeElementPointer + margin].SetActive(true);
         } catch (ArgumentOutOfRangeException)
         {
             // Do nothing
@@ -67,7 +67,7 @@ public class GroundManager : MonoBehaviour, IListener {
         // Destroy ground element few steps behind
         try
         {
-            Destroy(groundElements[activeElementPointer - offset].gameObject);
+            Destroy(groundElements[activeElementPointer - margin].gameObject);
             groundElements.RemoveAt(activeElementPointer);
         }
         catch (ArgumentOutOfRangeException)
