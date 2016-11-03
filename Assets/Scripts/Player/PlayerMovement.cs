@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	public bool IsBreaking = false;
 
-    private int speed = 100;
+    private int speed = 140;
     private int slowDown = 2;
 
     private float activeGroundObjectPositionX;

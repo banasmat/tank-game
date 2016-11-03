@@ -19,7 +19,7 @@ public class BackgroundMovement : MonoBehaviour {
 	private float cameraRightEdgePosition;
 	private float spriteRightEdgePosition;
 	
-	private float spriteSizeHalf;
+	private float objectSizeHalf;
 	private float cameraWidthDoubled;
     private float cameraWidthHalf;
 
@@ -38,8 +38,9 @@ public class BackgroundMovement : MonoBehaviour {
         // TODO hardcoded for now. Hard to retrieve from system.
 		cameraWidth = 14;
 
-		spriteSizeHalf = sprite.bounds.size.x / 2;
-		cameraWidthDoubled = cameraWidth * 2;
+        objectSizeHalf = GetComponent<RectTransform>().rect.width / 2;
+
+        cameraWidthDoubled = cameraWidth * 2;
         cameraWidthHalf = cameraWidth / 2;
 
         reversedScrollSpeed = -1 * (scrollSpeed - 1) / 100; 
@@ -65,7 +66,7 @@ public class BackgroundMovement : MonoBehaviour {
 
         transform.Translate(new Vector3(playerMovement.Velocity.x * reversedScrollSpeed, 0));
 
-        spriteRightEdgePosition = transform.position.x + spriteSizeHalf;
+        spriteRightEdgePosition = transform.position.x + objectSizeHalf;
 
         if (false == cloned)
         {
@@ -78,7 +79,7 @@ public class BackgroundMovement : MonoBehaviour {
 		    if (differenceAhead < cameraWidthDoubled && differenceAhead > 0) {
 			
 				//TODO When Camera.main.transform.position.x gets higher, new object's x is too low. Temporarily fixed with changing Y position ( yPosition - 10 )
-				GameObject clonedBackground = objectPoolManager.Retrieve(this.gameObjectPrefab, new Vector3 (spriteRightEdgePosition + spriteSizeHalf - Camera.main.transform.position.x * reversedScrollSpeed - 1f, YPosition - 10), transform.rotation);
+				GameObject clonedBackground = objectPoolManager.Retrieve(this.gameObjectPrefab, new Vector3 (spriteRightEdgePosition + objectSizeHalf - Camera.main.transform.position.x * reversedScrollSpeed - 1f, YPosition - 10), transform.rotation);
 				cloned = true;
                 clonedBackground.GetComponent<BackgroundMovement>().YPosition = transform.position.y;
 
