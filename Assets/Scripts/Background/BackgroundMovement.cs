@@ -35,7 +35,7 @@ public class BackgroundMovement : MonoBehaviour {
         Transform groundTransform = GameObject.Find(NameContainer.GROUND).GetComponent<Transform> ();
         
         // TODO hardcoded for now. Hard to retrieve from system.
-		cameraWidth = 14;
+		cameraWidth = 10;
 
         objectSizeHalf = GetComponent<RectTransform>().rect.width / 2;
 

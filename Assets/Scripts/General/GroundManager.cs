@@ -10,7 +10,8 @@ public class GroundManager : MonoBehaviour, IListener {
     private GameObject player;
     private int activeElementPointer = 0;
 
-    private int margin = 10;
+    private int margin = 2;
+    private int groundElementsCount;
 
 	
 	void Start () {
@@ -26,8 +27,10 @@ public class GroundManager : MonoBehaviour, IListener {
         // Sort them by x position
         groundElements.Sort((x, y) => x.transform.position.x.CompareTo(y.transform.position.x));
 
+        groundElementsCount = groundElements.Count;
+
         // Disable all all game objects except two first
-        for (int i = margin; i < groundElements.Count; i++)
+        for (int i = margin; i < groundElementsCount; i++)
         {
             groundElements[i].gameObject.SetActive(false);
         }
@@ -47,7 +50,8 @@ public class GroundManager : MonoBehaviour, IListener {
 
     private void manageGroundElements(Transform _groundElement)
     {
-        for (int i = activeElementPointer; i < groundElements.Count; i++)
+        
+        for (int i = activeElementPointer; i < groundElementsCount; i++)
         {
             if(groundElements[i].transform.position.x == _groundElement.transform.position.x)
             {
@@ -68,7 +72,6 @@ public class GroundManager : MonoBehaviour, IListener {
         try
         {
             Destroy(groundElements[activeElementPointer - margin].gameObject);
-            groundElements.RemoveAt(activeElementPointer);
         }
         catch (ArgumentOutOfRangeException)
         {

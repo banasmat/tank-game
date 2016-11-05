@@ -1,18 +1,17 @@
 fileFormatVersion: 2
-guid: b2df9ce4e671504408d64ea1cd5950bf
-timeCreated: 1478187998
+guid: 8535f74a2880f5541b8a7f24d7f561c9
+timeCreated: 1478353913
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: background_0
-    21300002: background_1
-    21300004: background_2
-    21300006: background_3
-    21300008: background_4
-    21300010: background_5
-    21300012: background_6
-    21300014: background_7
-    21300016: background_8
+    21300000: background-white_0
+    21300002: background-white_1
+    21300004: background-white_2
+    21300006: background-white_3
+    21300008: background-white_4
+    21300010: background-white_5
+    21300012: background-white_6
+    21300014: background-white_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -36,7 +35,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 1024
+  maxTextureSize: 2048
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -62,24 +61,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background_0
-      rect:
-        serializedVersion: 2
-        x: 856
-        y: 1602
-        width: 4023
-        height: 1113
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: background_1
+      name: background-white_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 928
+        y: 929
         width: 177
         height: 343
       alignment: 0
@@ -88,50 +74,50 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_2
+      name: background-white_1
       rect:
         serializedVersion: 2
         x: 228
         y: 921
         width: 159
-        height: 350
+        height: 351
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_3
+      name: background-white_2
       rect:
         serializedVersion: 2
         x: 644
-        y: 699
+        y: 700
         width: 1313
-        height: 619
+        height: 616
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_4
+      name: background-white_3
       rect:
         serializedVersion: 2
         x: 2184
-        y: 699
+        y: 700
         width: 2695
-        height: 562
+        height: 560
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_5
+      name: background-white_4
       rect:
         serializedVersion: 2
         x: 20
-        y: 406
+        y: 407
         width: 160
         height: 350
       alignment: 0
@@ -140,11 +126,11 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_6
+      name: background-white_5
       rect:
         serializedVersion: 2
         x: 230
-        y: 413
+        y: 414
         width: 181
         height: 343
       alignment: 0
@@ -153,20 +139,20 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_7
+      name: background-white_6
       rect:
         serializedVersion: 2
         x: 585
         y: 0
         width: 1525
-        height: 625
+        height: 626
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: background_8
+      name: background-white_7
       rect:
         serializedVersion: 2
         x: 2184
