@@ -10,7 +10,7 @@ public class GroundManager : MonoBehaviour, IListener {
     private GameObject player;
     private int activeElementPointer = 0;
 
-    private int margin = 2;
+    private int margin = 5;
     private int groundElementsCount;
 
 	

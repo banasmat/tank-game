@@ -4,13 +4,13 @@ using System.Collections;
 public class EnemyMovement : MonoBehaviour {
 
 	public float Speed = 2f;
-	public Transform target;
+	private Transform target;
 	private float step;
 
 
 	// Use this for initialization
 	void Awake () {
-		target = GameObject.FindGameObjectWithTag(TagContainer.PLAYER).transform;
+		target = GameObject.Find(NameContainer.PLAYER).transform;
 	}
 	
 	// Update is called once per frame
