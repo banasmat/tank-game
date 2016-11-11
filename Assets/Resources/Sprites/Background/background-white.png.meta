@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8535f74a2880f5541b8a7f24d7f561c9
-timeCreated: 1478353913
+timeCreated: 1478870110
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -35,7 +35,7 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
-  maxTextureSize: 1024
+  maxTextureSize: 2048
   textureSettings:
     filterMode: -1
     aniso: 16
@@ -65,9 +65,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 929
-        width: 177
-        height: 343
+        y: 500
+        width: 96
+        height: 184
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -77,10 +77,10 @@ TextureImporter:
       name: background-white_1
       rect:
         serializedVersion: 2
-        x: 228
-        y: 921
-        width: 159
-        height: 351
+        x: 122
+        y: 497
+        width: 86
+        height: 187
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -90,10 +90,10 @@ TextureImporter:
       name: background-white_2
       rect:
         serializedVersion: 2
-        x: 644
-        y: 700
-        width: 1313
-        height: 616
+        x: 347
+        y: 376
+        width: 706
+        height: 332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,10 +103,10 @@ TextureImporter:
       name: background-white_3
       rect:
         serializedVersion: 2
-        x: 2184
-        y: 700
-        width: 2695
-        height: 560
+        x: 1175
+        y: 376
+        width: 1451
+        height: 303
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -116,10 +116,10 @@ TextureImporter:
       name: background-white_4
       rect:
         serializedVersion: 2
-        x: 20
-        y: 407
-        width: 160
-        height: 350
+        x: 11
+        y: 219
+        width: 87
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,10 +129,10 @@ TextureImporter:
       name: background-white_5
       rect:
         serializedVersion: 2
-        x: 230
-        y: 414
-        width: 181
-        height: 343
+        x: 124
+        y: 223
+        width: 97
+        height: 184
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,10 +142,10 @@ TextureImporter:
       name: background-white_6
       rect:
         serializedVersion: 2
-        x: 585
+        x: 315
         y: 0
-        width: 1525
-        height: 626
+        width: 820
+        height: 338
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: background-white_7
       rect:
         serializedVersion: 2
-        x: 2184
+        x: 1175
         y: 0
-        width: 2695
-        height: 585
+        width: 1451
+        height: 315
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
