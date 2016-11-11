@@ -11,9 +11,10 @@ public class PlayerMovement : MonoBehaviour {
 	private Rigidbody2D rigidBody2d;
 	private Animator animator;
 
-	public bool IsBreaking = false;
+    [HideInInspector]
+    public bool IsBreaking = false;
 
-    private int speed = 140;
+    private int speed = 160;
     private int slowDown = 2;
 
     // We're assuming that player can touch max 2 elements at once
