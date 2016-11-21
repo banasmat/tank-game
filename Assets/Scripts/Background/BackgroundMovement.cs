@@ -26,7 +26,7 @@ public class BackgroundMovement : MonoBehaviour {
 
     void Awake ()
 	{
-        playerMovement = GameObject.Find(NameContainer.PLAYER).GetComponent<PlayerMovement>();
+        playerMovement = GameObject.Find(NameContainer.TRACK).GetComponent<PlayerMovement>();
 
         objectPoolManager = ObjectPoolManager.Instance;
 		objectPoolManager.CreatePool (gameObjectPrefab, 3);

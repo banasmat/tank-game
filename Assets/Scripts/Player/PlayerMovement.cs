@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour {
     [HideInInspector]
     public bool IsBreaking = false;
 
-    private int speed = 160;
+    private int speed = 240;
     private int slowDown = 2;
 
     // We're assuming that player can touch max 2 elements at once
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     public void Awake () {
 		rigidBody2d = GetComponent<Rigidbody2D>();
-		animator = GetComponent<Animator>();
+		animator = GameObject.Find(NameContainer.PLAYER).GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour {
 		float move = speed * Time.deltaTime;
 
 		if (true == IsBreaking) {
-			move = move/slowDown;
+			move = move * slowDown;
 		}
 
         rigidBody2d.velocity = new Vector2(move, rigidBody2d.velocity.y);

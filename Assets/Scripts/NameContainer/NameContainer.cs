@@ -21,6 +21,7 @@
 	public const string TANK_BODY = "TankBody";
     public const string BARREL_PIVOT = "BarrelPivot";
     public const string BARREL = "Barrel";
+    public const string TRACK = "Track";
 
     public const string HEAD = "Head";
 

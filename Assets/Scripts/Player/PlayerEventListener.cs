@@ -13,7 +13,7 @@ public class PlayerEventListener : MonoBehaviour, IListener
 	void Awake ()
 	{
 		player = gameObject.GetComponent<Player> ();
-		playerMovement = gameObject.GetComponent<PlayerMovement> ();
+		playerMovement = gameObject.GetComponentInChildren<PlayerMovement> ();
 		fireAmmunition = gameObject.GetComponentInChildren<FireAmmunition> ();
 		animator = GetComponent<Animator>();
 		_particleSystem = GetComponent<ParticleSystem> ();
