@@ -13,7 +13,7 @@ public class BrakeButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     // Use this for initialization
     public void Start () {
 
-        playerMovement = GameObject.Find(NameContainer.TRACK).GetComponent<PlayerMovement>();
+        playerMovement = GameObject.Find(NameContainer.PLAYER).GetComponentInChildren<PlayerMovement>();
 
         GameObject _breakBar = GameObject.Find(NameContainer.BREAK_BAR);
         // TODO this is to avoid null reference errors. Probably scene objects should be retrieved by one separate object that would provide some proxies in case elements are not on stage?

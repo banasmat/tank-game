@@ -12,7 +12,7 @@ public class CameraMovement : MonoBehaviour {
     void Start()
     {
         mainCamera = GetComponent<Camera>();
-        player = GameObject.Find(NameContainer.TRACK).GetComponent<Transform>();
+        player = GameObject.Find(NameContainer.PLAYER).GetComponentInChildren<PlayerMovement>().transform;
 
         float height = 2f * mainCamera.orthographicSize;
         cameraWidth = height * mainCamera.aspect;
