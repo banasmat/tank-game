@@ -25,9 +25,9 @@ public class BrakeButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (false == playerMovement.IsBreaking)
+        if (false == playerMovement.IsSpeedingUp)
         {
-            playerMovement.IsBreaking = true;
+            playerMovement.IsSpeedingUp = true;
 
             downTime = Time.time;
         }
@@ -35,7 +35,7 @@ public class BrakeButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        stopBraking();
+        stopSpeedingUp();
     }
 
     // Update is called once per frame
@@ -49,14 +49,14 @@ public class BrakeButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
             if (pressTime >= maxPressTime)
             {
-                stopBraking();
+                stopSpeedingUp();
             }
         }
     }
 
-    private void stopBraking()
+    private void stopSpeedingUp()
     {
-        playerMovement.IsBreaking = false;
+        playerMovement.IsSpeedingUp = false;
 
         breakBar.SetBarValue(0);
 

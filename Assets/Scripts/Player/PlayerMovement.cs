@@ -12,10 +12,10 @@ public class PlayerMovement : MonoBehaviour {
 	private Animator animator;
 
     [HideInInspector]
-    public bool IsBreaking = false;
+    public bool IsSpeedingUp = false;
 
-    private int speed = 240;
-    private int slowDown = 2;
+    private int speed = 280;
+    private int speedUp = 2;
 
     // We're assuming that player can touch max 2 elements at once
     private float activeGroundObjectPositionX;
@@ -33,8 +33,8 @@ public class PlayerMovement : MonoBehaviour {
 
 		float move = speed * Time.deltaTime;
 
-		if (true == IsBreaking) {
-			move = move * slowDown;
+		if (true == IsSpeedingUp) {
+			move = move * speedUp;
 		}
 
         rigidBody2d.velocity = new Vector2(move, rigidBody2d.velocity.y);
