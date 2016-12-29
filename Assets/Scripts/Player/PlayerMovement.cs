@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
     public bool IsSpeedingUp = false;
 
     private int speed = 280;
-    private int speedUp = 2;
+    private int speedUp = 4;
 
     // We're assuming that player can touch max 2 elements at once
     private float activeGroundObjectPositionX;
@@ -42,22 +42,5 @@ public class PlayerMovement : MonoBehaviour {
 		animator.speed = move/2;
 
 		animator.SetFloat(AnimationParamContainer.PLAYER_VELOCITY, rigidBody2d.velocity.x);
-    }
-
-    public void OnCollisionEnter2D(Collision2D coll)
-    {
-        // When player reaches new ground element
-        if (coll.gameObject.tag == TagContainer.GROUND)
-        {
-            float x = coll.gameObject.transform.position.x;
-
-            if (activeGroundObjectPositionX != x && previousGroundObjectPositionX != x)
-            {
-                EventManager.Instance.PostNotification(new GameEvent(EVENT_TYPE.PLAYER_TOUCHES_NEW_GROUND_ELEMENT, coll.gameObject.transform));
-
-                previousGroundObjectPositionX = activeGroundObjectPositionX;
-                activeGroundObjectPositionX = x;
-            }
-        }
     }
 }

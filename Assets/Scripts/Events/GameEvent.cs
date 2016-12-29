@@ -10,7 +10,6 @@ public enum EVENT_TYPE
 	ENEMY_HITS_PLAYER,
     BULLET_HITS_ENEMY, //TODO maybe this should contain bullet and enemy object
 	HEALTH_CHANGE,
-    PLAYER_TOUCHES_NEW_GROUND_ELEMENT,
 	GAME_OVER
 }
 

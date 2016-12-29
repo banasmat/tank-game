@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 //-----------------------------------
 //Singleton EventManager to send events to listeners
@@ -114,12 +115,22 @@ public class EventManager : ScriptableObject
 		//Replace listeners object with new dictionary
 		Listeners = TmpListeners;
 	}
-	//-----------------------------------------------------------
-	//Called on scene change. Clean up dictionary //TODO deprecated
-	void OnLevelWasLoaded ()
-	{
-		RemoveRedundancies ();
-	}
+    //-----------------------------------------------------------
+    //Called on scene change. Clean up dictionary //TODO deprecated
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RemoveRedundancies();
+    }
 	//-----------------------------------------------------------
 
 	#endregion

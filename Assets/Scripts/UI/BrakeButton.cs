@@ -2,13 +2,14 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 
+//TODO rename to SpeedButton (if we keep this change)
 public class BrakeButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private PlayerMovement playerMovement;
     private InfoBar breakBar; // TODO decouple info bar
 
     private float downTime, pressTime = 0;
-    public float maxPressTime = 1;
+    private float maxPressTime = 10;
 
     // Use this for initialization
     public void Start () {

@@ -10,7 +10,7 @@ class EnemyManager
             NameContainer.ENEMY_KIEBEL,
             new Dictionary<string, int>
             {
-                {"Strength", 20},
+                {"Strength", 2},
                 {"Points", 10},
             }
         },
@@ -18,7 +18,7 @@ class EnemyManager
             NameContainer.ENEMY_ONE_ERECTION_1,
             new Dictionary<string, int>
             {
-                {"Strength", 30},
+                {"Strength", 3},
                 {"Points", 20},
             }
         },
@@ -26,7 +26,7 @@ class EnemyManager
             NameContainer.ENEMY_KAYNE,
             new Dictionary<string, int>
             {
-                {"Strength", 25},
+                {"Strength", 5},
                 {"Points", 15},
             }
         },

@@ -4,21 +4,18 @@ using System.Collections.Generic;
 using System;
 
 //TODO might rename to GroundPerformanceManager/ GroundCleaner...
-public class GroundManager : MonoBehaviour, IListener {
+public class GroundManager : MonoBehaviour {
 
     private List<GameObject> groundElements;
-    private GameObject player;
+    private Transform player;
     private int activeElementPointer = 0;
 
     private int margin = 5;
     private int groundElementsCount;
-
 	
 	void Start () {
 
-        EventManager.Instance.AddListener(EVENT_TYPE.PLAYER_TOUCHES_NEW_GROUND_ELEMENT, this);
-
-        player = GameObject.Find(NameContainer.PLAYER);
+        player = GameObject.Find(NameContainer.PLAYER).GetComponentInChildren<PlayerMovement>().transform;
 
         // Get references to all terrain elements
         GameObject[] _groundElements = GameObject.FindGameObjectsWithTag(TagContainer.GROUND);
@@ -35,47 +32,50 @@ public class GroundManager : MonoBehaviour, IListener {
             groundElements[i].gameObject.SetActive(false);
         }
 
+        InvokeRepeating("manageGroundElements", 0, 1f);
 
-	}
-
-    public void OnEvent(GameEvent gameEvent)
-    {
-        switch (gameEvent.eventType)
-        {
-            case EVENT_TYPE.PLAYER_TOUCHES_NEW_GROUND_ELEMENT:
-                manageGroundElements((Transform)gameEvent.component);
-                break;
-        }
     }
 
-    private void manageGroundElements(Transform _groundElement)
+    private void manageGroundElements()
     {
         
         for (int i = activeElementPointer; i < groundElementsCount; i++)
         {
-            if(groundElements[i].transform.position.x == _groundElement.transform.position.x)
+            if(groundElements[i].transform.position.x >= player.position.x)
             {
                 activeElementPointer = i;
+
+                // Activate ground elements few steps ahead
+                try
+                {
+                    for(int j = activeElementPointer; j< activeElementPointer + margin; j++)
+                    {
+                        groundElements[j].SetActive(true);
+                    }
+                    
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    // Do nothing
+                }
+                
+                // Destroy ground element few steps behind
+                try
+                {
+                    for (int k = activeElementPointer - margin; k >= 0; k--)
+                    {
+                        Destroy(groundElements[k].gameObject);
+                    }
+                    
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    // Do nothing
+                }
+
                 break;
             }
         }
 
-        // Activate ground element few steps ahead
-        try { 
-            groundElements[activeElementPointer + margin].SetActive(true);
-        } catch (ArgumentOutOfRangeException)
-        {
-            // Do nothing
-        }
-
-        // Destroy ground element few steps behind
-        try
-        {
-            Destroy(groundElements[activeElementPointer - margin].gameObject);
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            // Do nothing
-        }
     }
 }
