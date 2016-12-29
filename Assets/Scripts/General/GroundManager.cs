@@ -10,7 +10,7 @@ public class GroundManager : MonoBehaviour {
     private Transform player;
     private int activeElementPointer = 0;
 
-    private int margin = 5;
+    private int margin = 8;
     private int groundElementsCount;
 	
 	void Start () {

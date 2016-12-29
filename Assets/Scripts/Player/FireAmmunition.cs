@@ -8,8 +8,8 @@ public class FireAmmunition : MonoBehaviour {
 
     private Transform playerTransform;
 
-	private int bulletForce = 500;
-	private float reloadTimeInFrames = 25;
+	private int bulletForce = 800;
+	private float reloadTimeInFrames = 10;
 
 
 	private ObjectPoolManager objectPoolManager;
