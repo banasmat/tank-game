@@ -27,6 +27,7 @@ public class TerrainEditor : Editor {
 	private SerializedProperty TopPlaneHeight;
     public SerializedProperty DrawTopMeshCollider;
     public SerializedProperty DrawTopMeshRenderer;
+    public SerializedProperty Use2DTopCollider;
 
     //Detail plane
     public SerializedProperty DetailMaterial;
@@ -84,6 +85,7 @@ public class TerrainEditor : Editor {
 		TopPlaneHeight = terrainDisplayer.FindProperty("TopPlaneHeight");
         DrawTopMeshCollider = terrainDisplayer.FindProperty("DrawTopMeshCollider");
         DrawTopMeshRenderer = terrainDisplayer.FindProperty("DrawTopMeshRenderer");
+        Use2DTopCollider = terrainDisplayer.FindProperty("Use2DTopCollider");
 
         DetailMaterial = terrainDisplayer.FindProperty("DetailMaterial");
         DetailMaterialXTiling = terrainDisplayer.FindProperty("DetailMaterialXTiling");
@@ -149,8 +151,9 @@ public class TerrainEditor : Editor {
                 //Only draw the top plane if the checkbox is checked
                 DrawTopMeshRenderer.boolValue = EditorGUILayout.Toggle(new GUIContent("Draw Top Mesh Renderer", "Draw top mesh renderer if players can see the top of the mesh."), DrawTopMeshRenderer.boolValue);
                 DrawTopMeshCollider.boolValue = EditorGUILayout.Toggle(new GUIContent("Draw Top Mesh Collider", "Draw the top mesh collider to keep from falling through the mesh."), DrawTopMeshCollider.boolValue);
+            Use2DTopCollider.boolValue = EditorGUILayout.Toggle(new GUIContent("Use 2d top Collider", "Draw the top 2d collider to keep from falling through terrain (custom added setting)."), Use2DTopCollider.boolValue);
 
-                if (DrawTopMeshCollider.boolValue || DrawTopMeshRenderer.boolValue)
+            if (DrawTopMeshCollider.boolValue || DrawTopMeshRenderer.boolValue)
                 {
 
                     EditorGUILayout.PropertyField(TopMaterial, new GUIContent("Material", "The material that will be rendered on this plane of the mesh."));

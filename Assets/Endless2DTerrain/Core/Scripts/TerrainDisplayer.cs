@@ -27,6 +27,7 @@ public class TerrainDisplayer : MonoBehaviour {
     public float TopMaterialRotation;
     public bool DrawTopMeshCollider;
     public bool DrawTopMeshRenderer;
+    public bool Use2DTopCollider;
     public float TopPlaneHeight;
 
     //Detail plane settings
@@ -75,6 +76,7 @@ public class TerrainDisplayer : MonoBehaviour {
             s.TopMaterialRotation = TopMaterialRotation;
             s.DrawTopMeshCollider = DrawTopMeshCollider;
             s.DrawTopMeshRenderer = DrawTopMeshRenderer;
+            s.Use2DTopCollider = Use2DTopCollider;
 
             s.DetailMaterial = DetailMaterial;
             s.DetailMaterialXTiling = DetailMaterialXTiling;

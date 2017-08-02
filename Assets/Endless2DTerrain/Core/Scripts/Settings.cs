@@ -16,6 +16,8 @@ namespace Endless2DTerrain{
         public bool DrawTopMeshCollider { get; set; }
         public bool DrawTopMeshRenderer { get; set; }
 
+        public bool Use2DTopCollider { get; set; }
+
         public Material DetailMaterial { get; set; }
         public float DetailMaterialXTiling { get; set; }
         public float DetailMaterialYTiling { get; set; }

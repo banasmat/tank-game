@@ -50,6 +50,9 @@ namespace Endless2DTerrain
         private MeshFilter meshFilter { get; set; }
         private MeshRenderer meshRenderer { get; set; }
         private MeshCollider meshCollider { get; set; }
+
+        private PolygonCollider2D polygonCollider { get; set; }
+
         public Mesh mesh { get; set; }
 
         //For easy access when positioning the mesh
@@ -149,19 +152,19 @@ namespace Endless2DTerrain
 
             if (PlaneType == Plane.Front && settings.MainMaterial !=null)
             {
-                meshRenderer.renderer.sharedMaterial = settings.MainMaterial;
-                meshRenderer.renderer.sharedMaterial.renderQueue = RenderQueue.FrontPlane;
+                meshRenderer.GetComponent<Renderer>().sharedMaterial = settings.MainMaterial;
+                meshRenderer.GetComponent<Renderer>().sharedMaterial.renderQueue = RenderQueue.FrontPlane;
                
             }
             if (PlaneType == Plane.Detail && settings.DetailMaterial !=null)
             {
-                meshRenderer.renderer.sharedMaterial = settings.DetailMaterial;
-                meshRenderer.renderer.sharedMaterial.renderQueue = RenderQueue.DetailPlane;
+                meshRenderer.GetComponent<Renderer>().sharedMaterial = settings.DetailMaterial;
+                meshRenderer.GetComponent<Renderer>().sharedMaterial.renderQueue = RenderQueue.DetailPlane;
               
             }
             if (PlaneType == Plane.Top && settings.DrawTopMeshRenderer && settings.TopMaterial !=null)
             {
-                meshRenderer.renderer.sharedMaterial = settings.TopMaterial;
+                meshRenderer.GetComponent<Renderer>().sharedMaterial = settings.TopMaterial;
             }
 
 
@@ -172,18 +175,50 @@ namespace Endless2DTerrain
             mesh.RecalculateBounds();
         }
 
+        // https://forum.unity3d.com/threads/endless-2d-terrain-generator.207138/page-3
         public void AddCollider()
         {
-            if (PlaneType == Plane.Top && settings.DrawTopMeshCollider)
+            if (PlaneType == Plane.Top )
             {
-                var colliderMesh = new Mesh();
-                colliderMesh.vertices = mesh.vertices;
-                colliderMesh.triangles = mesh.triangles;
-                colliderMesh.RecalculateBounds();
+                if(settings.DrawTopMeshCollider)
+                {
+                    var colliderMesh = new Mesh();
+                    colliderMesh.vertices = mesh.vertices;
+                    colliderMesh.triangles = mesh.triangles;
+                    colliderMesh.RecalculateBounds();
 
-                meshCollider.sharedMesh = colliderMesh;
-                meshCollider.smoothSphereCollisions = true;
+                    meshCollider.sharedMesh = colliderMesh;
+                    meshCollider.smoothSphereCollisions = true;
+                }
             }
+
+            if(PlaneType == Plane.Detail)
+            {
+                if (settings.Use2DTopCollider)
+                {
+                    polygonCollider.pathCount = 1;
+                    polygonCollider.SetPath(0, Get2DColliderVerts(mesh.vertices));
+                }
+            }
+        }
+
+        Vector2[] Get2DColliderVerts(Vector3[] meshVertices)
+        {
+            List<Vector2> verts = new List<Vector2>();
+
+            // Convert vertices to Vector2 coords, and remove duplicates
+            foreach (Vector3 meshVert in meshVertices)
+            {
+                verts.Add(new Vector2(meshVert.x, meshVert.y));
+            }
+
+            // Add bottom verts
+            for (int i = (verts.Count - 1); i >= 0; i--)
+            {
+                verts.Add(new Vector2(verts[i].x, verts[i].y - 1f));
+            }
+
+            return verts.ToArray();
         }
 
         public void CreateCorner(List<Vector3> keyTopVerticies, List<Vector3> keyBottomVerticies)
@@ -325,13 +360,26 @@ namespace Endless2DTerrain
                 {
                     if (meshCollider == null) { meshCollider = MeshObject.AddComponent<MeshCollider>(); }
                 }
+                
             }
             else
             {
                 if (meshRenderer == null) { meshRenderer = MeshObject.AddComponent<MeshRenderer>(); }
-                if (meshCollider == null) { meshCollider = MeshObject.AddComponent<MeshCollider>(); }
+               // if (meshCollider == null) { meshCollider = MeshObject.AddComponent<MeshCollider>(); }
+                
             }
 			
+            if(PlaneType == Plane.Detail)
+            {
+                if (settings.Use2DTopCollider)
+                {
+                    if (polygonCollider == null)
+                    {
+                        polygonCollider = MeshObject.AddComponent<PolygonCollider2D>();
+                    }
+                }
+            }
+
 			GameObject.DestroyImmediate(meshFilter.sharedMesh);
 			meshFilter.sharedMesh  = new Mesh();
 			mesh = meshFilter.sharedMesh;
